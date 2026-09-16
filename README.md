@@ -7,8 +7,10 @@ The BitRep marketing site. Three static pages, no build step.
 - `terms.html` — terms of use
 
 Assets that must stay alongside the pages: `support.js`, `br-mark.png`,
-`icon-1024.png`, `bitrep-avatars.png`, `_ds/`. `.nojekyll` stops GitHub Pages
-from ignoring `_ds/` (Jekyll skips underscore-prefixed paths).
+`icon-1024.png`, `bitrep-avatars.png`, `ds/`.
+
+The design-system folder is named `ds/` (no leading underscore) so GitHub Pages
+publishes it without needing a `.nojekyll` file.
 
 ## Deploy to GitHub Pages on bitrep.app
 
