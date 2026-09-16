@@ -34,15 +34,25 @@
   :focus-visible { outline: 2px solid #1e8639; outline-offset: 3px; }
   img { image-rendering: pixelated; }
   h1, h2, h3 { font-family: Archivo, sans-serif; font-weight: 800; }
+  .navlinks { order: 1; display: flex; }
+  .navcta { order: 2; }
+  .burger { display: none; order: 3; }
+  @media (max-width: 880px) {
+    .navcta { order: 1; }
+    .burger { display: inline-flex; order: 2; }
+    .navlinks { order: 3; display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-top: 8px; }
+    .navtoggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 13px 0; border-top: 1.5px solid #34425f; font-size: 15px; }
+  }
 </style>
 <style>
-.st1:hover { color: #ffffff !important }
+.st1:hover { background: #22993f !important }
 .st2:hover { color: #ffffff !important }
 .st3:hover { color: #ffffff !important }
 .st4:hover { color: #ffffff !important }
 .st5:hover { color: #ffffff !important }
 .st6:hover { color: #ffffff !important }
-.st7:hover { background: #22993f !important }
+.st7:hover { color: #ffffff !important }
 .st8:hover { background: #22993f !important }
 .st9:hover { background: #eaf0fa !important }
 .st10:hover { background: #dff1fa !important }
@@ -68,15 +78,21 @@
       <img src="br-mark.png" alt="" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain">
       <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 24px; line-height: 1; color: #ffffff">BitRep</span>
     </a>
-    <nav style="display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 20px); font: 600 13px Archivo, sans-serif">
-      <a href="#log" style="color: #8fd3f0; text-decoration: none" class="st1">Log</a>
-      <a href="#evolve" style="color: #8fd3f0; text-decoration: none" class="st2">Evolve</a>
-      <a href="#understand" style="color: #8fd3f0; text-decoration: none" class="st3">Understand</a>
-      <a href="#native" style="color: #8fd3f0; text-decoration: none" class="st4">On iPhone</a>
-      <a href="#pricing" style="color: #8fd3f0; text-decoration: none" class="st5">Pricing</a>
-      <a href="#faq" style="color: #8fd3f0; text-decoration: none" class="st6">FAQ</a>
+    <input type="checkbox" id="navtoggle" class="navtoggle" hidden="hidden" aria-label="Open menu">
+    <a href="#" class="navcta st1 st19" style="background: #1e8639; color: #ffffff; border-radius: 6px; box-shadow: 0 3px 0 #135a26; padding: 10px 14px; font: 700 13px Archivo, sans-serif; text-decoration: none">Get the beta</a>
+    <label for="navtoggle" class="burger" style="width: 44px; height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; border-radius: 6px">
+      <span style="display: block; width: 22px; height: 2px; background: #ffffff"></span>
+      <span style="display: block; width: 22px; height: 2px; background: #ffffff"></span>
+      <span style="display: block; width: 22px; height: 2px; background: #ffffff"></span>
+    </label>
+    <nav class="navlinks" style="flex-wrap: wrap; gap: clamp(12px, 2vw, 20px); font: 600 13px Archivo, sans-serif">
+      <a href="#log" style="color: #8fd3f0; text-decoration: none" class="st2">Log</a>
+      <a href="#evolve" style="color: #8fd3f0; text-decoration: none" class="st3">Evolve</a>
+      <a href="#understand" style="color: #8fd3f0; text-decoration: none" class="st4">Understand</a>
+      <a href="#native" style="color: #8fd3f0; text-decoration: none" class="st5">On iPhone</a>
+      <a href="#pricing" style="color: #8fd3f0; text-decoration: none" class="st6">Pricing</a>
+      <a href="#faq" style="color: #8fd3f0; text-decoration: none" class="st7">FAQ</a>
     </nav>
-    <a href="#" style="background: #1e8639; color: #ffffff; border-radius: 6px; box-shadow: 0 3px 0 #135a26; padding: 10px 14px; font: 700 13px Archivo, sans-serif; text-decoration: none" class="st7 st19">Get the beta</a>
   </header>
 
   <section id="top" style="position: relative; background: #030d1d; display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: clamp(24px, 4vw, 56px); padding: clamp(28px, 5vw, 60px) var(--pad)">
