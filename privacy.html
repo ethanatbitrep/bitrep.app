@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BitRep — Privacy Policy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Archivo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="ds/styles.css">
-<script src="ds/ds-bundle.js"></script>
 <link rel="icon" href="icon-1024.png">
 <style>
   body { margin: 0; background: #eaf0fa; color: #1b2437; font-family: Archivo, system-ui, sans-serif; --gut: clamp(16px, 3.4vw, 44px); }
@@ -25,8 +18,15 @@
   :focus-visible { outline: 2px solid #1e8639; outline-offset: 3px; }
   img { image-rendering: pixelated; }
 </style>
-</helmet>
-
+<style>
+.st1:hover { color: #ffffff !important }
+.st2:hover { color: #ffffff !important }
+.st3:hover { color: #1b2437 !important }
+.st4:hover { color: #8fd3f0 !important }
+.st5:hover { color: #8fd3f0 !important }
+</style>
+</head>
+<body>
 <div style="max-width: 1180px; margin: 0 auto; background: #eaf0fa">
 
   <header style="display: flex; align-items: center; flex-wrap: wrap; gap: 16px; background: #030d1d; padding: 12px var(--gut)">
@@ -35,8 +35,8 @@
       <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 24px; line-height: 1; color: #ffffff">BitRep</span>
     </a>
     <nav style="display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 20px); font: 600 13px Archivo, sans-serif">
-      <a href="index.html" style="color: #8fd3f0; text-decoration: none" style-hover="color: #ffffff">bitrep.app</a>
-      <a href="terms.html" style="color: #8fd3f0; text-decoration: none" style-hover="color: #ffffff">Terms of use</a>
+      <a href="index.html" style="color: #8fd3f0; text-decoration: none" class="st1">bitrep.app</a>
+      <a href="terms.html" style="color: #8fd3f0; text-decoration: none" class="st2">Terms of use</a>
     </nav>
   </header>
 
@@ -45,7 +45,7 @@
     <h1 style="margin: 0; font-size: clamp(28px, 4.4vw, 44px); line-height: 1.1; color: #ffffff">Privacy<br>policy</h1>
     <p style="margin: 0; font: 500 17px/1.55 Archivo, sans-serif; color: #dbe6f2; max-width: 58ch; text-wrap: pretty">BitRep is a training log. It works on your device, and it is built so that the least possible amount of your training ever leaves it. This page says exactly what is stored, what is sent, and how to get rid of it.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px">
-      <span style="border: 1.5px solid #34425f; border-radius: 6px; background: #161d29; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #e8edf5">Effective {{ effectiveDate }}</span>
+      <span style="border: 1.5px solid #34425f; border-radius: 6px; background: #161d29; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #e8edf5">Effective 14 September 2026</span>
       <span style="border-radius: 6px; background: #e4f6e8; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #14612a">No ad SDKs · no tracking</span>
     </div>
   </section>
@@ -126,8 +126,8 @@
 
     <div style="border: 1.5px solid rgba(27,36,55,.22); border-radius: 6px; background: #ffffff; padding: 20px; display: flex; flex-direction: column; gap: 10px">
       <span style="font: 700 11px Archivo, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #5b6782">Questions or requests</span>
-      <a href="mailto:{{ contactEmail }}" style="font: 800 24px Archivo, sans-serif; color: #15607f; text-decoration: none" style-hover="color: #1b2437">{{ contactEmail }}</a>
-      <span style="font: 500 13px/1.55 Archivo, sans-serif; color: #5b6782">Operated by {{ entity }}. Written in plain words on purpose — if a line here is unclear, tell us and we will fix the line.</span>
+      <a href="mailto:privacy@bitrep.app" style="font: 800 24px Archivo, sans-serif; color: #15607f; text-decoration: none" class="st3">privacy@bitrep.app</a>
+      <span style="font: 500 13px/1.55 Archivo, sans-serif; color: #5b6782">Operated by BitRep. Written in plain words on purpose — if a line here is unclear, tell us and we will fix the line.</span>
     </div>
 
   </section>
@@ -141,24 +141,12 @@
       <span style="font: 500 13px Archivo, sans-serif; color: #a7b3c8">Train. Level. Evolve.</span>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; font: 500 13px Archivo, sans-serif">
-      <a href="index.html" style="color: #ffffff; text-decoration: none" style-hover="color: #8fd3f0">bitrep.app</a>
-      <a href="terms.html" style="color: #ffffff; text-decoration: none" style-hover="color: #8fd3f0">Terms of use</a>
+      <a href="index.html" style="color: #ffffff; text-decoration: none" class="st4">bitrep.app</a>
+      <a href="terms.html" style="color: #ffffff; text-decoration: none" class="st5">Terms of use</a>
       <span style="color: #5b6782">© 2026 BitRep</span>
     </div>
   </footer>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;effectiveDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;14 September 2026&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;privacy@bitrep.app&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;entity&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BitRep&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      effectiveDate: this.props.effectiveDate ?? '14 September 2026',
-      contactEmail: this.props.contactEmail ?? 'privacy@bitrep.app',
-      entity: this.props.entity ?? 'BitRep'
-    };
-  }
-}
-</script>
 </body>
 </html>

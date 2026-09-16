@@ -6,8 +6,12 @@ The BitRep marketing site. Three static pages, no build step.
 - `privacy.html` — privacy policy
 - `terms.html` — terms of use
 
-Assets that must stay alongside the pages: `support.js`, `br-mark.png`,
+Assets that must stay alongside the pages: `br-mark.png`,
 `icon-1024.png`, `bitrep-avatars.png`, `ds/`.
+
+These are plain static HTML with inline styles and **no JavaScript** — nothing to
+build, nothing to hydrate. Do not add `support.js`; it is a React runtime that
+throws on a static host and leaves the page blank.
 
 The design-system folder is named `ds/` (no leading underscore) so GitHub Pages
 publishes it without needing a `.nojekyll` file.

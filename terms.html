@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BitRep — Terms of Use</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Archivo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="ds/styles.css">
-<script src="ds/ds-bundle.js"></script>
 <link rel="icon" href="icon-1024.png">
 <style>
   body { margin: 0; background: #eaf0fa; color: #1b2437; font-family: Archivo, system-ui, sans-serif; --gut: clamp(16px, 3.4vw, 44px); }
@@ -25,8 +18,15 @@
   :focus-visible { outline: 2px solid #1e8639; outline-offset: 3px; }
   img { image-rendering: pixelated; }
 </style>
-</helmet>
-
+<style>
+.st1:hover { color: #ffffff !important }
+.st2:hover { color: #ffffff !important }
+.st3:hover { color: #1b2437 !important }
+.st4:hover { color: #8fd3f0 !important }
+.st5:hover { color: #8fd3f0 !important }
+</style>
+</head>
+<body>
 <div style="max-width: 1180px; margin: 0 auto; background: #eaf0fa">
 
   <header style="display: flex; align-items: center; flex-wrap: wrap; gap: 16px; background: #030d1d; padding: 12px var(--gut)">
@@ -35,8 +35,8 @@
       <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 24px; line-height: 1; color: #ffffff">BitRep</span>
     </a>
     <nav style="display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 20px); font: 600 13px Archivo, sans-serif">
-      <a href="index.html" style="color: #8fd3f0; text-decoration: none" style-hover="color: #ffffff">bitrep.app</a>
-      <a href="privacy.html" style="color: #8fd3f0; text-decoration: none" style-hover="color: #ffffff">Privacy policy</a>
+      <a href="index.html" style="color: #8fd3f0; text-decoration: none" class="st1">bitrep.app</a>
+      <a href="privacy.html" style="color: #8fd3f0; text-decoration: none" class="st2">Privacy policy</a>
     </nav>
   </header>
 
@@ -45,7 +45,7 @@
     <h1 style="margin: 0; font-size: clamp(28px, 4.4vw, 44px); line-height: 1.1; color: #ffffff">Terms<br>of use</h1>
     <p style="margin: 0; font: 500 17px/1.55 Archivo, sans-serif; color: #dbe6f2; max-width: 58ch; text-wrap: pretty">These terms cover the BitRep app and this site. Installing BitRep or using the beta means you accept them. They are short because the deal is simple: we give you a training log, you train sensibly, and your data stays yours.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px">
-      <span style="border: 1.5px solid #34425f; border-radius: 6px; background: #161d29; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #e8edf5">Effective {{ effectiveDate }}</span>
+      <span style="border: 1.5px solid #34425f; border-radius: 6px; background: #161d29; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #e8edf5">Effective 14 September 2026</span>
       <span style="border-radius: 6px; background: #fdece8; padding: 7px 11px; font: 700 11px Archivo, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #a32d16">Not medical advice</span>
     </div>
   </section>
@@ -99,13 +99,13 @@
 
     <div style="display: flex; flex-direction: column; gap: 10px">
       <h2 style="margin: 0; font-size: clamp(20px, 2.4vw, 24px); line-height: 1.2; color: #1b2437">9 · Governing law</h2>
-      <p style="margin: 0; font: 500 15px/1.65 Archivo, sans-serif; color: #1b2437; text-wrap: pretty">These terms are governed by the laws of {{ jurisdiction }}, and the courts there have jurisdiction over any dispute, without affecting any right you have to bring a claim where you live.</p>
+      <p style="margin: 0; font: 500 15px/1.65 Archivo, sans-serif; color: #1b2437; text-wrap: pretty">These terms are governed by the laws of England and Wales, and the courts there have jurisdiction over any dispute, without affecting any right you have to bring a claim where you live.</p>
     </div>
 
     <div style="border: 1.5px solid rgba(27,36,55,.22); border-radius: 6px; background: #ffffff; padding: 20px; display: flex; flex-direction: column; gap: 10px">
       <span style="font: 700 11px Archivo, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #5b6782">Contact</span>
-      <a href="mailto:{{ contactEmail }}" style="font: 800 24px Archivo, sans-serif; color: #15607f; text-decoration: none" style-hover="color: #1b2437">{{ contactEmail }}</a>
-      <span style="font: 500 13px/1.55 Archivo, sans-serif; color: #5b6782">Operated by {{ entity }}.</span>
+      <a href="mailto:hello@bitrep.app" style="font: 800 24px Archivo, sans-serif; color: #15607f; text-decoration: none" class="st3">hello@bitrep.app</a>
+      <span style="font: 500 13px/1.55 Archivo, sans-serif; color: #5b6782">Operated by BitRep.</span>
     </div>
 
   </section>
@@ -119,25 +119,12 @@
       <span style="font: 500 13px Archivo, sans-serif; color: #a7b3c8">Train. Level. Evolve.</span>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; font: 500 13px Archivo, sans-serif">
-      <a href="index.html" style="color: #ffffff; text-decoration: none" style-hover="color: #8fd3f0">bitrep.app</a>
-      <a href="privacy.html" style="color: #ffffff; text-decoration: none" style-hover="color: #8fd3f0">Privacy policy</a>
+      <a href="index.html" style="color: #ffffff; text-decoration: none" class="st4">bitrep.app</a>
+      <a href="privacy.html" style="color: #ffffff; text-decoration: none" class="st5">Privacy policy</a>
       <span style="color: #5b6782">© 2026 BitRep</span>
     </div>
   </footer>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;effectiveDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;14 September 2026&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hello@bitrep.app&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;entity&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BitRep&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;jurisdiction&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;England and Wales&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      effectiveDate: this.props.effectiveDate ?? '14 September 2026',
-      contactEmail: this.props.contactEmail ?? 'hello@bitrep.app',
-      entity: this.props.entity ?? 'BitRep',
-      jurisdiction: this.props.jurisdiction ?? 'England and Wales'
-    };
-  }
-}
-</script>
 </body>
 </html>
