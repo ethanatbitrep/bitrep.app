@@ -147,8 +147,8 @@
 
 <script>
 /* The film plays itself when at least half of it is on screen and pauses
-   when it leaves. It only starts loading once it is within 300 px of the
-   viewport. A visitor's own pause is respected for the rest of the visit,
+   when it leaves. It only starts loading once its edge reaches the
+   screen. A visitor's own pause is respected for the rest of the visit,
    and nothing autoplays with Reduce Motion or Save Data on. Without this
    script the film still plays on tap. */
 (function () {
@@ -171,7 +171,7 @@
       if (!entries[0].isIntersecting) return;
       near.disconnect();
       if (video.readyState === 0 && video.paused) video.preload = 'auto';
-    }, { rootMargin: '300px 0px' });
+    }, { rootMargin: '0px' });
     near.observe(video);
   }
 
