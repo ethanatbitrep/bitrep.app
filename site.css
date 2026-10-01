@@ -49,19 +49,74 @@ a { color: var(--link); }
 /* Header */
 .site-header { padding-top: 24px; }
 .wordmark { display: block; width: 130px; height: auto; }
+.wrap-hero { max-width: 1120px; }
 
-/* Hero */
-.hero { padding-top: 32px; display: grid; gap: 32px; }
-.hero-text { display: flex; flex-direction: column; gap: 24px; }
-h1 { font: 700 30px/1.25 var(--display); text-wrap: balance; }
-.hero-shot { justify-self: center; width: 260px; }
-.hero-shot img { border-radius: var(--r-card); }
-.hero-shot img, .card img { display: block; width: 100%; height: auto; }
+/* The app stills are phones on their own dark backdrop. Clip each one to
+   the phone's outline (measured on the 900 x 1790 originals: 27 px top,
+   35 px sides, 26 px bottom, corners about 105 px) so none of the
+   backdrop shows. */
+.phone-still { display: block; width: 100%; height: auto; clip-path: inset(1.5% 3.9% 1.45% 3.9% round 11.7% / 5.9%); }
+.card img { display: block; width: 100%; height: auto; }
+
+/* Hero: the star field sits behind this band only */
+.hero-band {
+  background:
+    linear-gradient(to bottom, rgba(14, 16, 32, 0) 45%, var(--ground) 100%),
+    radial-gradient(rgba(255, 255, 255, 0.14) 0.75px, transparent 1.25px) 0 0 / 30px 30px,
+    radial-gradient(rgba(143, 141, 255, 0.22) 0.75px, transparent 1.25px) 15px 22px / 46px 46px,
+    var(--ground);
+}
+.hero {
+  padding-top: 24px;
+  padding-bottom: 32px;
+  display: grid;
+  grid-template-areas: "text" "cluster" "fox";
+  gap: 24px;
+}
+.hero-left { display: contents; }
+.hero-text { grid-area: text; display: flex; flex-direction: column; gap: 16px; }
+h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
+.lede { font-size: 18px; line-height: 1.45; max-width: 46ch; color: var(--text); }
+.hero .waitlist { max-width: 520px; margin-top: 8px; }
+
+/* Three phones: Home in front, Run behind left, Food behind right.
+   --f is the front phone's width; the back phones are 80% of it, set
+   lower, and the front one overlaps a third of each. */
+.cluster {
+  grid-area: cluster;
+  --f: min(190px, calc((100vw - 32px) / 2.07));
+  position: relative;
+  justify-self: center;
+  width: calc(var(--f) * 2.0667);
+  height: calc(var(--f) * 1.9889);
+}
+.cluster .phone-still { position: absolute; }
+.cluster .front { left: calc(var(--f) * 0.5333); top: 0; width: var(--f); z-index: 1; }
+.cluster .back { top: calc(var(--f) * 0.2); width: calc(var(--f) * 0.8); filter: brightness(0.75); }
+.cluster .left { left: 0; }
+.cluster .right { right: 0; }
+
+.hero-fox { grid-area: fox; }
+.hero-fox .stages { flex-wrap: nowrap; gap: 4px; }
+.hero-fox .stages li { flex: 1 1 0; min-width: 0; }
+.hero-fox .caption { margin-top: 8px; font-size: 14px; }
+
 @media (min-width: 600px) { h1 { font-size: 38px; } }
-@media (min-width: 860px) {
-  .hero { grid-template-columns: minmax(0, 1fr) 320px; align-items: center; gap: 56px; padding-top: 48px; }
-  .hero-shot { width: 320px; }
-  h1 { font-size: 44px; }
+@media (min-width: 900px) {
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "left cluster";
+    column-gap: 48px;
+    align-items: center;
+  }
+  .hero-left { grid-area: left; display: flex; flex-direction: column; gap: 32px; }
+  .cluster { --f: clamp(200px, 22vw, 290px); }
+  h1 { font-size: clamp(38px, 3.4vw, 48px); }
+  .lede { font-size: 20px; }
+  .hero-fox .stages { gap: 8px; justify-content: flex-start; }
+  .hero-fox .caption { text-align: left; }
 }
 
 /* Waitlist form */
@@ -148,7 +203,7 @@ h1 { font: 700 30px/1.25 var(--display); text-wrap: balance; }
   padding: 0 16px 8px;
 }
 .features > li { flex: 0 0 78%; scroll-snap-align: start; overflow: hidden; }
-.features img { border-radius: var(--r-card) var(--r-card) 0 0; }
+.features .phone-still { padding-top: 4px; }
 @media (min-width: 860px) {
   .features {
     display: grid;
