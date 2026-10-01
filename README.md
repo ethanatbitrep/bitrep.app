@@ -1,60 +1,93 @@
 # bitrep.app
 
-The BitRep marketing site. Three static pages, no build step.
+The BitRep website: a short, image-led waitlist page for the iPhone app,
+plus the privacy policy and terms. Plain static files, no build step,
+served by GitHub Pages from the root of `main`.
 
-- `index.html` — home
-- `privacy.html` — privacy policy
-- `terms.html` — terms of use
+## Pages
 
-Assets that must stay alongside the pages: `br-mark.png`,
-`icon-1024.png`, `bitrep-avatars.png`, `ds/`.
+- `index.html`: the home page. Hero (headline, waitlist form, three app
+  screens, the fox at five stages), the walkthrough film, four feature
+  cards, short lines and promises, the waitlist form again, footer.
+- `thanks.html`: the page Kit sends people to after they join the
+  waitlist. Marked `noindex`.
+- `privacy.html` and `terms.html`: the legal pages. They still use the
+  older design (their own inline styles, Google Fonts and `br-mark.png`).
 
-These are plain static HTML with inline styles and **no JavaScript** — nothing to
-build, nothing to hydrate. Do not add `support.js`; it is a React runtime that
-throws on a static host and leaves the page blank.
+## Files
 
-The design-system folder is named `ds/` (no leading underscore) so GitHub Pages
-publishes it without needing a `.nojekyll` file.
+- `site.css`: the one stylesheet for `index.html` and `thanks.html`. Colours,
+  radii and type follow design pack 10 (Midnight and Iris, dark theme).
+- `fonts/`: Archivo 400 and 700 and Pixelify Sans 700, self-hosted, with
+  their OFL licences. Pixelify Sans is for the main headline only.
+- `img/bitrep-wordmark-white.svg`: the 2026 wordmark (B-barbell mark plus
+  "BitRep") from the design kit's logo folder.
+- `img/screens/`: five stills from the film (900 x 1790) with 300 and 600 px
+  copies for `srcset`. Each is shown clipped to the phone's own outline.
+- `img/fox/`: the fox companion at stages 1 to 5, whole squares at 146, 292
+  and 438 px, shown with pixelated scaling.
+- `img/share.png`: the 1200 x 630 link-preview image (`og:image`).
+- `video/`: the walkthrough film (`bitrep-film.mp4`, H.264, no audio,
+  faststart) and its poster.
+- `favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`:
+  the white mark on `#0E1020`.
+- `email/wordmark.png` and `email/ember.png`: loaded by the Kit email
+  template from `https://bitrep.app/email/...`. Keep these names and paths.
+- `br-mark.png` and `og-image.png`: used only by the two legal pages.
+- `CNAME`: holds `bitrep.app`. Do not remove it.
 
-## Deploy to GitHub Pages on bitrep.app
+## Behaviour
 
-1. Push every file in this folder to the **root** of `main`.
-2. Repo → **Settings → Pages** → Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
-3. Under **Custom domain** enter `bitrep.app` and save. The `CNAME` file already holds it.
-4. At your DNS provider add four **A** records on the apex (host blank or `@`).
-   **Squarespace:** Domains dashboard → `bitrep.app` → DNS → DNS Settings. First
-   delete the records under **Squarespace Defaults** (red trashcan) — custom
-   records pointing elsewhere are rejected while they exist — then add these
-   under **Custom Records**. Leave MX/email records untouched.
+- The waitlist form posts straight to Kit
+  (`https://app.kit.com/forms/9990510/subscriptions`, field `email_address`).
+  That is the only outside address the home page uses.
+- One small inline script on `index.html` plays the film (muted) when at
+  least half of it is on screen and pauses it when it leaves. The film only
+  starts loading once it reaches the screen. A visitor's own pause is
+  respected, and nothing autoplays with Reduce Motion or Save Data on.
+  Without JavaScript the film plays on tap and the form still works.
 
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
+## Publishing
 
-   Optional IPv6 — four **AAAA** records:
+Every push to `main` triggers GitHub's "pages build and deployment" run,
+which publishes the files to https://bitrep.app within a minute or two.
+Settings, Pages: source "Deploy from a branch", branch `main`, folder `/`.
 
-   ```
-   2606:50c0:8000::153
-   2606:50c0:8001::153
-   2606:50c0:8002::153
-   2606:50c0:8003::153
-   ```
+## Previewing locally
 
-5. **www → apex redirect:** add a **CNAME** record, host `www`, value
-   `ethanatbitrep.github.io`. Because `CNAME` names the apex, Pages serves
-   `bitrep.app` as primary and 301-redirects `www.bitrep.app` to it.
-6. Delete any default/parked A record the provider added, wait for propagation
-   (up to 24h), then tick **Enforce HTTPS** in Settings → Pages.
+iPhone Safari needs byte-range support to play the film, which
+`python3 -m http.server` does not provide. Use a static server that
+supports ranges, or open `index.html` directly in Safari on the Mac.
 
-Check the apex with `dig bitrep.app +noall +answer` — the answers should match
-the IPs above.
+## DNS (already set up)
 
-## Before launch
+At the DNS provider (Squarespace: Domains, `bitrep.app`, DNS, DNS Settings)
+the apex has four A records pointing at GitHub Pages. Leave MX and email
+records alone.
 
-1. Replace the `#` CTA links with the TestFlight URL.
-2. Set the effective date, contact addresses, legal entity and jurisdiction on the two legal pages.
-3. Have the privacy policy and terms reviewed by a lawyer.
-4. `bitrep-avatars.png` is a large sprite sheet — export trimmed sprites to cut page weight.
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+Optional IPv6, four AAAA records:
+
+```
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
+`www` is a CNAME to `ethanatbitrep.github.io`. Because `CNAME` names the
+apex, Pages serves `bitrep.app` and redirects `www.bitrep.app` to it. HTTPS
+is enforced in Settings, Pages. Check the apex with
+`dig bitrep.app +noall +answer`; the answers should match the IPs above.
+
+## Still to do
+
+- Have the privacy policy and terms reviewed by a lawyer, and name the
+  legal entity on them.
+- Point Kit's form success redirect at `https://bitrep.app/thanks.html`.
