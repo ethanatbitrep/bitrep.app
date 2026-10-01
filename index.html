@@ -19,268 +19,176 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/app-icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<style>
-  @font-face { font-family: "Archivo"; src: url("fonts/Archivo_400Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Archivo"; src: url("fonts/Archivo_700Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Pixelify Sans"; src: url("fonts/PixelifySans_700Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
-
-  /* Design pack 10, Midnight and Iris, dark theme */
-  :root {
-    --ground: #0E1020;
-    --card: #171A2E;
-    --raised: #22263F;
-    --text: #F3F3FA;
-    --muted: #A3A8C4;
-    --accent: #8F8DFF;
-    --on-accent: #0E1020;
-    --link: #B8B6FF;
-    --highlight: rgba(255, 255, 255, 0.04);
-    --r-control: 12px;
-    --r-card: 16px;
-    --body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --display: "Pixelify Sans", var(--body);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--text);
-    font: 400 16px/1.5 var(--body);
-    font-variant-numeric: tabular-nums;
-  }
-  h1, h2, p, ul { margin: 0; }
-  a { color: var(--link); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  .wrap { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 16px; }
-
-  .visually-hidden {
-    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
-  }
-
-  /* Hero */
-  .hero { padding-top: 24px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 16px; }
-  .wordmark { display: block; width: 130px; height: auto; margin-bottom: 16px; }
-  h1 {
-    font: 700 30px/1.25 var(--display);
-    letter-spacing: 0;
-    text-wrap: balance;
-  }
-  @media (min-width: 600px) { h1 { font-size: 38px; } }
-  @media (min-width: 900px) { h1 { font-size: 44px; } }
-
-  /* Waitlist form */
-  .waitlist { display: flex; flex-direction: column; gap: 8px; }
-  .waitlist .row { display: flex; flex-direction: column; gap: 8px; }
-  .waitlist input, .waitlist button {
-    width: 100%;
-    min-height: 52px;
-    border-radius: var(--r-control);
-    font: 400 16px/1.25 var(--body);
-  }
-  .waitlist input {
-    padding: 0 16px;
-    border: 0;
-    background: var(--raised);
-    color: var(--text);
-    box-shadow: inset 0 0 0 1px var(--highlight);
-  }
-  .waitlist input::placeholder { color: var(--muted); opacity: 1; }
-  .waitlist input:focus { outline: none; }
-  .waitlist input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .waitlist button {
-    padding: 0 20px;
-    border: 0;
-    background: var(--accent);
-    color: var(--on-accent);
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 80ms ease-out, opacity 80ms ease-out;
-  }
-  .waitlist button:active { transform: scale(0.97); opacity: 0.88; }
-  .fine { font-size: 14px; line-height: 1.45; color: var(--muted); }
-  @media (min-width: 600px) {
-    .waitlist .row { flex-direction: row; align-items: stretch; }
-    .waitlist input { flex: 1 1 auto; min-width: 0; }
-    .waitlist button { width: auto; flex: 0 0 auto; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .waitlist button { transition: none; }
-    .waitlist button:active { transform: none; }
-  }
-
-  /* The five stages: whole squares, never stretched */
-  .stages {
-    list-style: none;
-    padding: 0;
-    margin-top: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-  .stages li { flex: 0 0 calc((100% - 16px) / 3); }
-  .stages img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    image-rendering: pixelated;
-  }
-  @media (min-width: 600px) {
-    .stages li { flex-basis: calc((100% - 32px) / 5); }
-  }
-
-  /* Blocks */
-  .blocks { display: flex; flex-direction: column; gap: 12px; }
-  .card {
-    background: var(--card);
-    border-radius: var(--r-card);
-    box-shadow: inset 0 0 0 1px var(--highlight);
-    padding: 20px 16px;
-  }
-  .card h2 { font: 700 17px/1.3 var(--body); margin-bottom: 8px; }
-
-  /* Film: portrait 9:16, centred, never wider than the column */
-  .film { margin-bottom: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-  .film h2 { font: 700 17px/1.3 var(--body); }
-  .film-frame {
-    width: 100%;
-    max-width: 340px;
-    aspect-ratio: 9 / 16;
-    border-radius: var(--r-card);
-    overflow: hidden;
-    /* makes Safari clip the video layer to the rounded corners */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    background: var(--card);
-  }
-  .film video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 9 / 16;
-    border-radius: var(--r-card);
-  }
-
-  .join { margin-top: 32px; }
-
-  /* Footer */
-  footer { margin-top: 32px; padding-bottom: 32px; }
-  footer ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    column-gap: 8px;
-    font-size: 14px;
-    color: var(--muted);
-  }
-  footer li { display: inline-flex; align-items: center; min-height: 44px; }
-  footer li:not(:last-child)::after { content: "\00B7"; padding-left: 8px; color: var(--muted); }
-  footer a { display: inline-flex; align-items: center; min-height: 44px; }
-  /* Phones: the copyright gets its own centred line under the links */
-  footer li:nth-last-child(2)::after { content: none; }
-  footer li:last-child { flex-basis: 100%; justify-content: center; }
-  @media (min-width: 600px) {
-    footer ul { justify-content: flex-start; }
-    footer li:nth-last-child(2)::after { content: "\00B7"; }
-    footer li:last-child { flex-basis: auto; }
-  }
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<header class="hero wrap">
+<header class="site-header wrap">
   <img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28">
-  <h1>Your lifting, cardio, food and steps in one app, with a companion that grows as you do.</h1>
-  <p>When everything sits in one place, you can see how your gym days, cardio days, meals and steps fit together and balance your week.</p>
-
-  <form class="waitlist" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
-    <label class="visually-hidden" for="email-top">Email address</label>
-    <div class="row">
-      <input id="email-top" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
-      <button type="submit">Join the waitlist</button>
-    </div>
-    <p class="fine">Coming to iPhone. We'll only email you about early access and launch day. Unsubscribe any time.</p>
-  </form>
-
-  <ul class="stages" aria-label="The fox companion at its five stages">
-    <li><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" alt="Fox companion, stage 1"></li>
-    <li><img src="img/fox/stage-2-146.png" srcset="img/fox/stage-2-146.png 146w, img/fox/stage-2-292.png 292w, img/fox/stage-2-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" alt="Fox companion, stage 2"></li>
-    <li><img src="img/fox/stage-3-146.png" srcset="img/fox/stage-3-146.png 146w, img/fox/stage-3-292.png 292w, img/fox/stage-3-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" alt="Fox companion, stage 3"></li>
-    <li><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" alt="Fox companion, stage 4"></li>
-    <li><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" alt="Fox companion, stage 5"></li>
-  </ul>
 </header>
 
 <main class="wrap">
-  <section class="film" aria-labelledby="film-title">
-    <h2 id="film-title">See BitRep in action</h2>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your lifting, cardio, food and steps in one app, with a companion that grows as you do.</h1>
+      <form class="waitlist" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
+        <label class="visually-hidden" for="email-top">Email address</label>
+        <div class="row">
+          <input id="email-top" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
+          <button type="submit">Join the waitlist</button>
+        </div>
+        <p class="fine">Coming to iPhone. For ages 13 and up. We'll only email you about early access and launch day. Unsubscribe any time.</p>
+      </form>
+    </div>
+    <div class="hero-shot">
+      <img src="img/screens/screen-home-600.jpg" srcset="img/screens/screen-home-300.jpg 300w, img/screens/screen-home-600.jpg 600w, img/screens/screen-home.jpg 900w" sizes="(min-width: 860px) 320px, 260px" width="900" height="1790" fetchpriority="high" alt="BitRep's Home screen: today's planned Upper Body session, the week's plan with lifting and cardio days, and the fox companion">
+    </div>
+  </section>
+
+  <section class="section film" aria-labelledby="film-title">
+    <h2 class="section-title" id="film-title">See BitRep in action</h2>
     <div class="film-frame">
       <video controls playsinline muted preload="none" poster="video/bitrep-film-poster.jpg" width="1080" height="1920" aria-label="BitRep walkthrough film, 1 minute 50 seconds, no sound">
         <source src="video/bitrep-film.mp4" type="video/mp4">
         <p>Your browser can't play this film here. <a href="video/bitrep-film.mp4">Open the film (MP4, 12.7 MB)</a>.</p>
       </video>
     </div>
-    <p class="fine">1 min 50 s. No sound.</p>
+    <p class="caption">1 min 50 s. No sound.</p>
   </section>
 
-  <div class="blocks">
-    <section class="card">
-      <h2>Your companion</h2>
-      <p>Choose one of six pixel companions, all free. It grows through five stages, and only from training you log in BitRep. There are no daily streaks and no guilt on rest days.</p>
-    </section>
-    <section class="card">
-      <h2>One history</h2>
-      <p>Most people who lift and do cardio end up with two apps. BitRep puts both in the same log and the same weekly plan.</p>
-    </section>
-    <section class="card">
-      <h2>Quick at the gym</h2>
-      <p>Your sets arrive filled in from last time, so logging one takes as few taps as possible. Your rest timer shows on the Lock Screen, so your phone can stay in your pocket.</p>
-    </section>
-    <section class="card">
-      <h2>Cardio</h2>
-      <p>Track outdoor runs with GPS and see your route on a pixel map. Log swims, rides, treadmill sessions and any other cardio alongside your lifting.</p>
-    </section>
-    <section class="card">
-      <h2>Food and steps</h2>
-      <p>Log what you eat against a calorie target, and bring your steps in from Apple Health.</p>
-    </section>
-    <section class="card">
-      <h2>Switching</h2>
-      <p>Already on Hevy? Bring your history with you.</p>
-    </section>
-    <section class="card">
-      <h2>Our promises</h2>
-      <p>Logging is free forever. There are no ads, and we never sell your data. Your workouts live on your phone, BitRep works without an account, and you can export everything whenever you like.</p>
-    </section>
-  </div>
+  <section class="section" aria-label="Features">
+    <ul class="features">
+      <li class="card">
+        <img src="img/screens/screen-logger-600.jpg" srcset="img/screens/screen-logger-300.jpg 300w, img/screens/screen-logger-600.jpg 600w, img/screens/screen-logger.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The workout logger: bench press with weight and reps filled in from last time, and a Log set button">
+        <div class="card-body">
+          <h2>Quick at the gym</h2>
+          <p>Sets arrive filled in from last time, and your rest timer shows on the Lock Screen.</p>
+        </div>
+      </li>
+      <li class="card">
+        <img src="img/screens/screen-run-600.jpg" srcset="img/screens/screen-run-300.jpg 300w, img/screens/screen-run-600.jpg 600w, img/screens/screen-run.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished run: the route around Central Park on a pixel map, with time, distance and pace">
+        <div class="card-body">
+          <h2>Cardio</h2>
+          <p>Track runs with GPS on a pixel map, and log any other cardio alongside your lifting.</p>
+        </div>
+      </li>
+      <li class="card">
+        <img src="img/screens/screen-food-600.jpg" srcset="img/screens/screen-food-300.jpg 300w, img/screens/screen-food-600.jpg 600w, img/screens/screen-food.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The Fuel screen: calories left against the day's target, protein, carbs and fat, and the day's meals">
+        <div class="card-body">
+          <h2>Food and steps</h2>
+          <p>Log what you eat against a calorie target, with your steps from Apple Health.</p>
+        </div>
+      </li>
+      <li class="card">
+        <img src="img/screens/screen-finish-600.jpg" srcset="img/screens/screen-finish-300.jpg 300w, img/screens/screen-finish-600.jpg 600w, img/screens/screen-finish.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished workout: totals, XP earned, and the fox companion's progress toward its next stage">
+        <div class="card-body">
+          <h2>Your companion</h2>
+          <p>Six free companions. Yours grows through five stages as you train.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-  <section class="join card" aria-label="Join the waitlist">
+  <section class="section narrow" aria-label="The fox companion at its five stages">
+    <ul class="stages">
+      <li><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" loading="lazy" decoding="async" alt="Fox companion, stage 1"></li>
+      <li><img src="img/fox/stage-2-146.png" srcset="img/fox/stage-2-146.png 146w, img/fox/stage-2-292.png 292w, img/fox/stage-2-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" loading="lazy" decoding="async" alt="Fox companion, stage 2"></li>
+      <li><img src="img/fox/stage-3-146.png" srcset="img/fox/stage-3-146.png 146w, img/fox/stage-3-292.png 292w, img/fox/stage-3-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" loading="lazy" decoding="async" alt="Fox companion, stage 3"></li>
+      <li><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" loading="lazy" decoding="async" alt="Fox companion, stage 4"></li>
+      <li><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w" sizes="(min-width: 712px) 130px, (min-width: 600px) calc((100vw - 64px) / 5), calc((100vw - 48px) / 3)" width="146" height="146" loading="lazy" decoding="async" alt="Fox companion, stage 5"></li>
+    </ul>
+    <p class="caption">Five stages, earned only by training you log in BitRep. No daily streaks and no guilt on rest days.</p>
+  </section>
+
+  <section class="section narrow card lines" aria-label="More about BitRep">
+    <ul>
+      <li>One log and one weekly plan for lifting and cardio.</li>
+      <li>Already on Hevy? Bring your history with you.</li>
+    </ul>
+    <div class="promises">
+      <h2>Our promises</h2>
+      <ul>
+        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free forever to log.</li>
+        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads.</li>
+        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data.</li>
+        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account.</li>
+        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Export any time.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section narrow card join" aria-label="Join the waitlist">
     <form class="waitlist" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
       <label class="visually-hidden" for="email-bottom">Email address</label>
       <div class="row">
         <input id="email-bottom" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
         <button type="submit">Join the waitlist</button>
       </div>
-      <p class="fine">Coming to iPhone. We'll only email you about early access and launch day. Unsubscribe any time.</p>
+      <p class="fine">Coming to iPhone. For ages 13 and up. We'll only email you about early access and launch day. Unsubscribe any time.</p>
     </form>
   </section>
+
 </main>
 
-<footer class="wrap">
+<footer class="site-footer wrap">
   <ul>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="mailto:hello@bitrep.app">hello@bitrep.app</a></li>
     <li>© 2026 BitRep</li>
   </ul>
+  <div class="legal fine">
+    <p>BitRep is a training log, not medical advice.</p>
+    <p>BitRep is in development. Features shown may change before launch.</p>
+    <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. Hevy is a trademark of its owner. BitRep is not affiliated with or endorsed by either.</p>
+  </div>
 </footer>
 
+<script>
+/* The film plays itself when at least half of it is on screen and pauses
+   when it leaves. It only starts loading once it is within 300 px of the
+   viewport. A visitor's own pause is respected for the rest of the visit,
+   and nothing autoplays with Reduce Motion or Save Data on. Without this
+   script the film still plays on tap. */
+(function () {
+  var video = document.querySelector('.film video');
+  if (!video || !('IntersectionObserver' in window)) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = !!(navigator.connection && navigator.connection.saveData === true);
+  var autoplay = !reduceMotion && !saveData;
+  var pausedByVisitor = false;
+  var pausingForScroll = false;
+
+  video.addEventListener('pause', function () {
+    if (pausingForScroll) { pausingForScroll = false; return; }
+    if (!video.ended) pausedByVisitor = true;
+  });
+
+  if (autoplay) {
+    var near = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      near.disconnect();
+      if (video.readyState === 0 && video.paused) video.preload = 'auto';
+    }, { rootMargin: '300px 0px' });
+    near.observe(video);
+  }
+
+  var seen = new IntersectionObserver(function (entries) {
+    var entry = entries[entries.length - 1];
+    if (entry.intersectionRatio >= 0.5) {
+      if (autoplay && !pausedByVisitor && video.paused && !video.ended) {
+        var playing = video.play();
+        if (playing && playing.catch) playing.catch(function () {});
+      }
+    } else if (!entry.isIntersecting && !video.paused) {
+      pausingForScroll = true;
+      video.pause();
+    }
+  }, { threshold: [0, 0.5] });
+  seen.observe(video);
+})();
+</script>
 </body>
 </html>
