@@ -13,6 +13,7 @@
   --accent: #8F8DFF;
   --on-accent: #0E1020;
   --link: #B8B6FF;
+  --mint: #5EE0B0;
   --highlight: rgba(255, 255, 255, 0.04);
   --r-control: 12px;
   --r-card: 16px;
@@ -186,7 +187,10 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 /* Film: portrait 9:16, centred, never wider than the column */
 .film { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .film .section-title { margin-bottom: 4px; }
+.film-stage { width: 100%; display: flex; justify-content: center; }
+.film-side { display: none; }
 .film-frame {
+  position: relative;
   width: 100%;
   max-width: 340px;
   aspect-ratio: 9 / 16;
@@ -203,8 +207,43 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   aspect-ratio: 9 / 16;
   border-radius: var(--r-card);
 }
+/* Play button on the poster until the film has started (added by the script) */
+.film-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+.film-play svg { width: 40px; height: 40px; margin-left: 4px; }
+.film-play:active { transform: scale(0.97); opacity: 0.88; }
+.film-frame.is-started .film-play { display: none; }
 
-/* Feature cards: a swipe row on phones and tablets, a five-column grid on wide screens */
+/* Wide screens: the six launch companions either side of the film */
+@media (min-width: 1024px) {
+  .film-stage { width: min(1120px, 100vw - 32px); margin-left: calc((100% - min(1120px, 100vw - 32px)) / 2); margin-right: calc((100% - min(1120px, 100vw - 32px)) / 2); display: grid; grid-template-columns: 1fr 340px 1fr; column-gap: 48px; }
+  .film-side { display: flex; flex-direction: column; justify-content: space-between; padding: 8px 0; }
+  .film-side.left { align-items: flex-end; }
+  .film-side.right { align-items: flex-start; }
+  .film-side.left .side-companion:nth-child(2) { margin-right: 80px; }
+  .film-side.right .side-companion:nth-child(2) { margin-left: 80px; }
+}
+.side-companion { display: flex; flex-direction: column; align-items: center; width: 146px; }
+.side-companion img { display: block; width: 146px; height: 146px; image-rendering: pixelated; }
+.side-ground { display: block; width: 112px; height: 3px; margin-top: -2px; background: var(--mint); }
+.side-companion figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+/* Feature cards: a swipe row on phones and tablets; on wide screens three
+   cards then two, centred */
 .features {
   list-style: none;
   display: flex;
@@ -218,15 +257,19 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 }
 .features > li { flex: 0 0 78%; scroll-snap-align: start; overflow: hidden; }
 .features .phone-still { padding-top: 4px; }
+.features .card h2 { font-size: 18px; }
 @media (min-width: 1024px) {
   .features {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
+    width: min(1120px, 100vw - 32px); margin-left: calc((100% - min(1120px, 100vw - 32px)) / 2); margin-right: calc((100% - min(1120px, 100vw - 32px)) / 2);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     overflow: visible;
-    margin: 0;
     padding: 0;
   }
+  .features > li { flex: 0 0 calc((100% - 40px) / 3); }
+  .features .phone-still { width: 230px; margin: 0 auto; padding-top: 20px; }
+  .features .card-body { padding: 16px 20px 20px; }
 }
 
 /* The five stages: whole squares, never stretched */
@@ -239,22 +282,36 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   gap: 8px;
 }
 .stages li { flex: 0 0 calc((100% - 16px) / 3); }
+/* The hero foxes are always drawn smaller than the file they load, so they
+   are scaled down smoothly. Art shown at exactly its file size (the film's
+   companions, the thanks page) keeps pixelated rendering. */
 .stages img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
-  image-rendering: pixelated;
+  image-rendering: auto;
 }
 @media (min-width: 600px) { .stages li { flex-basis: calc((100% - 32px) / 5); } }
 .stages + .caption { margin-top: 12px; }
 
-/* What we promise: ticked sentences, two columns on wide screens */
-.promise-list { max-width: 880px; margin-left: auto; margin-right: auto; }
-.promise-list ul { list-style: none; padding: 0; display: grid; gap: 10px 32px; }
-.promise-list li { display: flex; align-items: flex-start; gap: 10px; }
+/* What we promise: six tonal panels, 3 x 2 on wide screens, 2 x 3 on
+   tablets, one column on phones */
+.promise-list { max-width: 1000px; margin-left: auto; margin-right: auto; }
+.promise-list ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
+.promise-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--highlight);
+  text-align: left;
+}
 .tick { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 2px; color: var(--accent); }
-@media (min-width: 700px) { .promise-list ul { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 600px) { .promise-list ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .promise-list ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* Short lines */
 .lines { padding: 20px 16px; }
@@ -380,6 +437,19 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   .stages li:nth-child(4) .fox-hop { animation-delay: -9.3s; }
   .stages li:nth-child(5) .fox-hop { animation-delay: -12.9s; }
   .thanks .fox-hop { animation-delay: 1.5s; }
+  .film-side.left .side-companion:nth-child(1) img { animation-duration: 2.9s; animation-delay: -0.4s; }
+  .film-side.left .side-companion:nth-child(2) img { animation-duration: 3.3s; animation-delay: -1.9s; }
+  .film-side.left .side-companion:nth-child(3) img { animation-duration: 2.5s; animation-delay: -1.1s; }
+  .film-side.right .side-companion:nth-child(1) img { animation-duration: 3.0s; animation-delay: -2.6s; }
+  .film-side.right .side-companion:nth-child(2) img { animation-duration: 2.7s; animation-delay: -0.7s; }
+  .film-side.right .side-companion:nth-child(3) img { animation-duration: 3.2s; animation-delay: -1.5s; }
+  /* hops 3 s apart across the six, so only one is in the air at a time */
+  .film-side.left .side-companion:nth-child(1) .fox-hop { animation-delay: 2s; }
+  .film-side.right .side-companion:nth-child(1) .fox-hop { animation-delay: -1s; }
+  .film-side.left .side-companion:nth-child(2) .fox-hop { animation-delay: -4s; }
+  .film-side.right .side-companion:nth-child(2) .fox-hop { animation-delay: -7s; }
+  .film-side.left .side-companion:nth-child(3) .fox-hop { animation-delay: -10s; }
+  .film-side.right .side-companion:nth-child(3) .fox-hop { animation-delay: -13s; }
 }
 @keyframes fox-bob {
   0%, 100% { transform: translateY(0); animation-timing-function: steps(3, jump-none); }
