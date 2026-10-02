@@ -11,12 +11,13 @@ served by GitHub Pages from the root of `main`.
   cards, short lines and promises, the waitlist form again, footer.
 - `thanks.html`: the page Kit sends people to after they join the
   waitlist. Marked `noindex`.
-- `privacy.html` and `terms.html`: the legal pages. They still use the
-  older design (their own inline styles, Google Fonts and `br-mark.png`).
+- `privacy.html` and `terms.html`: the legal pages, in the same look as the
+  home page (one readable column, same header and footer). Their wording is
+  kept exactly as written; change it only on purpose.
 
 ## Files
 
-- `site.css`: the one stylesheet for `index.html` and `thanks.html`. Colours,
+- `site.css`: the one stylesheet for every page. Colours,
   radii and type follow design pack 10 (Midnight and Iris, dark theme).
 - `fonts/`: Archivo 400 and 700 and Pixelify Sans 700, self-hosted, with
   their OFL licences. Pixelify Sans is for the main headline only.
@@ -33,7 +34,6 @@ served by GitHub Pages from the root of `main`.
   the white mark on `#0E1020`.
 - `email/wordmark.png` and `email/ember.png`: loaded by the Kit email
   template from `https://bitrep.app/email/...`. Keep these names and paths.
-- `br-mark.png` and `og-image.png`: used only by the two legal pages.
 - `CNAME`: holds `bitrep.app`. Do not remove it.
 
 ## Behaviour

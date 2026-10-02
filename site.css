@@ -282,3 +282,27 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 .thanks h1 { font-size: 30px; }
 .thanks p { max-width: 36ch; }
 .thanks .back { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+
+/* Legal pages: one readable column on the ground colour */
+.home-link { display: inline-flex; align-items: center; min-height: 44px; }
+.legal-page { max-width: 70ch; padding-top: 32px; }
+.legal-page p, .legal-page li, .legal-page dd { font-size: 16px; line-height: 1.65; color: var(--text); }
+.legal-page .legal-kicker { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.legal-page h1 { font-size: 30px; margin-bottom: 16px; }
+.legal-page .legal-intro { font-size: 18px; }
+.legal-page .legal-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; font-size: 14px; color: var(--muted); }
+.legal-summary { margin: 32px 0 0; display: grid; gap: 16px; }
+.legal-summary dt { font-weight: 700; }
+.legal-summary dd { margin: 0; }
+.legal-page h2 { font: 700 20px/1.3 var(--body); margin: 40px 0 8px; }
+.legal-section p + p, .legal-section p + ul, .legal-section ul + p { margin-top: 12px; }
+.legal-page ul { padding-left: 1.25em; display: grid; gap: 8px; }
+.legal-page b { font-weight: 700; }
+.legal-contact { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); display: grid; gap: 4px; }
+.legal-page .legal-label { font-size: 14px; color: var(--muted); }
+.legal-contact a { font-size: 20px; font-weight: 700; display: inline-flex; align-items: center; min-height: 44px; }
+.legal-page .legal-contact .fine { font-size: 14px; color: var(--muted); }
+@media (min-width: 600px) {
+  .legal-page { padding-top: 48px; }
+  .legal-page h1 { font-size: 40px; }
+}
