@@ -30,6 +30,7 @@
 
 <header class="site-header wrap wrap-hero">
   <img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28">
+  <a class="header-cta" href="#join">Join the waitlist</a>
 </header>
 
 <div class="hero-band">
@@ -37,14 +38,14 @@
     <div class="hero-left">
       <div class="hero-text">
         <h1>Your whole fitness picture, with a companion.</h1>
-        <p class="lede">Lifting, cardio, food and steps in one app. Your companion grows as you do.</p>
-        <form class="waitlist" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
+        <p class="lede">BitRep is a workout tracker for people who lift and do cardio. It keeps your lifting, cardio, food and steps in one app, and your companion grows as you train.</p>
+        <form class="waitlist" id="join" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
           <label class="visually-hidden" for="email-top">Email address</label>
           <div class="row">
             <input id="email-top" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
             <button type="submit">Join the waitlist</button>
           </div>
-          <p class="fine">Coming to iPhone. For ages 13 and up. We'll only email you about early access and launch day. Unsubscribe any time.</p>
+          <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
         </form>
       </div>
       <div class="hero-fox">
@@ -55,12 +56,12 @@
           <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 4"></span></span></span></li>
           <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 5"></span></span></span></li>
         </ul>
-        <p class="caption">Five stages, earned only by training you log in BitRep.</p>
+        <p class="caption">Ember grows through five stages, and only real workouts count.</p>
       </div>
     </div>
     <div class="cluster">
-      <img class="phone-still back left" src="img/screens/screen-run-300.jpg" srcset="img/screens/screen-run-300.jpg 300w, img/screens/screen-run-600.jpg 600w, img/screens/screen-run.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="A finished run on a pixel map">
-      <img class="phone-still back right" src="img/screens/screen-food-300.jpg" srcset="img/screens/screen-food-300.jpg 300w, img/screens/screen-food-600.jpg 600w, img/screens/screen-food.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="The Fuel screen with calories left for the day">
+      <img class="phone-still back left" src="img/screens/screen-trophies-300.jpg" srcset="img/screens/screen-trophies-300.jpg 300w, img/screens/screen-trophies-600.jpg 600w, img/screens/screen-trophies.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="The Trophies screen with bronze, silver and gold trophies">
+      <img class="phone-still back right" src="img/screens/screen-growth-300.jpg" srcset="img/screens/screen-growth-300.jpg 300w, img/screens/screen-growth-600.jpg 600w, img/screens/screen-growth.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="Ember the fox growing into its next stage">
       <img class="phone-still front" src="img/screens/screen-home-600.jpg" srcset="img/screens/screen-home-300.jpg 300w, img/screens/screen-home-600.jpg 600w, img/screens/screen-home.jpg 900w" sizes="(min-width: 900px) 290px, 190px" width="900" height="1790" fetchpriority="high" alt="BitRep's Home screen: today's planned Upper Body session, the week's plan with lifting and cardio days, and the fox companion">
     </div>
   </section>
@@ -68,45 +69,63 @@
 
 <main class="wrap">
 
+  <section class="section promise-list" aria-labelledby="promise-title">
+    <h2 class="section-title" id="promise-title">What we promise</h2>
+    <ul>
+      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Logging your workouts is free, and it always will be.</span></li>
+      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>There are no ads in BitRep.</span></li>
+      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We never sell your data.</span></li>
+      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>It works without an account.</span></li>
+      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You can export everything whenever you like.</span></li>
+    </ul>
+  </section>
+
   <section class="section film" aria-labelledby="film-title">
-    <h2 class="section-title" id="film-title">See BitRep in action</h2>
+    <h2 class="section-title" id="film-title">Take a look inside</h2>
     <div class="film-frame">
       <video controls playsinline muted preload="none" poster="video/bitrep-film-poster.jpg" width="1080" height="1920" aria-label="BitRep walkthrough film, 1 minute 50 seconds, no sound">
         <source src="video/bitrep-film.mp4" type="video/mp4">
         <p>Your browser can't play this film here. <a href="video/bitrep-film.mp4">Open the film (MP4, 12.7 MB)</a>.</p>
       </video>
     </div>
-    <p class="caption">1 min 50 s. No sound.</p>
+    <p class="caption">A 1 minute 50 second walkthrough.</p>
   </section>
 
   <section class="section" aria-label="Features">
     <ul class="features">
       <li class="card">
-        <img class="phone-still" src="img/screens/screen-logger-600.jpg" srcset="img/screens/screen-logger-300.jpg 300w, img/screens/screen-logger-600.jpg 600w, img/screens/screen-logger.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The workout logger: bench press with weight and reps filled in from last time, and a Log set button">
+        <img class="phone-still" src="img/screens/screen-logger-600.jpg" srcset="img/screens/screen-logger-300.jpg 300w, img/screens/screen-logger-600.jpg 600w, img/screens/screen-logger.jpg 900w" sizes="(min-width: 1040px) 189px, (min-width: 1024px) calc((100vw - 96px) / 5), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The workout logger: bench press with weight and reps filled in from last time, and a Log set button">
         <div class="card-body">
           <h2>Quick at the gym</h2>
-          <p>Sets arrive filled in from last time, and your rest timer shows on the Lock Screen.</p>
+          <p>Your last weights and reps are already filled in, and your rest timer shows on the Lock Screen.</p>
         </div>
       </li>
       <li class="card">
-        <img class="phone-still" src="img/screens/screen-run-600.jpg" srcset="img/screens/screen-run-300.jpg 300w, img/screens/screen-run-600.jpg 600w, img/screens/screen-run.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished run: the route around Central Park on a pixel map, with time, distance and pace">
+        <img class="phone-still" src="img/screens/screen-run-600.jpg" srcset="img/screens/screen-run-300.jpg 300w, img/screens/screen-run-600.jpg 600w, img/screens/screen-run.jpg 900w" sizes="(min-width: 1040px) 189px, (min-width: 1024px) calc((100vw - 96px) / 5), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished run: the route around Central Park on a pixel map, with time, distance and pace">
         <div class="card-body">
-          <h2>Cardio</h2>
-          <p>Track runs with GPS on a pixel map, and log any other cardio alongside your lifting.</p>
+          <h2>Every run, ride and swim</h2>
+          <p>Track runs with GPS on a pixel map, and log any other cardio next to your lifting.</p>
         </div>
       </li>
       <li class="card">
-        <img class="phone-still" src="img/screens/screen-food-600.jpg" srcset="img/screens/screen-food-300.jpg 300w, img/screens/screen-food-600.jpg 600w, img/screens/screen-food.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The Fuel screen: calories left against the day's target, protein, carbs and fat, and the day's meals">
+        <img class="phone-still" src="img/screens/screen-food-600.jpg" srcset="img/screens/screen-food-300.jpg 300w, img/screens/screen-food-600.jpg 600w, img/screens/screen-food.jpg 900w" sizes="(min-width: 1040px) 189px, (min-width: 1024px) calc((100vw - 96px) / 5), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The Fuel screen: calories left against the day's target, protein, carbs and fat, and the day's meals">
         <div class="card-body">
-          <h2>Food and steps</h2>
+          <h2>Food and steps in the same place</h2>
           <p>Log what you eat against a calorie target, with your steps from Apple Health.</p>
         </div>
       </li>
       <li class="card">
-        <img class="phone-still" src="img/screens/screen-finish-600.jpg" srcset="img/screens/screen-finish-300.jpg 300w, img/screens/screen-finish-600.jpg 600w, img/screens/screen-finish.jpg 900w" sizes="(min-width: 1040px) 240px, (min-width: 860px) calc((100vw - 80px) / 4), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished workout: totals, XP earned, and the fox companion's progress toward its next stage">
+        <img class="phone-still" src="img/screens/screen-split-600.jpg" srcset="img/screens/screen-split-300.jpg 300w, img/screens/screen-split-600.jpg 600w, img/screens/screen-split.jpg 900w" sizes="(min-width: 1040px) 189px, (min-width: 1024px) calc((100vw - 96px) / 5), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="Find my split: questions about experience, days a week, equipment and goals">
         <div class="card-body">
-          <h2>Your companion</h2>
-          <p>Six free companions. Yours grows through five stages as you train.</p>
+          <h2>Not sure where to start?</h2>
+          <p>Answer four questions and BitRep finds a plan that fits you.</p>
+        </div>
+      </li>
+      <li class="card">
+        <img class="phone-still" src="img/screens/screen-finish-600.jpg" srcset="img/screens/screen-finish-300.jpg 300w, img/screens/screen-finish-600.jpg 600w, img/screens/screen-finish.jpg 900w" sizes="(min-width: 1040px) 189px, (min-width: 1024px) calc((100vw - 96px) / 5), calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished workout: totals, XP earned, and the fox companion's progress toward its next stage">
+        <div class="card-body">
+          <h2>A companion that grows with you</h2>
+          <p>Choose one of six, all free. Yours grows as you train.</p>
         </div>
       </li>
     </ul>
@@ -118,16 +137,38 @@
       <li>Already on Hevy? Bring your history with you.</li>
       <li>No daily streaks and no guilt on rest days.</li>
     </ul>
-    <div class="promises">
-      <h2>Our promises</h2>
-      <ul>
-        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free forever to log.</li>
-        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads.</li>
-        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data.</li>
-        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account.</li>
-        <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Export any time.</li>
-      </ul>
-    </div>
+  </section>
+
+  <section class="section narrow faq" aria-labelledby="faq-title">
+    <h2 class="section-title" id="faq-title">Questions</h2>
+    <details>
+      <summary>What is BitRep?</summary>
+      <p>A workout tracker for iPhone. It keeps your lifting, cardio, food and steps in one place, and a pixel companion grows as you train.</p>
+    </details>
+    <details>
+      <summary>Is it free?</summary>
+      <p>Yes. Logging your workouts is free forever, and there are no ads.</p>
+    </details>
+    <details>
+      <summary>When does it launch?</summary>
+      <p>We're finishing it now. Join the waitlist and you'll hear about early access before anyone else.</p>
+    </details>
+    <details>
+      <summary>Is there an Android version?</summary>
+      <p>iPhone comes first. Android is planned.</p>
+    </details>
+    <details>
+      <summary>I'm new to the gym. Is it for me?</summary>
+      <p>Yes. Answer four questions and BitRep suggests a plan, and nothing in the app makes you feel bad for a rest day.</p>
+    </details>
+    <details>
+      <summary>What do I get for joining the waitlist?</summary>
+      <p>First word on early access, and one email on launch day. That's all we'll send.</p>
+    </details>
+    <details>
+      <summary>What happens to my data?</summary>
+      <p>Your workouts live on your phone. We never sell your data.</p>
+    </details>
   </section>
 
   <section class="section narrow card join" aria-label="Join the waitlist">
@@ -137,7 +178,7 @@
         <input id="email-bottom" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
         <button type="submit">Join the waitlist</button>
       </div>
-      <p class="fine">Coming to iPhone. For ages 13 and up. We'll only email you about early access and launch day. Unsubscribe any time.</p>
+      <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
     </form>
   </section>
 
@@ -148,11 +189,12 @@
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="mailto:hello@bitrep.app">hello@bitrep.app</a></li>
+    <li><a href="https://www.instagram.com/bitrep.app" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/company/bitrepapp" target="_blank" rel="noopener">LinkedIn</a></li>
     <li>© 2026 BitRep</li>
   </ul>
   <div class="legal fine">
-    <p>BitRep is a training log, not medical advice.</p>
-    <p>BitRep is in development. Features shown may change before launch.</p>
+    <p>BitRep is a training log, not medical advice. It's still in development, so features shown may change before launch.</p>
     <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. Hevy is a trademark of its owner. BitRep is not affiliated with or endorsed by either.</p>
   </div>
 </footer>

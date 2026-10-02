@@ -6,11 +6,14 @@ served by GitHub Pages from the root of `main`.
 
 ## Pages
 
-- `index.html`: the home page. Hero (headline, waitlist form, three app
-  screens, the fox at five stages), the walkthrough film, four feature
-  cards, short lines and promises, the waitlist form again, footer.
+- `index.html`: the home page. Header with a "Join the waitlist" button,
+  hero (headline, waitlist form, three app screens, the fox at five
+  stages), what we promise, the walkthrough film, five feature cards,
+  short lines, questions (plain details and summary), the waitlist form
+  again, footer.
 - `thanks.html`: the page Kit sends people to after they join the
-  waitlist. Marked `noindex`.
+  waitlist, with "Text a friend" and "Email a friend" share links and the
+  Instagram link. Marked `noindex`.
 - `privacy.html` and `terms.html`: the legal pages, in the same look as the
   home page (one readable column, same header and footer). Their wording is
   kept exactly as written; change it only on purpose.
@@ -23,7 +26,7 @@ served by GitHub Pages from the root of `main`.
   their OFL licences. Pixelify Sans is for the main headline only.
 - `img/bitrep-wordmark-white.svg`: the 2026 wordmark (B-barbell mark plus
   "BitRep") from the design kit's logo folder.
-- `img/screens/`: five stills from the film (900 x 1790) with 300 and 600 px
+- `img/screens/`: eight app stills (900 x 1790) with 300 and 600 px
   copies for `srcset`. Each is shown clipped to the phone's own outline.
 - `img/fox/`: the fox companion at stages 1 to 5, whole squares at 146, 292
   and 438 px, shown with pixelated scaling.
@@ -35,6 +38,10 @@ served by GitHub Pages from the root of `main`.
 - `email/wordmark.png` and `email/ember.png`: loaded by the Kit email
   template from `https://bitrep.app/email/...`. Keep these names and paths.
 - `CNAME`: holds `bitrep.app`. Do not remove it.
+
+The shared footer on every page links to Instagram
+(`https://www.instagram.com/bitrep.app`) and LinkedIn
+(`https://www.linkedin.com/company/bitrepapp`) as plain links.
 
 ## Behaviour
 
