@@ -306,3 +306,49 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   .legal-page { padding-top: 48px; }
   .legal-page h1 { font-size: 40px; }
 }
+
+/* Fox idle animation: vertical moves only, on whole pixels, transform only.
+   .fox stays still (it is the hover and tap target, so the hit area never
+   moves); .fox-hop runs the scheduled hop; .fox-tap runs the hover or tap
+   hop; the img itself bobs. Nothing here affects layout. */
+.fox, .fox-hop, .fox-tap { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .fox img { animation: fox-bob 2.8s infinite; }
+  /* One shared 18 s schedule: each fox hops twice per cycle, 8 s then 10 s
+     apart, and the start points are spread so no two hops ever overlap. */
+  .fox-hop { animation: fox-hop-schedule 18s infinite; }
+  .fox-tap.tap { animation: fox-hop-once 350ms; }
+  @media (hover: hover) and (pointer: fine) {
+    .fox:hover .fox-tap { animation: fox-hop-once 350ms; }
+  }
+  .stages li:nth-child(1) img { animation-duration: 2.4s; animation-delay: -0.3s; }
+  .stages li:nth-child(2) img { animation-duration: 3.4s; animation-delay: -1.7s; }
+  .stages li:nth-child(3) img { animation-duration: 2.8s; animation-delay: -0.9s; }
+  .stages li:nth-child(4) img { animation-duration: 3.1s; animation-delay: -2.2s; }
+  .stages li:nth-child(5) img { animation-duration: 2.6s; animation-delay: -1.2s; }
+  .stages li:nth-child(1) .fox-hop { animation-delay: 1.5s; }
+  .stages li:nth-child(2) .fox-hop { animation-delay: -2.1s; }
+  .stages li:nth-child(3) .fox-hop { animation-delay: -5.7s; }
+  .stages li:nth-child(4) .fox-hop { animation-delay: -9.3s; }
+  .stages li:nth-child(5) .fox-hop { animation-delay: -12.9s; }
+  .thanks .fox-hop { animation-delay: 1.5s; }
+}
+@keyframes fox-bob {
+  0%, 100% { transform: translateY(0); animation-timing-function: steps(3, jump-none); }
+  50% { transform: translateY(-2px); animation-timing-function: steps(3, jump-none); }
+}
+@keyframes fox-hop-once {
+  0% { transform: translateY(0); animation-timing-function: steps(10, jump-none); }
+  50% { transform: translateY(-9px); animation-timing-function: steps(10, jump-none); }
+  100% { transform: translateY(0); }
+}
+/* 350 ms hops at 0 s and 8 s of the 18 s cycle (175 ms up, 175 ms down) */
+@keyframes fox-hop-schedule {
+  0% { transform: translateY(0); animation-timing-function: steps(10, jump-none); }
+  0.972% { transform: translateY(-9px); animation-timing-function: steps(10, jump-none); }
+  1.944% { transform: translateY(0); }
+  44.444% { transform: translateY(0); animation-timing-function: steps(10, jump-none); }
+  45.417% { transform: translateY(-9px); animation-timing-function: steps(10, jump-none); }
+  46.389% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}

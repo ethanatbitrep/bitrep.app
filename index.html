@@ -49,11 +49,11 @@
       </div>
       <div class="hero-fox">
         <ul class="stages" aria-label="The fox companion at its five stages">
-          <li><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 1"></li>
-          <li><img src="img/fox/stage-2-146.png" srcset="img/fox/stage-2-146.png 146w, img/fox/stage-2-292.png 292w, img/fox/stage-2-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 2"></li>
-          <li><img src="img/fox/stage-3-146.png" srcset="img/fox/stage-3-146.png 146w, img/fox/stage-3-292.png 292w, img/fox/stage-3-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 3"></li>
-          <li><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 4"></li>
-          <li><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 5"></li>
+          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 1"></span></span></span></li>
+          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-2-146.png" srcset="img/fox/stage-2-146.png 146w, img/fox/stage-2-292.png 292w, img/fox/stage-2-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 2"></span></span></span></li>
+          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-3-146.png" srcset="img/fox/stage-3-146.png 146w, img/fox/stage-3-292.png 292w, img/fox/stage-3-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 3"></span></span></span></li>
+          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 4"></span></span></span></li>
+          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w" sizes="(min-width: 900px) 92px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 5"></span></span></span></li>
         </ul>
         <p class="caption">Five stages, earned only by training you log in BitRep.</p>
       </div>
@@ -201,6 +201,19 @@
   }, { threshold: [0, 0.5] });
   seen.observe(video);
 })();
+
+/* Tapping a fox makes it hop once (hover does the same with a mouse). */
+document.querySelectorAll('.fox').forEach(function (fox) {
+  var tap = fox.querySelector('.fox-tap');
+  fox.addEventListener('pointerdown', function () {
+    tap.classList.remove('tap');
+    void tap.offsetWidth;
+    tap.classList.add('tap');
+  });
+  tap.addEventListener('animationend', function (e) {
+    if (e.target === tap) tap.classList.remove('tap');
+  });
+});
 </script>
 </body>
 </html>
