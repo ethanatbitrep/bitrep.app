@@ -8,9 +8,9 @@ served by GitHub Pages from the root of `main`.
 
 - `index.html`: the home page. Header with a "Join the waitlist" button,
   hero (headline, waitlist form, three app screens, the fox at five
-  stages), what we promise, the walkthrough film, five feature cards,
-  short lines, questions (plain details and summary), the waitlist form
-  again, footer.
+  stages), what we promise (six panels), the walkthrough film with Ember
+  at stage 1 and stage 5 either side on wide screens, five feature cards,
+  questions (plain details and summary), the waitlist form again, footer.
 - `thanks.html`: the page Kit sends people to after they join the
   waitlist, with "Text a friend" and "Email a friend" share links and the
   Instagram link. Marked `noindex`.
@@ -27,9 +27,12 @@ served by GitHub Pages from the root of `main`.
 - `img/bitrep-wordmark-white.svg`: the 2026 wordmark (B-barbell mark plus
   "BitRep") from the design kit's logo folder.
 - `img/screens/`: eight app stills (900 x 1790) with 300 and 600 px
-  copies for `srcset`. Each is shown clipped to the phone's own outline.
-- `img/fox/`: the fox companion at stages 1 to 5, whole squares at 146, 292
-  and 438 px, shown with pixelated scaling.
+  copies for `srcset`. Each is shown clipped to the phone's own outline
+  (the clip values are in `site.css`); a still never takes padding.
+- `img/fox/` and `img/companions/`: companion art from the app repo, whole
+  squares at 146, 292, 438 and (fox) 620 px. Art shown at exactly its file
+  size keeps pixelated rendering; anything scaled down is drawn smoothly.
+  Nothing is ever enlarged.
 - `img/share.png`: the 1200 x 630 link-preview image (`og:image`).
 - `video/`: the walkthrough film (`bitrep-film.mp4`, H.264, no audio,
   faststart) and its poster.

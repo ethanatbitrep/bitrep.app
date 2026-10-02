@@ -336,11 +336,6 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 @media (min-width: 600px) { .promise-list ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .promise-list ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-/* Short lines */
-.lines { padding: 20px 16px; }
-.lines > ul { list-style: none; padding: 0; display: grid; gap: 8px; }
-@media (min-width: 600px) { .lines { padding: 24px; } }
-
 /* Questions: plain details and summary, no script */
 .faq details { border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
 .faq details:first-of-type { border-top: 1px solid rgba(255, 255, 255, 0.07); }
