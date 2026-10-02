@@ -191,7 +191,6 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 .film { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .film .section-title { margin-bottom: 4px; }
 .film-stage { width: 100%; display: flex; justify-content: center; }
-.film-side { display: none; }
 .film-frame {
   position: relative;
   width: 100%;
@@ -214,10 +213,10 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 .film-play {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 88px;
-  height: 88px;
-  margin: -44px 0 0 -44px;
+  top: 33%;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
   border: 0;
   border-radius: 50%;
   background: var(--accent);
@@ -227,23 +226,44 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   cursor: pointer;
   z-index: 2;
 }
-.film-play svg { width: 40px; height: 40px; margin-left: 4px; }
+.film-play svg { width: 32px; height: 32px; margin-left: 3px; }
 .film-play:active { transform: scale(0.97); opacity: 0.88; }
 .film-frame.is-started .film-play { display: none; }
 
-/* Wide screens: the six launch companions either side of the film */
+/* Wide screens: Ember at stage 1 before the film and stage 5 after it.
+   Both 620 px squares are drawn at the same size, so the cub is naturally
+   smaller than the adult. --fox is 310 px at most: the largest size the
+   620 px art covers on a 2x screen without enlarging it. */
+.film-fox { display: none; }
 @media (min-width: 1024px) {
-  .film-stage { width: min(1120px, 100vw - 32px); margin-left: calc((100% - min(1120px, 100vw - 32px)) / 2); margin-right: calc((100% - min(1120px, 100vw - 32px)) / 2); display: grid; grid-template-columns: 1fr 340px 1fr; column-gap: 48px; }
-  .film-side { display: flex; flex-direction: column; justify-content: space-between; padding: 8px 0; }
-  .film-side.left { align-items: flex-end; }
-  .film-side.right { align-items: flex-start; }
-  .film-side.left .side-companion:nth-child(2) { margin-right: 80px; }
-  .film-side.right .side-companion:nth-child(2) { margin-left: 80px; }
+  .film-stage {
+    --fox: min(310px, calc((100vw - 492px) / 2));
+    width: min(1240px, 100vw - 32px);
+    margin-left: calc((100% - min(1240px, 100vw - 32px)) / 2);
+    margin-right: calc((100% - min(1240px, 100vw - 32px)) / 2);
+    display: grid;
+    grid-template-columns: var(--fox) 380px var(--fox);
+    justify-content: center;
+    column-gap: 40px;
+  }
+  .film-frame { max-width: 380px; }
+  .film-fox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: end;
+    /* shared baseline in the lower part of the film's height */
+    margin-bottom: 96px;
+    text-align: center;
+  }
 }
-.side-companion { display: flex; flex-direction: column; align-items: center; width: 146px; }
-.side-companion img { display: block; width: 146px; height: 146px; image-rendering: pixelated; }
-.side-ground { display: block; width: 112px; height: 3px; margin-top: -2px; background: var(--mint); }
-.side-companion figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.film-fox .fox { width: var(--fox); }
+.film-fox img { display: block; width: var(--fox); height: var(--fox); image-rendering: auto; }
+/* the feet end 2/146 of the square above its bottom edge */
+.film-fox-ground { display: block; width: calc(var(--fox) * 0.62); height: 4px; margin-top: calc(var(--fox) * -0.0137 - 1px); background: var(--mint); }
+.film-fox figcaption { margin-top: 14px; display: grid; gap: 2px; }
+.film-fox figcaption strong { font: 700 18px/1.3 var(--body); color: var(--text); }
+.film-fox figcaption span { font-size: 14px; color: var(--muted); }
 
 /* Feature cards: a swipe row on phones and tablets; on wide screens three
    cards then two, centred */
@@ -440,19 +460,10 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   .stages li:nth-child(4) .fox-hop { animation-delay: -9.3s; }
   .stages li:nth-child(5) .fox-hop { animation-delay: -12.9s; }
   .thanks .fox-hop { animation-delay: 1.5s; }
-  .film-side.left .side-companion:nth-child(1) img { animation-duration: 2.9s; animation-delay: -0.4s; }
-  .film-side.left .side-companion:nth-child(2) img { animation-duration: 3.3s; animation-delay: -1.9s; }
-  .film-side.left .side-companion:nth-child(3) img { animation-duration: 2.5s; animation-delay: -1.1s; }
-  .film-side.right .side-companion:nth-child(1) img { animation-duration: 3.0s; animation-delay: -2.6s; }
-  .film-side.right .side-companion:nth-child(2) img { animation-duration: 2.7s; animation-delay: -0.7s; }
-  .film-side.right .side-companion:nth-child(3) img { animation-duration: 3.2s; animation-delay: -1.5s; }
-  /* hops 3 s apart across the six, so only one is in the air at a time */
-  .film-side.left .side-companion:nth-child(1) .fox-hop { animation-delay: 2s; }
-  .film-side.right .side-companion:nth-child(1) .fox-hop { animation-delay: -1s; }
-  .film-side.left .side-companion:nth-child(2) .fox-hop { animation-delay: -4s; }
-  .film-side.right .side-companion:nth-child(2) .fox-hop { animation-delay: -7s; }
-  .film-side.left .side-companion:nth-child(3) .fox-hop { animation-delay: -10s; }
-  .film-side.right .side-companion:nth-child(3) .fox-hop { animation-delay: -13s; }
+  .film-fox.before img { animation-duration: 3.1s; animation-delay: -0.6s; }
+  .film-fox.after img { animation-duration: 2.7s; animation-delay: -1.8s; }
+  .film-fox.before .fox-hop { animation-delay: 4s; }
+  .film-fox.after .fox-hop { animation-delay: -5s; }
 }
 @keyframes fox-bob {
   0%, 100% { transform: translateY(0); animation-timing-function: steps(3, jump-none); }

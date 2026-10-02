@@ -84,46 +84,22 @@
   <section class="section film" aria-labelledby="film-title">
     <h2 class="section-title" id="film-title">Take a look inside</h2>
     <div class="film-stage">
-    <div class="film-side left">
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 1x, img/fox/stage-1-292.png 2x, img/fox/stage-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Ember</figcaption>
-      </figure>
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/companions/bear-1-146.png" srcset="img/companions/bear-1-146.png 1x, img/companions/bear-1-292.png 2x, img/companions/bear-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Bramble</figcaption>
-      </figure>
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/companions/panther-1-146.png" srcset="img/companions/panther-1-146.png 1x, img/companions/panther-1-292.png 2x, img/companions/panther-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Sable</figcaption>
-      </figure>
-    </div>
+    <figure class="film-fox before">
+      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-292.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w, img/fox/stage-1-620.png 620w" sizes="min(310px, calc((100vw - 492px) / 2))" width="620" height="620" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
+      <span class="film-fox-ground"></span>
+      <figcaption><strong>Workout 1</strong><span>Ember, stage 1</span></figcaption>
+    </figure>
       <div class="film-frame">
         <video controls playsinline muted preload="none" poster="video/bitrep-film-poster.jpg" width="1080" height="1920" aria-label="BitRep walkthrough film, 1 minute 50 seconds, no sound">
           <source src="video/bitrep-film.mp4" type="video/mp4">
           <p>Your browser can't play this film here. <a href="video/bitrep-film.mp4">Open the film (MP4, 12.7 MB)</a>.</p>
         </video>
       </div>
-    <div class="film-side right">
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/companions/wolf-1-146.png" srcset="img/companions/wolf-1-146.png 1x, img/companions/wolf-1-292.png 2x, img/companions/wolf-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Flint</figcaption>
-      </figure>
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/companions/rabbit-1-146.png" srcset="img/companions/rabbit-1-146.png 1x, img/companions/rabbit-1-292.png 2x, img/companions/rabbit-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Clover</figcaption>
-      </figure>
-      <figure class="side-companion">
-        <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/companions/panda-1-146.png" srcset="img/companions/panda-1-146.png 1x, img/companions/panda-1-292.png 2x, img/companions/panda-1-438.png 3x" width="146" height="146" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-        <span class="side-ground"></span>
-        <figcaption>Mochi</figcaption>
-      </figure>
-    </div>
+    <figure class="film-fox after">
+      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-292.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w, img/fox/stage-5-620.png 620w" sizes="min(310px, calc((100vw - 492px) / 2))" width="620" height="620" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
+      <span class="film-fox-ground"></span>
+      <figcaption><strong>Workout 250</strong><span>Ember, stage 5</span></figcaption>
+    </figure>
     </div>
     <p class="caption">A 1 minute 50 second walkthrough.</p>
   </section>
@@ -243,8 +219,9 @@
    tries once more when it can play. A visitor's own pause is respected for
    the rest of the visit, it stays on the last frame at the end, and nothing
    starts by itself with Reduce Motion or Save Data on. A play button sits on
-   the poster until the film has started. Without this script the film
-   still plays from its own controls. */
+   the bright poster until the film has started, then the browser's own
+   controls return. Without this script the film plays from its own
+   controls. */
 (function () {
   var frame = document.querySelector('.film-frame');
   var video = frame && frame.querySelector('video');
@@ -265,6 +242,11 @@
   button.setAttribute('aria-label', 'Play the walkthrough film');
   button.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M11 7.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 11 7.5z" fill="currentColor"/></svg>';
   frame.appendChild(button);
+  // Until the film starts, the play button is the only control: the
+  // browser's own controls shade the poster, so they come back on start.
+  video.removeAttribute('controls');
+  // WebKit keeps drawing the controls' shading until the video repaints
+  video.style.display = 'none'; void video.offsetWidth; video.style.display = '';
   button.addEventListener('click', function () {
     pausedByVisitor = false;
     video.muted = true;
@@ -276,6 +258,7 @@
     if (!started && video.currentTime > 0.05) {
       started = true;
       frame.classList.add('is-started');
+      video.setAttribute('controls', '');
     }
   });
   video.addEventListener('pause', function () {
