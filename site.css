@@ -67,10 +67,13 @@ a { color: var(--link); }
 .wrap-hero { max-width: 1120px; }
 
 /* The app stills are phones on their own dark backdrop. Clip each one to
-   the phone's outline (measured on the 900 x 1790 originals: 27 px top,
-   35 px sides, 26 px bottom, corners about 105 px) so none of the
-   backdrop shows. */
-.phone-still { display: block; width: 100%; height: auto; clip-path: inset(1.5% 3.9% 1.45% 3.9% round 11.7% / 5.9%); }
+   the phone's outline, measured on the 900 x 1790 originals: the frame's
+   outer edge is 28 px from the top, 36 px from the left, 37 px from the
+   right and 27 px from the bottom, and its corners are about 128 px. */
+.phone-still { display: block; width: 100%; height: auto; clip-path: inset(1.56% 4.11% 1.51% 4% round 14.2% / 7.15%); }
+/* The clip is measured from the image's own box, so a still never takes
+   padding or a border: space around it goes on the margin or the parent. */
+.phone-still { padding: 0; border: 0; }
 .card img { display: block; width: 100%; height: auto; }
 
 /* Hero: the star field sits behind this band only */
@@ -256,7 +259,7 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   padding: 0 16px 8px;
 }
 .features > li { flex: 0 0 78%; scroll-snap-align: start; overflow: hidden; }
-.features .phone-still { padding-top: 4px; }
+.features .phone-still { margin-top: 4px; }
 .features .card h2 { font-size: 18px; }
 @media (min-width: 1024px) {
   .features {
@@ -268,7 +271,7 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
     padding: 0;
   }
   .features > li { flex: 0 0 calc((100% - 40px) / 3); }
-  .features .phone-still { width: 230px; margin: 0 auto; padding-top: 20px; }
+  .features .phone-still { width: 230px; margin: 20px auto 0; }
   .features .card-body { padding: 16px 20px 20px; }
 }
 
