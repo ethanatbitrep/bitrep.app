@@ -230,7 +230,7 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
 }
 .film-play svg { width: 32px; height: 32px; margin-left: 3px; }
 .film-play:active { transform: scale(0.97); opacity: 0.88; }
-.film-frame.is-started .film-play { display: none; }
+.film-frame.is-started .film-play { display: none; pointer-events: none; }
 
 /* Wide screens: Ember at stage 1 before the film and stage 5 after it.
    Both 620 px squares are drawn at the same size, so the cub is naturally

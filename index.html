@@ -250,14 +250,27 @@
     if (p && p.catch) p.catch(function () {});
   });
 
+  // The button follows the video's real state: it goes as soon as playback
+  // starts, however it started (autoplay, the button, the native controls),
+  // and the native controls come back in its place.
+  function hideButton() {
+    frame.classList.add('is-started');
+    if (!video.hasAttribute('controls')) video.setAttribute('controls', '');
+  }
+  video.addEventListener('play', hideButton);
+  video.addEventListener('playing', hideButton);
   video.addEventListener('timeupdate', function () {
-    if (!started && video.currentTime > 0.05) {
-      started = true;
-      frame.classList.add('is-started');
-      video.setAttribute('controls', '');
-    }
+    if (!started && video.currentTime > 0.05) started = true;
   });
   video.addEventListener('pause', function () {
+    if (!started) {
+      // A refused autoplay fires "playing" then "pause" without ever moving:
+      // put the poster and the play button back, without the controls' shading.
+      frame.classList.remove('is-started');
+      video.removeAttribute('controls');
+      video.style.display = 'none'; void video.offsetWidth; video.style.display = '';
+      return;
+    }
     if (pausingForScroll) { pausingForScroll = false; return; }
     // A refused autoplay also fires "pause"; only count it once the film has really played.
     if (started && !video.ended) pausedByVisitor = true;
