@@ -84,6 +84,8 @@ a { color: var(--link); }
     radial-gradient(rgba(143, 141, 255, 0.22) 0.75px, transparent 1.25px) 15px 22px / 46px 46px,
     var(--ground);
 }
+/* a plain jump to #hero (no script) keeps the header and headline in view */
+#hero { scroll-margin-top: 80px; }
 .hero {
   padding-top: 24px;
   padding-bottom: 32px;
@@ -154,8 +156,8 @@ h1 { font: 700 30px/1.15 var(--display); text-wrap: balance; }
   box-shadow: inset 0 0 0 1px var(--highlight);
 }
 .waitlist input::placeholder { color: var(--muted); opacity: 1; }
-.waitlist input:focus { outline: none; }
-.waitlist input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* a text field shows its ring whenever it has focus, however it got it */
+.waitlist input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 .waitlist button {
   padding: 0 20px;
   border: 0;

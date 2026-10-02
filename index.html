@@ -30,11 +30,11 @@
 
 <header class="site-header wrap wrap-hero">
   <img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28">
-  <a class="header-cta" href="#join">Join the waitlist</a>
+  <a class="header-cta" href="#hero">Join the waitlist</a>
 </header>
 
 <div class="hero-band">
-  <section class="hero wrap wrap-hero">
+  <section class="hero wrap wrap-hero" id="hero">
     <div class="hero-left">
       <div class="hero-text">
         <h1>Your whole fitness picture, with a companion.</h1>
@@ -296,6 +296,28 @@
     }
   }, { threshold: [0, 0.25] });
   seen.observe(frame);
+})();
+
+/* The header's "Join the waitlist" brings the whole hero into view (no
+   scroll at all if the email field is already fully visible), then puts
+   focus in the first email field without a second jump. Without this
+   script the link is a plain anchor to the hero. */
+(function () {
+  var link = document.querySelector('.header-cta');
+  var hero = document.getElementById('hero');
+  var field = document.getElementById('email-top');
+  if (!link || !hero || !field) return;
+  link.addEventListener('click', function (event) {
+    event.preventDefault();
+    var box = field.getBoundingClientRect();
+    if (box.top < 0 || box.bottom > window.innerHeight) {
+      var header = document.querySelector('.site-header');
+      var top = hero.getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight : 0);
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+    }
+    field.focus({ preventScroll: true });
+  });
 })();
 
 /* Tapping a fox makes it hop once (hover does the same with a mouse). */
