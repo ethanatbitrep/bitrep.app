@@ -41,6 +41,13 @@ served by GitHub Pages from the root of `main`.
 - `email/wordmark.png` and `email/ember.png`: loaded by the Kit email
   template from `https://bitrep.app/email/...`. Keep these names and paths.
 - `CNAME`: holds `bitrep.app`. Do not remove it.
+- `google4c29a84d4da0eca0.html`: Google Search Console's verification file.
+  Keep it, unchanged, for as long as the site is verified.
+- `sitemap.xml`: the pages that should appear in search (home, privacy,
+  terms). `robots.txt` points to it and keeps `/prototype/` out.
+- `404.html`: shown by GitHub Pages for any missing address. It uses
+  site-root paths (`/site.css`) so it works at any depth. Marked `noindex`,
+  like `thanks.html`.
 
 The shared footer on every page links to Instagram
 (`https://www.instagram.com/bitrep.app`) and LinkedIn
