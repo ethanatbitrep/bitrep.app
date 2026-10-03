@@ -63,6 +63,41 @@ Every push to `main` triggers GitHub's "pages build and deployment" run,
 which publishes the files to https://bitrep.app within a minute or two.
 Settings, Pages: source "Deploy from a branch", branch `main`, folder `/`.
 
+## The prototype at /prototype/
+
+`prototype/` holds the phone prototype, encrypted with StatiCrypt behind a
+passcode. Only the encrypted page and its four companion files are in this
+repo; the unencrypted prototype, its zip and the passcode are never
+committed. It is not linked from any page, and `robots.txt` disallows it.
+
+The unencrypted source, the custom passcode page
+(`staticrypt/password_template.html`) and StatiCrypt's config with the fixed
+salt (`staticrypt/.staticrypt.json`) live outside this repo, in
+`~/Developer/bitrep-prototype-source/`. Keeping the same salt keeps
+"Remember me" working across updates.
+
+### Updating the prototype
+
+1. Unpack the new `bitrep-prototype-phone.zip` outside this repo, into
+   `~/Developer/bitrep-prototype-source/` (replacing the old files there).
+2. From that folder, re-run the same StatiCrypt command with the same
+   passcode and the same config, giving the passcode only through the
+   `STATICRYPT_PASSWORD` environment variable for that one command:
+
+   ```
+   cd ~/Developer/bitrep-prototype-source/bitrep-prototype-phone
+   STATICRYPT_PASSWORD='...' npx staticrypt index.html \
+     -c ../staticrypt/.staticrypt.json \
+     -t ../staticrypt/password_template.html \
+     --remember 180 --template-error "That passcode didn't work. Try again." \
+     -d ../encrypted
+   ```
+
+3. Replace the five files in `prototype/`: `../encrypted/index.html`, and
+   `manifest.webmanifest`, `icon-180.png`, `icon-192.png` and `icon-512.png`
+   copied unchanged from the new zip.
+4. Check `prototype/index.html` is ciphertext, then commit and push `main`.
+
 ## Previewing locally
 
 iPhone Safari needs byte-range support to play the film, which
