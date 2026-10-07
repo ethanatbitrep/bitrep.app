@@ -34,7 +34,7 @@ served by GitHub Pages from the root of `main`.
   size keeps pixelated rendering; anything scaled down is drawn smoothly.
   Nothing is ever enlarged.
 - `img/share.png`: the 1200 x 630 link-preview image (`og:image`).
-- `video/`: the walkthrough film (`bitrep-film.mp4`, H.264, no audio,
+- `video/`: the walkthrough film (`bitrep-film.mp4`, 42 s, H.264 with AAC music,
   faststart) and its poster.
 - `favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`:
   the white mark on `#0E1020`.
