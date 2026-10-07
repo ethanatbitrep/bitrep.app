@@ -18,6 +18,14 @@ served by GitHub Pages from the root of `main`.
   home page (one readable column, same header and footer). Their wording is
   kept exactly as written; change it only on purpose.
 
+- `bitrun/`: BitRun, a one-page browser game (pick a companion, jump gym
+  gear, collect water for XP). Self-contained: `index.html` plus
+  `sprites/` and `tiles/`. It uses the site's fonts, wordmark and favicons
+  through `../` paths, so it must stay one folder below the root. It is
+  `noindex`, not in `sitemap.xml`, and nothing links to it until Ethan
+  says so. Do not resize, recompress or rename the sprite files: the game
+  reads their outlines from numbers measured on these exact files.
+
 ## Files
 
 - `site.css`: the one stylesheet for every page. Colours,
