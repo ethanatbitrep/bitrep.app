@@ -16,7 +16,10 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
-body { margin: 0; background: var(--ground); color: var(--text); font: 400 17px/1.55 var(--body); font-variant-numeric: tabular-nums; }
+body { margin: 0; background:
+    radial-gradient(rgba(255,255,255,0.07) 0.75px, transparent 1.25px) 0 0 / 30px 30px,
+    radial-gradient(rgba(143,141,255,0.11) 0.75px, transparent 1.25px) 15px 22px / 46px 46px,
+    var(--ground); color: var(--text); font: 400 17px/1.55 var(--body); font-variant-numeric: tabular-nums; }
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 img, video { max-width: 100%; }
@@ -49,12 +52,17 @@ h1 .soft { color: var(--dim); }
 .btn:hover { background: #A19FFF; }
 .btn:active { transform: scale(0.97); opacity: 0.9; }
 
-/* Hero: the app's star field, fading into the page */
+/* Backgrounds. The whole page sits on the app's pixel star field, kept
+   faint. The hero adds a pixel skyline along its base, the same night
+   city as BitRun, and the phones stand in front of it. Two sections sit
+   on a flat band a shade lighter than the page, to break up the scroll. */
 .hero-band { background:
-    linear-gradient(to bottom, rgba(14,16,32,0) 55%, var(--ground) 100%),
-    radial-gradient(rgba(255,255,255,0.14) 0.75px, transparent 1.25px) 0 0 / 30px 30px,
-    radial-gradient(rgba(143,141,255,0.22) 0.75px, transparent 1.25px) 15px 22px / 46px 46px,
-    var(--ground); }
+    url("skyline.svg") bottom center / auto 200px repeat-x,
+    radial-gradient(rgba(255,255,255,0.10) 0.75px, transparent 1.25px) 0 0 / 30px 30px,
+    radial-gradient(rgba(143,141,255,0.16) 0.75px, transparent 1.25px) 15px 22px / 46px 46px; }
+@media (max-width: 600px) { .hero-band { background-size: auto 130px, 30px 30px, 46px 46px; } }
+.band { margin-top: clamp(80px, 11vw, 144px); padding-bottom: clamp(64px, 9vw, 112px); background: #12142A; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.band .section { padding-top: clamp(64px, 9vw, 112px); }
 .hero { padding-top: clamp(44px, 7vw, 96px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
 .signup { width: 100%; max-width: 460px; margin-top: 8px; }
 .signup .row { display: flex; gap: 8px; }
@@ -69,13 +77,13 @@ h1 .soft { color: var(--dim); }
    the looping clips are the same picture at 600 x 1194. */
 .phone-still { display: block; width: 100%; height: auto; padding: 0; border: 0; clip-path: inset(1.56% 4.11% 1.51% 4% round 14.2% / 7.15%); }
 .cluster { --f: min(270px, calc((100vw - 40px) / 2.07)); position: relative; width: calc(var(--f) * 2.0667); height: calc(var(--f) * 1.9889); margin-top: clamp(20px, 4vw, 40px); }
-.cluster .phone-still { position: absolute; }
+.cluster .phone-still { position: absolute; height: auto; }
 .cluster .front { left: calc(var(--f) * 0.5333); top: 0; width: var(--f); z-index: 1; }
 .cluster .back { top: calc(var(--f) * 0.2); width: calc(var(--f) * 0.8); filter: brightness(0.72); }
 .cluster .left { left: 0; } .cluster .right { right: 0; }
 
 /* Promise strip */
-.strip { margin-top: clamp(24px, 4vw, 48px); padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.strip { padding: 18px 0; background: var(--ground); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
 .strip ul { display: flex; gap: 40px; width: max-content; padding-right: 40px; animation: slide 40s linear infinite; }
 .strip li { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--muted); white-space: nowrap; }
 .strip svg { width: 18px; height: 18px; color: var(--mint); flex: none; }
@@ -101,6 +109,7 @@ h1 .soft { color: var(--dim); }
   .step:nth-child(odd) .step-copy { order: 2; padding-left: 24px; }
   .step:nth-child(even) .step-copy { justify-self: end; padding-right: 24px; }
 }
+/* cards are solid so the stars stay behind them */
 .callout { margin-top: clamp(64px, 9vw, 112px); background: var(--card); border-radius: var(--r-card); padding: clamp(24px, 4vw, 40px); display: grid; gap: 20px; align-items: center; }
 .callout h3 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.03em; line-height: 1.1; }
 .callout p { color: var(--muted); margin-top: 10px; max-width: 44ch; }
