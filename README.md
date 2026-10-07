@@ -30,6 +30,12 @@ served by GitHub Pages from the root of `main`.
   update that script. Do not resize, recompress or rename the sprite files: the game
   reads their outlines from numbers measured on these exact files.
 
+- `preview/`: a redesign of the home page under review (7 Oct 2026):
+  `index.html` and its own stylesheet `v2.css`. It reuses the site's
+  images, fonts, film and the BitRun frame through `../` paths. It is
+  `noindex`, blocked in `robots.txt`, and nothing links to it. If Ethan
+  approves it, it replaces the root `index.html`; if not, delete the folder.
+
 ## Files
 
 - `site.css`: the one stylesheet for every page. Colours,
