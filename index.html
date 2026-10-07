@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BitRep: a workout tracker with a companion that grows as you train</title>
 <meta name="description" content="BitRep is a workout tracker for iPhone that keeps your lifting, cardio, food and steps in one app, with a pixel companion that grows as you train. Coming soon.">
 <link rel="canonical" href="https://bitrep.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BitRep">
 <meta property="og:url" content="https://bitrep.app/">
-<meta property="og:title" content="Your whole fitness picture, with a companion.">
+<meta property="og:title" content="Train everything. Watch your companion grow.">
 <meta property="og:description" content="BitRep is a workout tracker for iPhone that keeps your lifting, cardio, food and steps in one app, with a pixel companion that grows as you train. Coming soon.">
 <meta property="og:image" content="https://bitrep.app/img/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bitrep.app/img/share.png">
-<meta name="twitter:title" content="Your whole fitness picture, with a companion.">
+<meta name="twitter:title" content="Train everything. Watch your companion grow.">
 <meta name="twitter:description" content="BitRep is a workout tracker for iPhone that keeps your lifting, cardio, food and steps in one app, with a pixel companion that grows as you train. Coming soon.">
 <meta name="theme-color" content="#0E1020">
 <meta name="color-scheme" content="dark">
@@ -24,7 +24,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="site.css?v=1007b">
+<link rel="stylesheet" href="home.css?v=1">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -50,132 +50,147 @@
 </head>
 <body>
 
-<header class="site-header wrap wrap-hero">
-  <img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28">
-  <a class="header-cta" href="#hero">Join the waitlist</a>
+<header class="bar">
+  <div class="bar-in wrap">
+    <a href="#top" aria-label="BitRep, back to top"><img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28"></a>
+    <nav aria-label="On this page">
+      <a href="#inside">What's inside</a>
+      <a href="#film">Film</a>
+      <a href="#game">BitRun</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn" href="#join">Get early access</a>
+  </div>
 </header>
 
-<div class="hero-band">
-  <section class="hero wrap wrap-hero" id="hero">
-    <div class="hero-left">
-      <div class="hero-text">
-        <h1>Your whole fitness picture, with a companion.</h1>
-        <p class="lede">BitRep is a workout tracker for people who lift and do cardio. It keeps your lifting, cardio, food and steps in one app, and your companion grows as you train.</p>
-        <form class="waitlist" id="join" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
-          <label class="visually-hidden" for="email-top">Email address</label>
-          <div class="row">
-            <input id="email-top" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
-            <button type="submit">Join the waitlist</button>
-          </div>
-          <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
-        </form>
+<main id="top">
+  <div class="hero-band">
+    <section class="hero wrap">
+      <h1>Train everything. <span class="soft">Watch your companion grow.</span></h1>
+      <p class="lede">BitRep tracks your lifting, cardio, food and steps in one app. Your pixel companion grows when you train.</p>
+      <form class="signup" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
+        <label class="visually-hidden" for="email-top">Email address</label>
+        <div class="row">
+          <input id="email-top" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
+          <button class="btn" type="submit">Get early access</button>
+        </div>
+        <p class="fine">Coming to iPhone. We only email about early access and launch.</p>
+      </form>
+      <div class="cluster">
+        <video class="phone-still back left loop" muted loop playsinline preload="none" poster="video/loops/hero-trophies.jpg" width="400" height="796" aria-label="The Trophies screen, scrolling through bronze, silver and gold trophies"><source src="video/loops/hero-trophies.mp4" type="video/mp4"></video>
+        <video class="phone-still back right loop" muted loop playsinline preload="none" poster="video/loops/hero-growth.jpg" width="400" height="796" aria-label="Ember the fox earning XP and growing into its next stage"><source src="video/loops/hero-growth.mp4" type="video/mp4"></video>
+        <video class="phone-still front loop" muted loop playsinline preload="metadata" poster="video/loops/hero-home.jpg" width="600" height="1194" aria-label="BitRep's Home screen: today's planned Upper Body session, the week's plan, and the fox companion"><source src="video/loops/hero-home.mp4" type="video/mp4"></video>
       </div>
-      <div class="hero-fox">
-        <ul class="stages" aria-label="The fox companion at its five stages">
-          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-146.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w, img/fox/stage-1-620.png 620w" sizes="(min-width: 900px) 100px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 1"></span></span></span></li>
-          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-2-146.png" srcset="img/fox/stage-2-146.png 146w, img/fox/stage-2-292.png 292w, img/fox/stage-2-438.png 438w, img/fox/stage-2-620.png 620w" sizes="(min-width: 900px) 100px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 2"></span></span></span></li>
-          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-3-146.png" srcset="img/fox/stage-3-146.png 146w, img/fox/stage-3-292.png 292w, img/fox/stage-3-438.png 438w, img/fox/stage-3-620.png 620w" sizes="(min-width: 900px) 100px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 3"></span></span></span></li>
-          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-4-146.png" srcset="img/fox/stage-4-146.png 146w, img/fox/stage-4-292.png 292w, img/fox/stage-4-438.png 438w, img/fox/stage-4-620.png 620w" sizes="(min-width: 900px) 100px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 4"></span></span></span></li>
-          <li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-146.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w, img/fox/stage-5-620.png 620w" sizes="(min-width: 900px) 100px, calc((100vw - 48px) / 5)" width="146" height="146" alt="Fox companion, stage 5"></span></span></span></li>
-        </ul>
-        <p class="caption">Ember grows through five stages, and only real workouts count.</p>
-      </div>
+    </section>
+  </div>
+
+  <div class="strip" aria-label="What we promise"><ul><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free to log, always</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export everything anytime</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No guilt on rest days</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free to log, always</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export everything anytime</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No guilt on rest days</li></ul></div>
+
+  <section class="section wrap" id="inside" aria-labelledby="inside-title">
+    <div class="section-head">
+      <h2 class="h2" id="inside-title">Everything you train, in one app.</h2>
     </div>
-    <div class="cluster">
-      <img class="phone-still back left" src="img/screens/screen-trophies-300.jpg" srcset="img/screens/screen-trophies-300.jpg 300w, img/screens/screen-trophies-600.jpg 600w, img/screens/screen-trophies.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="The Trophies screen with bronze, silver and gold trophies">
-      <img class="phone-still back right" src="img/screens/screen-growth-300.jpg" srcset="img/screens/screen-growth-300.jpg 300w, img/screens/screen-growth-600.jpg 600w, img/screens/screen-growth.jpg 900w" sizes="(min-width: 900px) 232px, 152px" width="900" height="1790" alt="Ember the fox growing into its next stage">
-      <img class="phone-still front" src="img/screens/screen-home-600.jpg" srcset="img/screens/screen-home-300.jpg 300w, img/screens/screen-home-600.jpg 600w, img/screens/screen-home.jpg 900w" sizes="(min-width: 900px) 290px, 190px" width="900" height="1790" fetchpriority="high" alt="BitRep's Home screen: today's planned Upper Body session, the week's plan with lifting and cardio days, and the fox companion">
+    <ol class="steps">
+      <li class="step">
+        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/lift.jpg" width="600" height="1194" aria-label="The workout logger: sets being logged, with a rest timer starting after each one"><source src="video/loops/lift.mp4" type="video/mp4"></video></div>
+        <div class="step-copy">
+          <span class="step-num">01<b>LIFT</b></span>
+          <h3>It remembers what you lifted last time.</h3>
+          <p>Last session's weights and reps are filled in before you start. One tap logs the set and starts your rest timer.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/run.jpg" width="600" height="1194" aria-label="A finished run: the map pulls back to show the whole route as pixel art, then the time, distance and pace"><source src="video/loops/run.mp4" type="video/mp4"></video></div>
+        <div class="step-copy">
+          <span class="step-num">02<b>RUN</b></span>
+          <h3>Take it on your runs.</h3>
+          <p>Track a run and the route turns into pixel art. Rides, swims and other cardio go in the same log as your lifting.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/fuel.jpg" width="600" height="1194" aria-label="The Fuel screen: calories left today, protein, carbs and fat, and the day's meals"><source src="video/loops/fuel.mp4" type="video/mp4"></video></div>
+        <div class="step-copy">
+          <span class="step-num">03<b>FUEL</b></span>
+          <h3>Track what you eat. See what's left today.</h3>
+          <p>Log meals against a calorie target. Protein, carbs and fat are on one screen, and your steps come in from Apple Health.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/grow.jpg" width="600" height="1194" aria-label="A finished workout earns XP, then the fox companion grows into its next stage"><source src="video/loops/grow.mp4" type="video/mp4"></video></div>
+        <div class="step-copy">
+          <span class="step-num">04<b>GROW</b></span>
+          <h3>Finish a workout, earn XP.</h3>
+          <p>XP grows your companion through five stages. Only real workouts count, and there are no daily streaks to keep alive.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="callout">
+      <div>
+        <h3>Not sure where to start?</h3>
+        <p>Answer five questions and get a plan that fits.</p>
+      </div>
+      <div class="step-shot"><img class="phone-still" src="img/screens/screen-split-600.jpg" srcset="img/screens/screen-split-300.jpg 300w, img/screens/screen-split-600.jpg 600w, img/screens/screen-split.jpg 900w" sizes="200px" width="900" height="1790" alt="Find my plan: questions about experience, days a week, equipment and goals" loading="lazy" decoding="async"></div>
     </div>
   </section>
-</div>
 
-<main class="wrap">
-
-  <section class="section promise-list" aria-labelledby="promise-title">
-    <h2 class="section-title" id="promise-title">What we promise</h2>
-    <ul>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Logging your workouts is free, and it always will be.</span></li>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>There are no ads in BitRep.</span></li>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We never sell your data.</span></li>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>It works without an account.</span></li>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You can export everything whenever you like.</span></li>
-      <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No daily streaks, and no guilt on rest days.</span></li>
-    </ul>
+  <div class="band">
+  <section class="section wrap" aria-labelledby="stages-title">
+    <div class="section-head">
+      <h2 class="h2" id="stages-title">Five stages. Only real workouts count.</h2>
+    </div>
+    <div class="stages">
+      <ol aria-label="Ember the fox at its five stages"><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-2-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-3-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-4-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li></ol>
+      <div class="ground"></div>
+      <div class="names" aria-hidden="true"><span>ROOKIE</span><span>TRAINEE</span><span>LIFTER</span><span>ATHLETE</span><span>ELITE</span></div>
+    </div>
   </section>
+  </div>
 
-  <section class="section film" aria-labelledby="film-title">
-    <h2 class="section-title" id="film-title">Take a look inside</h2>
+  <section class="section wrap" id="film" aria-labelledby="film-title">
+    <div class="section-head">
+      <h2 class="h2" id="film-title">The whole app in 42 seconds.</h2>
+    </div>
     <div class="film-stage">
-    <figure class="film-fox before">
-      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-292.png" srcset="img/fox/stage-1-146.png 146w, img/fox/stage-1-292.png 292w, img/fox/stage-1-438.png 438w, img/fox/stage-1-620.png 620w" sizes="min(310px, calc((100vw - 492px) / 2))" width="620" height="620" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-      <span class="film-fox-ground"></span>
-      <figcaption><strong>Workout 1</strong><span>Ember, stage 1</span></figcaption>
-    </figure>
       <div class="film-frame">
         <video controls playsinline muted preload="none" poster="video/bitrep-film-poster.jpg" width="1080" height="1920" aria-label="BitRep walkthrough film, 42 seconds. It starts muted and has music.">
           <source src="video/bitrep-film.mp4" type="video/mp4">
           <p>Your browser can't play this film here. <a href="video/bitrep-film.mp4">Open the film (MP4, 10 MB)</a>.</p>
         </video>
       </div>
-    <figure class="film-fox after">
-      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-292.png" srcset="img/fox/stage-5-146.png 146w, img/fox/stage-5-292.png 292w, img/fox/stage-5-438.png 438w, img/fox/stage-5-620.png 620w" sizes="min(310px, calc((100vw - 492px) / 2))" width="620" height="620" alt="" aria-hidden="true" loading="lazy" decoding="async"></span></span></span>
-      <span class="film-fox-ground"></span>
-      <figcaption><strong>Workout 250</strong><span>Ember, stage 5</span></figcaption>
-    </figure>
     </div>
-    <p class="caption">A 42 second walkthrough.</p>
   </section>
 
-  <section class="section" aria-label="Features">
-    <ul class="features">
-      <li class="card">
-        <img class="phone-still" src="img/screens/screen-logger-600.jpg" srcset="img/screens/screen-logger-300.jpg 300w, img/screens/screen-logger-600.jpg 600w, img/screens/screen-logger.jpg 900w" sizes="(min-width: 1024px) 230px, calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The workout logger: bench press with weight and reps filled in from last time, and a Log set button">
-        <div class="card-body">
-          <h2>Quick at the gym</h2>
-          <p>Your last weights and reps are already filled in, and your rest timer shows on the Lock Screen.</p>
-        </div>
-      </li>
-      <li class="card">
-        <img class="phone-still" src="img/screens/screen-run-600.jpg" srcset="img/screens/screen-run-300.jpg 300w, img/screens/screen-run-600.jpg 600w, img/screens/screen-run.jpg 900w" sizes="(min-width: 1024px) 230px, calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished run: the route around Central Park on a pixel map, with time, distance and pace">
-        <div class="card-body">
-          <h2>Every run, ride and swim</h2>
-          <p>Runs are tracked on a pixel map. Other cardio logs next to your lifting.</p>
-        </div>
-      </li>
-      <li class="card">
-        <img class="phone-still" src="img/screens/screen-food-600.jpg" srcset="img/screens/screen-food-300.jpg 300w, img/screens/screen-food-600.jpg 600w, img/screens/screen-food.jpg 900w" sizes="(min-width: 1024px) 230px, calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="The Fuel screen: calories left against the day's target, protein, carbs and fat, and the day's meals">
-        <div class="card-body">
-          <h2>Food and steps in one place</h2>
-          <p>Log meals against a calorie target, with steps from Apple Health.</p>
-        </div>
-      </li>
-      <li class="card">
-        <img class="phone-still" src="img/screens/screen-split-600.jpg" srcset="img/screens/screen-split-300.jpg 300w, img/screens/screen-split-600.jpg 600w, img/screens/screen-split.jpg 900w" sizes="(min-width: 1024px) 230px, calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="Find my plan: questions about experience, days a week, equipment and goals">
-        <div class="card-body">
-          <h2>Not sure where to start?</h2>
-          <p>Answer five questions and get a plan that fits.</p>
-        </div>
-      </li>
-      <li class="card">
-        <img class="phone-still" src="img/screens/screen-finish-600.jpg" srcset="img/screens/screen-finish-300.jpg 300w, img/screens/screen-finish-600.jpg 600w, img/screens/screen-finish.jpg 900w" sizes="(min-width: 1024px) 230px, calc(78vw - 25px)" width="900" height="1790" loading="lazy" decoding="async" alt="A finished workout: totals, XP earned, and the fox companion's progress toward its next stage">
-        <div class="card-body">
-          <h2>A companion that grows with you</h2>
-          <p>Choose one of six. Yours grows as you train.</p>
-        </div>
-      </li>
+  <section class="section wrap" id="game" aria-labelledby="game-title">
+    <div class="section-head">
+      <h2 class="h2" id="game-title">Play BitRun.</h2>
+      <p class="lede">Jump the gym gear, grab the water, grow your companion.</p>
+    </div>
+    <div class="game-card">
+      <iframe id="bitrun-frame" src="bitrun/" title="BitRun, a small game where your companion jumps gym gear and grows" loading="lazy" width="860" height="900"></iframe>
+    </div>
+  </section>
+
+  <div class="band">
+  <section class="section wrap" aria-labelledby="promise-title">
+    <div class="section-head">
+      <h2 class="h2" id="promise-title">What we promise</h2>
+    </div>
+    <ul class="promises">
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Logging your workouts is free, and it always will be.</span></li>
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>There are no ads in BitRep.</span></li>
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We never sell your data.</span></li>
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>It works without an account.</span></li>
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You can export everything whenever you like.</span></li>
+      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No daily streaks, and no guilt on rest days.</span></li>
     </ul>
   </section>
+  </div>
 
-  <section class="section game" aria-labelledby="game-title">
-    <h2 class="section-title" id="game-title">Play BitRun</h2>
-    <p class="caption">Pick a companion, jump the gym gear, grab the water and watch it grow.</p>
-    <div class="game-frame" style="max-width:860px;margin:0 auto">
-      <iframe id="bitrun-frame" src="bitrun/" title="BitRun, a small game where your companion jumps gym gear and grows" loading="lazy" width="860" height="900" style="display:block;width:100%;border:0"></iframe>
+  <section class="section wrap" id="faq" aria-labelledby="faq-title">
+    <div class="section-head">
+      <h2 class="h2" id="faq-title">Questions</h2>
     </div>
-  </section>
-
-  <section class="section narrow faq" aria-labelledby="faq-title">
-    <h2 class="section-title" id="faq-title">Questions</h2>
+    <div class="faq">
     <details>
       <summary>What is BitRep?</summary>
       <p>A workout tracker for iPhone. It keeps your lifting, cardio, food and steps in one place, and a pixel companion grows as you train.</p>
@@ -190,7 +205,7 @@
     </details>
     <details>
       <summary>When does it launch?</summary>
-      <p>We're finishing it now. Join the waitlist and you'll hear about early access before anyone else.</p>
+      <p>We're finishing it now. Sign up and you'll hear about early access before anyone else.</p>
     </details>
     <details>
       <summary>Is there an Android version?</summary>
@@ -208,22 +223,28 @@
       <summary>What happens to my data?</summary>
       <p>Your workouts live on your phone. We never sell your data.</p>
     </details>
+    </div>
   </section>
 
-  <section class="section narrow card join" aria-label="Join the waitlist">
-    <form class="waitlist" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
-      <label class="visually-hidden" for="email-bottom">Email address</label>
-      <div class="row">
-        <input id="email-bottom" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
-        <button type="submit">Join the waitlist</button>
-      </div>
-      <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
-    </form>
-  </section>
-
+  <div class="wrap">
+    <section class="closing" id="join" aria-labelledby="join-title">
+      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img class="pet" src="img/fox/stage-4-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span>
+      <span class="ground"></span>
+      <h2 class="h2" id="join-title">Get early access</h2>
+      <p class="lede">We'll email you when BitRep is ready to try.</p>
+      <form class="signup" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
+        <label class="visually-hidden" for="email-bottom">Email address</label>
+        <div class="row">
+          <input id="email-bottom" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
+          <button class="btn" type="submit">Get early access</button>
+        </div>
+        <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
+      </form>
+    </section>
+  </div>
 </main>
 
-<footer class="site-footer wrap">
+<footer class="foot">
   <ul>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
@@ -232,13 +253,35 @@
     <li><a href="https://www.linkedin.com/company/bitrepapp" target="_blank" rel="noopener">LinkedIn</a></li>
     <li>© 2026 BitRep</li>
   </ul>
-  <div class="legal fine">
-    <p>BitRep is a training log, not medical advice. It's still in development, so features shown may change before launch.</p>
-    <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. Hevy is a trademark of its owner. BitRep is not affiliated with or endorsed by either.</p>
-  </div>
+  <p>BitRep is a training log, not medical advice. It's still in development, so features shown may change before launch.</p>
+  <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. Hevy is a trademark of its owner. BitRep is not affiliated with or endorsed by either.</p>
 </footer>
 
 <script>
+/* The four phone clips play only while they are on screen, muted and
+   looping. With reduced motion, or if the browser refuses to autoplay
+   (Low Power Mode on iPhone does), each one stays on its first frame. */
+(function () {
+  var clips = document.querySelectorAll('video.loop');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!clips.length || still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (items) {
+    items.forEach(function (it) {
+      var v = it.target;
+      if (it.isIntersecting) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else v.pause();
+    });
+  }, { threshold: 0.35 });
+  clips.forEach(function (v) { io.observe(v); });
+})();
+
+/* Tapping a fox makes it hop once. */
+document.querySelectorAll('.fox').forEach(function (fox) {
+  var tap = fox.querySelector('.fox-tap');
+  fox.addEventListener('pointerdown', function () { tap.classList.remove('tap'); void tap.offsetWidth; tap.classList.add('tap'); });
+  tap.addEventListener('animationend', function (e) { if (e.target === tap) tap.classList.remove('tap'); });
+});
+
 /* The film starts by itself (muted) once a quarter of it is on screen and
    pauses when it leaves. It only starts loading when its frame reaches the
    screen. If the browser refuses to start it, or it is not loaded yet, it
@@ -341,40 +384,6 @@
   seen.observe(frame);
 })();
 
-/* The header's "Join the waitlist" brings the whole hero into view (no
-   scroll at all if the email field is already fully visible), then puts
-   focus in the first email field without a second jump. Without this
-   script the link is a plain anchor to the hero. */
-(function () {
-  var link = document.querySelector('.header-cta');
-  var hero = document.getElementById('hero');
-  var field = document.getElementById('email-top');
-  if (!link || !hero || !field) return;
-  link.addEventListener('click', function (event) {
-    event.preventDefault();
-    var box = field.getBoundingClientRect();
-    if (box.top < 0 || box.bottom > window.innerHeight) {
-      var header = document.querySelector('.site-header');
-      var top = hero.getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight : 0);
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
-    }
-    field.focus({ preventScroll: true });
-  });
-})();
-
-/* Tapping a fox makes it hop once (hover does the same with a mouse). */
-document.querySelectorAll('.fox').forEach(function (fox) {
-  var tap = fox.querySelector('.fox-tap');
-  fox.addEventListener('pointerdown', function () {
-    tap.classList.remove('tap');
-    void tap.offsetWidth;
-    tap.classList.add('tap');
-  });
-  tap.addEventListener('animationend', function (e) {
-    if (e.target === tap) tap.classList.remove('tap');
-  });
-});
 
 /* BitRun is the page in /bitrun/, shown here in a frame so it can be played
    in place. This trims the game page's own header, title and intro (the
@@ -409,6 +418,7 @@ document.querySelectorAll('.fox').forEach(function (fox) {
   f.addEventListener('load', setup);
   if (f.contentDocument && f.contentDocument.readyState === 'complete') setup();
 })();
+
 </script>
 </body>
 </html>

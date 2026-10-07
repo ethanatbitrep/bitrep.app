@@ -23,22 +23,20 @@ served by GitHub Pages from the root of `main`.
   `sprites/` and `tiles/`. It uses the site's fonts, wordmark and favicons
   through `../` paths, so it must stay one folder below the root. It is
   `noindex` and not in `sitemap.xml`. Since 7 Oct 2026 the home page shows
-  it in a frame (the "Play BitRun" section) so it can be played in place;
+  it in a frame (the "Play BitRun." section) so it can be played in place;
   the home page script hides the game page's own header, title and intro
   inside the frame and sizes the frame, using the game's `.top`, `h1`,
   `.lede`, `.wrap` and `#joinForm`. If a new game build renames those,
   update that script. Do not resize, recompress or rename the sprite files: the game
   reads their outlines from numbers measured on these exact files.
 
-- `preview/`: a redesign of the home page under review (7 Oct 2026):
-  `index.html` and its own stylesheet `v2.css`. It reuses the site's
-  images, fonts, film and the BitRun frame through `../` paths. It is
-  `noindex`, blocked in `robots.txt`, and nothing links to it. If Ethan
-  approves it, it replaces the root `index.html`; if not, delete the folder.
-
 ## Files
 
-- `site.css`: the one stylesheet for every page. Colours,
+- `home.css`: the home page's own stylesheet (redesigned 7 Oct 2026: flat
+  colour, the app's corner sizes, pixel star field, `img/skyline.svg` along
+  the hero's base). `video/loops/` holds the short silent phone clips the
+  home page plays while they are on screen, each with a still poster.
+- `site.css`: the stylesheet for the other pages (privacy, terms, thanks, 404). Colours,
   radii and type follow design pack 10 (Midnight and Iris, dark theme).
 - `fonts/`: Archivo 400 and 700 and Pixelify Sans 700, self-hosted, with
   their OFL licences. Pixelify Sans is for the main headline only.

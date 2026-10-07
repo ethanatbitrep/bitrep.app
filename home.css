@@ -1,10 +1,10 @@
-/* BitRep home page, version 2 (preview). Midnight and Iris, dark only.
+/* BitRep home page. Midnight and Iris, dark only.
    Flat colour, the app's own corner sizes (12 px controls, 16 px cards),
    and the app's pixel star field behind the hero. No glows or gradients
    apart from the star field fading out. */
-@font-face { font-family: "Archivo"; src: url("../fonts/Archivo_400Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Archivo"; src: url("../fonts/Archivo_700Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Pixelify Sans"; src: url("../fonts/PixelifySans_700Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("fonts/Archivo_400Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("fonts/Archivo_700Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Pixelify Sans"; src: url("fonts/PixelifySans_700Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
 
 :root {
   --ground: #0E1020; --card: #171A2E; --raised: #22263F; --line: rgba(255,255,255,0.08);
@@ -57,7 +57,7 @@ h1 .soft { color: var(--dim); }
    city as BitRun, and the phones stand in front of it. Two sections sit
    on a flat band a shade lighter than the page, to break up the scroll. */
 .hero-band { background:
-    url("skyline.svg") bottom center / auto 200px repeat-x,
+    url("img/skyline.svg") bottom center / auto 200px repeat-x,
     radial-gradient(rgba(255,255,255,0.10) 0.75px, transparent 1.25px) 0 0 / 30px 30px,
     radial-gradient(rgba(143,141,255,0.16) 0.75px, transparent 1.25px) 15px 22px / 46px 46px; }
 @media (max-width: 600px) { .hero-band { background-size: auto 130px, 30px 30px, 46px 46px; } }
