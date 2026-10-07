@@ -22,8 +22,12 @@ served by GitHub Pages from the root of `main`.
   gear, collect water for XP). Self-contained: `index.html` plus
   `sprites/` and `tiles/`. It uses the site's fonts, wordmark and favicons
   through `../` paths, so it must stay one folder below the root. It is
-  `noindex`, not in `sitemap.xml`, and nothing links to it until Ethan
-  says so. Do not resize, recompress or rename the sprite files: the game
+  `noindex` and not in `sitemap.xml`. Since 7 Oct 2026 the home page shows
+  it in a frame (the "Play BitRun" section) so it can be played in place;
+  the home page script hides the game page's own header, title and intro
+  inside the frame and sizes the frame, using the game's `.top`, `h1`,
+  `.lede`, `.wrap` and `#joinForm`. If a new game build renames those,
+  update that script. Do not resize, recompress or rename the sprite files: the game
   reads their outlines from numbers measured on these exact files.
 
 ## Files

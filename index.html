@@ -166,6 +166,14 @@
     </ul>
   </section>
 
+  <section class="section game" aria-labelledby="game-title">
+    <h2 class="section-title" id="game-title">Play BitRun</h2>
+    <p class="caption">Pick a companion, jump the gym gear, grab the water and watch it grow.</p>
+    <div class="game-frame">
+      <iframe id="bitrun-frame" src="bitrun/" title="BitRun, a small game where your companion jumps gym gear and grows" loading="lazy" width="860" height="900"></iframe>
+    </div>
+  </section>
+
   <section class="section narrow faq" aria-labelledby="faq-title">
     <h2 class="section-title" id="faq-title">Questions</h2>
     <details>
@@ -367,6 +375,40 @@ document.querySelectorAll('.fox').forEach(function (fox) {
     if (e.target === tap) tap.classList.remove('tap');
   });
 });
+
+/* BitRun is the page in /bitrun/, shown here in a frame so it can be played
+   in place. This trims the game page's own header, title and intro (the
+   home page already has them), sizes the frame to the game so there is no
+   inner scrollbar, and sends the game's waitlist form to the whole window
+   rather than the frame. The game's files are not changed. */
+(function () {
+  var f = document.getElementById('bitrun-frame');
+  if (!f) return;
+  function setup() {
+    var d;
+    try { d = f.contentDocument; } catch (e) { return; }
+    if (!d || !d.body || d.getElementById('embed-style')) return;
+    var st = d.createElement('style');
+    st.id = 'embed-style';
+    st.textContent = '.top, .wrap > h1, .lede { display: none !important; }' +
+      'html, body { background: transparent !important; overflow: hidden !important; }' +
+      'body { padding: 0 !important; }' +
+      '@media (max-width: 560px) { canvas#game { height: 96vw !important; min-height: 260px; } }';
+    d.head.appendChild(st);
+    var form = d.getElementById('joinForm');
+    if (form) form.target = '_top';
+    var links = d.querySelectorAll('a[href]');
+    for (var i = 0; i < links.length; i++) links[i].target = '_top';
+    var wrap = d.querySelector('.wrap') || d.body;
+    function fit() { f.style.height = Math.ceil(wrap.getBoundingClientRect().height) + 2 + 'px'; }
+    fit();
+    if (f.contentWindow.ResizeObserver) new f.contentWindow.ResizeObserver(fit).observe(wrap);
+    else setInterval(fit, 500);
+    f.classList.add('is-fitted');
+  }
+  f.addEventListener('load', setup);
+  if (f.contentDocument && f.contentDocument.readyState === 'complete') setup();
+})();
 </script>
 </body>
 </html>
