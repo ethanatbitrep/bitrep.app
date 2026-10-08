@@ -141,37 +141,46 @@ img.px, .px img { image-rendering: pixelated; }
 }
 
 
-/* Opening animation. A phone pops up showing a home screen, a tap lands
-   on the BitRep icon, the app opens to fill the phone, then the screen
-   grows to fill the window and fades into the site. About 2.4 s.
-   Tap or press any key to skip. Plays once per visit. */
-.intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--sky1); overflow: hidden; }
-.intro.out { transition: opacity .35s ease; opacity: 0; pointer-events: none; }
-.i-phone { --iw: min(250px, 58vw); position: relative; width: var(--iw); aspect-ratio: 9 / 19.5; padding: calc(var(--iw) * .035); border-radius: calc(var(--iw) * .17); background: #05060C; box-shadow: inset 0 0 0 2px #2A2D45, 0 40px 80px rgba(0,0,0,.6);
-  opacity: 0; transform: translateY(70px) scale(.86); animation: i-pop .62s cubic-bezier(.2,1.5,.45,1) .1s forwards; }
-@keyframes i-pop { to { opacity: 1; transform: none; } }
-.i-screen { position: relative; width: 100%; height: 100%; border-radius: calc(var(--iw) * .14); overflow: hidden;
-  background: linear-gradient(to bottom, #1A1840 0%, #2B2466 55%, #4A3A86 100%); }
-.i-screen::before { content: ""; position: absolute; inset: 0; background:
-  radial-gradient(#fff 0.8px, transparent 1.3px) 0 0 / 22px 22px, radial-gradient(#C9C8FF 0.8px, transparent 1.3px) 11px 14px / 34px 34px; opacity: .35; }
-.i-island { position: absolute; top: 3%; left: 50%; width: 32%; height: 4.4%; transform: translateX(-50%); background: #000; border-radius: 99px; z-index: 3; }
-.i-time { position: absolute; top: 3.6%; left: 11%; font: 700 calc(var(--iw) * .055)/1 var(--body); color: #fff; z-index: 3; }
-.i-grid { position: absolute; left: 7%; right: 7%; top: 15%; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .07) calc(var(--iw) * .05); }
-.i-app { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.i-app i { display: block; width: 100%; aspect-ratio: 1; border-radius: 24%; background: var(--c); box-shadow: inset 0 -3px 0 rgba(0,0,0,.18); }
-.i-app b { display: block; width: 70%; height: 4px; border-radius: 2px; background: rgba(255,255,255,.35); }
-.i-app.br img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 24%; }
-.i-app.br span { font: 700 calc(var(--iw) * .042)/1 var(--body); color: #fff; }
-.i-app.br img { transition: transform .12s ease, filter .12s; }
-.i-app.br.press img { transform: scale(.86); filter: brightness(.8); }
-.i-dock { position: absolute; left: 4%; right: 4%; bottom: 3%; height: 13%; border-radius: calc(var(--iw) * .1); background: rgba(255,255,255,.14); display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .05); padding: 0 6%; align-items: center; }
-.i-dock i { display: block; width: 100%; aspect-ratio: 1; border-radius: 24%; background: var(--c); }
-.i-tap { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 0 0 2px rgba(255,255,255,.8); opacity: 0; transform: scale(1.6); pointer-events: none; z-index: 5; }
-.i-tap.on { animation: i-tap .42s ease-out forwards; }
-@keyframes i-tap { 0% { opacity: 0; transform: scale(1.6); } 40% { opacity: 1; transform: scale(.8); } 100% { opacity: 0; transform: scale(1.1); } }
-.i-open { position: fixed; z-index: 101; background: var(--sky1) url("../favicon.svg") center / min(34%, 96px) auto no-repeat; pointer-events: none; }
-.i-skip { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); border: 0; background: none; color: var(--dim); font: 700 14px var(--body); cursor: pointer; padding: 10px 14px; }
+/* Opening animation (every page load). A blue screen, a big phone rises
+   part way up, a tap lands on BitRep and the site opens out of the icon
+   like an iPhone app. Then the hero pieces drop into place. */
 html.intro-on, html.intro-on body { overflow: hidden; }
+.intro { position: fixed; inset: 0; z-index: 100; overflow: hidden; background: #4653F2; }
+.i-phone { --iw: min(66vw, 500px); position: absolute; left: 50%; top: max(12vh, 64px); width: var(--iw); margin-left: calc(var(--iw) / -2);
+  translate: 0 110vh; animation: i-rise .75s cubic-bezier(.22,1.25,.4,1) .12s forwards; }
+@keyframes i-rise { to { translate: 0 0; } }
+.i-tilt { transform: perspective(1600px) rotateX(10deg) rotateZ(-5deg); transform-origin: 50% 30%; }
+.i-screen { position: relative; aspect-ratio: 9 / 19.5; border-radius: calc(var(--iw) * .15); overflow: hidden; padding: 0;
+  background: linear-gradient(170deg, #2A2370 0%, #4B3A9A 45%, #E28AA8 100%);
+  box-shadow: 0 0 0 calc(var(--iw) * .03) #0B0C12, 0 0 0 calc(var(--iw) * .034) #3A3D4D, 0 50px 90px rgba(10,12,60,.45); }
+.i-island { position: absolute; top: 2.4%; left: 50%; width: 30%; height: 4%; translate: -50% 0; background: #000; border-radius: 99px; }
+.i-time { position: absolute; top: 3%; left: 9%; font: 700 calc(var(--iw) * .05)/1 -apple-system, "SF Pro Text", var(--body); color: #fff; }
+.i-bars { position: absolute; top: 3.3%; right: 10%; display: flex; gap: 2px; align-items: flex-end; }
+.i-bars i { width: calc(var(--iw) * .009); background: #fff; border-radius: 1px; }
+.i-bars i:nth-child(1) { height: calc(var(--iw) * .012); } .i-bars i:nth-child(2) { height: calc(var(--iw) * .018); } .i-bars i:nth-child(3) { height: calc(var(--iw) * .024); } .i-bars i:nth-child(4) { height: calc(var(--iw) * .03); }
+.i-grid { position: absolute; left: 6.5%; right: 6.5%; top: 11%; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .06) calc(var(--iw) * .055); }
+.i-app { display: flex; flex-direction: column; align-items: center; gap: calc(var(--iw) * .014); font: 500 calc(var(--iw) * .03)/1.1 -apple-system, "SF Pro Text", var(--body); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); white-space: nowrap; }
+.i-app svg, .i-app img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 22.5%; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.i-app.br img { transition: transform .14s ease, filter .14s; }
+.i-app.br.press img { transform: scale(.88); filter: brightness(.7); }
+.i-dock { position: absolute; left: 3.5%; right: 3.5%; top: 74%; height: 12%; border-radius: calc(var(--iw) * .09); background: rgba(255,255,255,.22); backdrop-filter: blur(10px); display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .055); padding: 0 5%; align-items: center; }
+.i-dock svg { display: block; width: 100%; height: auto; border-radius: 22.5%; }
+.i-tap { position: fixed; z-index: 110; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: rgba(255,255,255,.5); box-shadow: 0 0 0 2px rgba(255,255,255,.75); opacity: 0; pointer-events: none; }
+.i-tap.on { animation: i-tap .4s ease-out forwards; }
+@keyframes i-tap { 0% { opacity: 0; scale: 1.6; } 35% { opacity: 1; scale: .8; } 100% { opacity: 0; scale: 1.05; } }
+
+/* While the intro runs, the site is a window that opens out of the icon */
+html.pre #site { position: fixed; inset: 0; z-index: 200; overflow: hidden; clip-path: inset(50%); background: var(--sky1); }
+html.pre .scene .phone, html.pre .scene .mate, html.pre .scene .stk, html.pre .scene .chip { opacity: 0; }
+
+/* Landing: pieces drop into place, one after another */
+html.land .scene .phone { animation: l-phone .7s cubic-bezier(.2,1.2,.4,1) both; animation-delay: 120ms; }
+html.land .scene .mate { animation: l-fall .75s cubic-bezier(.3,1.35,.5,1) both; animation-delay: calc(var(--k) * 70ms); }
+html.land .scene .stk, html.land .scene .chip { animation: l-pop .6s cubic-bezier(.3,1.6,.5,1) both; animation-delay: calc(var(--k) * 70ms); }
+@keyframes l-up { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes l-phone { from { opacity: 0; translate: 0 140px; } to { opacity: 1; translate: 0 0; } }
+@keyframes l-fall { from { opacity: 0; translate: 0 -60vh; } 60% { opacity: 1; } to { opacity: 1; translate: 0 0; } }
+@keyframes l-pop { from { opacity: 0; scale: .2; rotate: -40deg; } to { opacity: 1; scale: 1; rotate: 0deg; } }
 
 /* The phone clips are pictures that move, not players: no play button,
    no controls, even when the browser holds off on playing them. */
