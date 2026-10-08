@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /prototype/
+Disallow: /train/
 Disallow: /preview/
 
 Sitemap: https://bitrep.app/sitemap.xml
