@@ -25,6 +25,7 @@
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="home.css?v=2">
+<link rel="stylesheet" href="world.css?v=1">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -49,25 +50,87 @@
 </script>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="i-phone"><div class="i-tilt"><div class="i-screen">
+    <span class="i-island"></span><span class="i-time">9:41</span>
+    <span class="i-bars"><i></i><i></i><i></i><i></i></span>
+    <div class="i-grid"><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F1F4"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g0)"/><text x="30" y="19" text-anchor="middle" font-family="Archivo,system-ui" font-weight="700" font-size="9" fill="#F0453A">THU</text><text x="30" y="47" text-anchor="middle" font-family="Archivo,system-ui" font-weight="400" font-size="27" fill="#1C1C1E">8</text><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Calendar</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF0F6"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g1)"/><rect x="13" y="16" width="34" height="28" rx="4" fill="#5DA9FF"/><circle cx="23" cy="25" r="4" fill="#FFD54A"/><path d="M13 40l10-10 7 7 6-5 11 10v2H13z" fill="#38C172"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Photos</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9BDC8"/><stop offset="1" stop-color="#7E8392"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g2)"/><rect x="12" y="20" width="36" height="25" rx="5" fill="#2B2D33"/><rect x="22" y="15" width="12" height="7" rx="2" fill="#2B2D33"/><circle cx="30" cy="32.5" r="8" fill="#5A5E69"/><circle cx="30" cy="32.5" r="5" fill="#1A1B20"/><circle cx="28" cy="30.5" r="1.6" fill="#8FA3FF"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Camera</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AB0FF"/><stop offset="1" stop-color="#1E6FF0"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g3)"/><rect x="12" y="19" width="36" height="24" rx="4" fill="#fff"/><path d="M13 21l17 12 17-12" fill="none" stroke="#4C93F8" stroke-width="2.6" stroke-linejoin="round"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Mail</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2B30"/><stop offset="1" stop-color="#111114"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g4)"/><circle cx="30" cy="30" r="19" fill="#fff"/><path d="M30 18v12l8 5" stroke="#111" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="2" fill="#FF8A1F"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Clock</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC2FF"/><stop offset="1" stop-color="#2A7BEA"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g5)"/><circle cx="24" cy="24" r="8" fill="#FFD54A"/><path d="M21 43h20a7 7 0 0 0 0-14 9 9 0 0 0-17 3 6 6 0 0 0-3 11z" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Weather</span></span><span class="i-app br" id="i-br"><img src="apple-touch-icon.png" width="180" height="180" alt=""><span>BitRep</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BE3A8"/><stop offset="1" stop-color="#5CC77A"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g7)"/><path d="M0 38L60 22" stroke="#fff" stroke-width="6"/><path d="M34 0v60" stroke="#FCE38A" stroke-width="5"/><path d="M22 17a8 8 0 0 1 16 0c0 7-8 15-8 15s-8-8-8-15z" fill="#FF4D4D"/><circle cx="30" cy="17" r="3" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Maps</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g8" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F4F6"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g8)"/><rect x="0" y="0" width="60" height="15" fill="#FFCF3A"/><path d="M12 26h36M12 34h36M12 42h24" stroke="#C9CACF" stroke-width="2"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Notes</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g9" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A86"/><stop offset="1" stop-color="#F02F55"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g9)"/><path d="M25 40V19l17-4v21" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/><circle cx="21" cy="40" r="5" fill="#fff"/><circle cx="38" cy="36" r="5" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Music</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g10" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9DA1AC"/><stop offset="1" stop-color="#666A75"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g10)"/><g fill="#3E4049"><circle cx="30" cy="30" r="14"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(0 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(45 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(90 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(135 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(180 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(225 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(270 30 30)"/><rect x="27" y="11" width="6" height="8" rx="1.5" transform="rotate(315 30 30)"/></g><circle cx="30" cy="30" r="9" fill="#B9BCC5"/><circle cx="30" cy="30" r="4" fill="#3E4049"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Settings</span></span><span class="i-app"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="g11" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3B40"/><stop offset="1" stop-color="#1C1C1F"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#g11)"/><circle cx="17" cy="18" r="4.6" fill="#8E9099"/><circle cx="30" cy="18" r="4.6" fill="#8E9099"/><circle cx="43" cy="18" r="4.6" fill="#FF9F0A"/><circle cx="17" cy="30" r="4.6" fill="#8E9099"/><circle cx="30" cy="30" r="4.6" fill="#8E9099"/><circle cx="43" cy="30" r="4.6" fill="#FF9F0A"/><circle cx="17" cy="42" r="4.6" fill="#8E9099"/><circle cx="30" cy="42" r="4.6" fill="#8E9099"/><circle cx="43" cy="42" r="4.6" fill="#FF9F0A"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><span>Calculator</span></span></div>
+    <div class="i-dock"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="gd0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BE07E"/><stop offset="1" stop-color="#2FBF4A"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#gd0)"/><path d="M21 17c2-1 4 0 5 2l2 5c.5 1.5 0 3-1 4l-2 2c2 4 5 7 9 9l2-2c1-1 2.5-1.5 4-1l5 2c2 1 3 3 2 5l-1 3c-1 2-3 3-5 3-13-1-24-12-25-25 0-2 1-4 3-5z" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="gd1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EC6FF"/><stop offset="1" stop-color="#2C7CF2"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#gd1)"/><circle cx="30" cy="30" r="18" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M38 22l-5 12-11 4 5-12z" fill="#fff"/><circle cx="30" cy="30" r="2" fill="#2C7CF2"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="gd2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BE07E"/><stop offset="1" stop-color="#2FBF4A"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#gd2)"/><path d="M30 14c10 0 18 6.5 18 14.5S40 43 30 43c-2 0-4-.3-5.7-.8L16 46l2.6-6.5C14.5 36.6 12 32.8 12 28.5 12 20.5 20 14 30 14z" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="gd3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A86"/><stop offset="1" stop-color="#F02F55"/></linearGradient></defs><rect width="60" height="60" rx="13.5" fill="url(#gd3)"/><path d="M25 40V19l17-4v21" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/><circle cx="21" cy="40" r="5" fill="#fff"/><circle cx="38" cy="36" r="5" fill="#fff"/><rect x=".5" y=".5" width="59" height="59" rx="13" fill="none" stroke="rgba(255,255,255,.18)"/></svg></div>
+  </div></div></div>
+  <span class="i-tap" id="i-tap"></span>
+</div>
+<script>
+/* Opening animation, every page load: a blue screen, a phone rises, a
+   tap lands on BitRep and the site opens out of the icon the way an
+   iPhone app opens. Then the hero pieces drop into place. Skipped with
+   Reduce Motion; a tap or any key skips it. */
+(function () {
+  var el = document.getElementById('intro');
+  var html = document.documentElement;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!el.animate || still) { el.remove(); return; }
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  scrollTo(0, 0);
+  html.classList.add('intro-on', 'pre');
+  var timers = [], done = false, opening = false, site = null, anims = [];
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function land() {
+    html.classList.remove('intro-on', 'pre', 'opening');
+    if (site) { site.style.clipPath = ''; site.style.transform = ''; }
+    el.remove();
+    var k = 0;
+    document.querySelectorAll('.scene .phone, .scene .mate, .scene .stk, .scene .chip').forEach(function (n) { n.style.setProperty('--k', k++); });
+    html.classList.add('land');
+    setTimeout(function () { html.classList.remove('land'); }, 2200);
+  }
+  function skip() {
+    if (done) return; done = true;
+    timers.forEach(clearTimeout);
+    anims.forEach(function (a) { a.cancel(); });
+    land();
+  }
+  function open() {
+    if (done) return; opening = true;
+    site = document.getElementById('site');
+    var img = document.querySelector('#i-br img').getBoundingClientRect();
+    var vw = innerWidth, vh = innerHeight, L = Math.min(vw, vh), k = img.width / L;
+    var tx = img.left + img.width / 2 - vw / 2, ty = img.top + img.height / 2 - vh / 2;
+    var iy = (vh - L) / 2, ix = (vw - L) / 2, r = L * 0.225;
+    html.classList.add('opening');
+    var ease = 'cubic-bezier(.2,.85,.25,1)';
+    anims.push(site.animate([
+      { transform: 'translate(' + tx + 'px,' + ty + 'px) scale(' + k + ')', clipPath: 'inset(' + iy + 'px ' + ix + 'px round ' + r + 'px)' },
+      { transform: 'none', clipPath: 'inset(0px 0px round 0px)' }
+    ], { duration: 560, easing: ease, fill: 'forwards' }));
+    anims.push(el.querySelector('.i-phone').animate([{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(1.14)', opacity: .15 }], { duration: 560, easing: ease, fill: 'forwards' }));
+    at(560, function () { done = true; anims.forEach(function (a) { a.cancel(); }); land(); });
+  }
+  var icon = document.getElementById('i-br'), tap = document.getElementById('i-tap');
+  at(1050, function () {
+    var r = icon.querySelector('img').getBoundingClientRect();
+    tap.style.left = (r.left + r.width / 2) + 'px'; tap.style.top = (r.top + r.height / 2) + 'px';
+    tap.classList.add('on'); icon.classList.add('press');
+  });
+  at(1230, function () { icon.classList.remove('press'); open(); });
+  el.addEventListener('pointerdown', skip);
+  addEventListener('keydown', skip, { once: true });
+})();
+</script>
+<div id="site">
 
-<header class="bar">
+<header class="bar over">
   <div class="bar-in wrap">
     <a href="#top" aria-label="BitRep, back to top"><img class="wordmark" src="img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28"></a>
-    <nav aria-label="On this page">
-      <a href="#inside">What's inside</a>
-      <a href="#film">Film</a>
-      <a href="#game">BitRun</a>
-      <a href="#faq">Questions</a>
-    </nav>
     <a class="btn" href="#join">Get early access</a>
   </div>
 </header>
 
 <main id="top">
-  <div class="hero-band">
-    <section class="hero wrap">
-      <h1>Train everything. <span class="soft">Watch your companion grow.</span></h1>
-      <p class="lede">BitRep tracks your lifting, cardio, food and steps in one app. Your pixel companion grows when you train.</p>
+  <div class="world">
+    <div class="stars" aria-hidden="true"><i class="" style="left:8.9%;top:29.0%;animation-delay:2.5s"></i><i class="" style="left:85.7%;top:18.7%;animation-delay:2.7s"></i><i class="b t" style="left:94.9%;top:11.1%;animation-delay:0.7s"></i><i class="t" style="left:48.5%;top:37.3%;animation-delay:1.3s"></i><i class="" style="left:37.2%;top:36.0%;animation-delay:1.5s"></i><i class="b" style="left:61.5%;top:42.6%;animation-delay:2.3s"></i><i class="" style="left:86.7%;top:49.9%;animation-delay:0.3s"></i><i class="b t" style="left:63.2%;top:5.7%;animation-delay:0.5s"></i><i class="b t" style="left:34.3%;top:5.2%;animation-delay:0.3s"></i><i class="" style="left:36.6%;top:3.5%;animation-delay:0.4s"></i><i class="t" style="left:25.7%;top:22.8%;animation-delay:2.5s"></i><i class="t" style="left:98.3%;top:30.0%;animation-delay:0.3s"></i><i class="t" style="left:34.6%;top:17.9%;animation-delay:0.1s"></i><i class="b" style="left:94.2%;top:33.7%;animation-delay:0.1s"></i><i class="" style="left:52.8%;top:60.7%;animation-delay:0.8s"></i><i class="" style="left:36.9%;top:12.0%;animation-delay:2.3s"></i><i class="" style="left:33.3%;top:15.4%;animation-delay:2.6s"></i><i class="t" style="left:80.0%;top:51.1%;animation-delay:1.6s"></i><i class="b t" style="left:35.8%;top:3.7%;animation-delay:0.8s"></i><i class="" style="left:68.9%;top:59.4%;animation-delay:3.0s"></i><i class="t" style="left:94.6%;top:23.9%;animation-delay:0.6s"></i><i class="" style="left:21.0%;top:39.4%;animation-delay:1.4s"></i><i class="b" style="left:65.0%;top:50.0%;animation-delay:2.7s"></i><i class="t" style="left:77.7%;top:47.0%;animation-delay:2.4s"></i><i class="" style="left:33.6%;top:50.0%;animation-delay:1.2s"></i><i class="b t" style="left:93.8%;top:45.5%;animation-delay:0.5s"></i><i class="b" style="left:89.7%;top:50.4%;animation-delay:2.9s"></i><i class="t" style="left:65.4%;top:23.0%;animation-delay:0.0s"></i><i class="" style="left:96.1%;top:41.0%;animation-delay:1.3s"></i><i class="t" style="left:86.4%;top:51.6%;animation-delay:0.9s"></i><i class="" style="left:24.6%;top:37.2%;animation-delay:0.4s"></i><i class="" style="left:90.2%;top:23.2%;animation-delay:2.7s"></i><i class="" style="left:42.2%;top:57.1%;animation-delay:1.6s"></i><i class="t" style="left:2.8%;top:28.4%;animation-delay:2.4s"></i><i class="" style="left:17.9%;top:30.4%;animation-delay:1.0s"></i><i class="t" style="left:51.8%;top:35.3%;animation-delay:1.7s"></i><i class="" style="left:25.4%;top:18.6%;animation-delay:1.7s"></i><i class="" style="left:75.5%;top:56.7%;animation-delay:1.5s"></i><i class="" style="left:51.2%;top:43.6%;animation-delay:1.4s"></i><i class="" style="left:93.3%;top:44.0%;animation-delay:0.8s"></i><i class="t" style="left:55.8%;top:58.6%;animation-delay:0.4s"></i><i class="t" style="left:44.3%;top:6.4%;animation-delay:2.0s"></i><i class="b" style="left:77.8%;top:55.8%;animation-delay:2.0s"></i><i class="t" style="left:15.0%;top:55.0%;animation-delay:2.9s"></i><i class="" style="left:40.0%;top:31.2%;animation-delay:0.5s"></i><i class="t" style="left:43.3%;top:32.9%;animation-delay:1.0s"></i><i class="" style="left:71.8%;top:3.2%;animation-delay:0.1s"></i><i class="t" style="left:33.5%;top:39.4%;animation-delay:3.0s"></i><i class="b t" style="left:78.3%;top:60.3%;animation-delay:0.1s"></i><i class="b" style="left:77.3%;top:18.2%;animation-delay:2.7s"></i><i class="b" style="left:81.3%;top:17.5%;animation-delay:1.7s"></i><i class="b" style="left:69.6%;top:7.4%;animation-delay:1.3s"></i><i class="" style="left:8.1%;top:58.3%;animation-delay:0.3s"></i><i class="" style="left:84.9%;top:6.0%;animation-delay:1.0s"></i><i class="t" style="left:55.2%;top:57.6%;animation-delay:1.6s"></i><i class="b t" style="left:24.4%;top:8.6%;animation-delay:0.6s"></i><i class="t" style="left:31.6%;top:20.3%;animation-delay:1.5s"></i><i class="b t" style="left:18.4%;top:22.8%;animation-delay:0.0s"></i><i class="" style="left:72.8%;top:35.1%;animation-delay:2.8s"></i><i class="" style="left:11.4%;top:51.1%;animation-delay:2.5s"></i><i class="" style="left:39.5%;top:32.4%;animation-delay:1.0s"></i><i class="" style="left:82.6%;top:44.4%;animation-delay:1.0s"></i><i class="b" style="left:6.3%;top:9.8%;animation-delay:0.8s"></i><i class="" style="left:17.0%;top:7.1%;animation-delay:2.0s"></i><i class="" style="left:28.6%;top:16.5%;animation-delay:0.5s"></i><i class="" style="left:44.7%;top:17.8%;animation-delay:1.6s"></i><i class="" style="left:25.0%;top:59.9%;animation-delay:0.0s"></i><i class="t" style="left:38.4%;top:30.5%;animation-delay:1.5s"></i><i class="b" style="left:1.5%;top:17.9%;animation-delay:0.1s"></i><i class="" style="left:3.2%;top:20.3%;animation-delay:1.6s"></i></div>
+    <section class="hero2 wrap">
+      <h1>Train everything.<br class="m"> <em>Grow a legend.</em></h1>
+      <p class="lede">Lifting, cardio, food and steps in one app. Your pixel companion grows when you train.</p>
       <form class="signup" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
         <label class="visually-hidden" for="email-top">Email address</label>
         <div class="row">
@@ -76,88 +139,31 @@
         </div>
         <p class="fine">Coming to iPhone. We only email about early access and launch.</p>
       </form>
-      <div class="cluster">
-        <video class="phone-still back left loop" muted loop playsinline preload="none" poster="video/loops/hero-trophies.jpg" width="400" height="796" aria-label="The Trophies screen, scrolling through bronze, silver and gold trophies"><source src="video/loops/hero-trophies.mp4" type="video/mp4"></video>
-        <video class="phone-still back right loop" muted loop playsinline preload="none" poster="video/loops/hero-growth.jpg" width="400" height="796" aria-label="Ember the fox earning XP and growing into its next stage"><source src="video/loops/hero-growth.mp4" type="video/mp4"></video>
-        <video class="phone-still front loop" muted loop playsinline preload="metadata" poster="video/loops/hero-home.jpg" width="600" height="1194" aria-label="BitRep's Home screen: today's planned Upper Body session, the week's plan, and the fox companion"><source src="video/loops/hero-home.mp4" type="video/mp4"></video>
-      </div>
     </section>
+    <div class="scene"><div class="sky-far" data-par="0.12"></div><div class="sky-near" data-par="0.22"></div><div class="windows"><i style="left:32.4%;top:39.4%"></i><i style="left:65.1%;top:34.5%"></i><i style="left:53.6%;top:52.7%"></i><i style="left:5.8%;top:61.5%"></i><i style="left:3.7%;top:56.9%"></i><i style="left:7.0%;top:35.6%"></i><i style="left:42.5%;top:81.3%"></i><i style="left:12.4%;top:43.8%"></i><i style="left:62.7%;top:88.8%"></i><i style="left:57.7%;top:54.6%"></i><i style="left:97.6%;top:32.9%"></i><i style="left:85.8%;top:48.0%"></i><i style="left:14.4%;top:37.3%"></i><i style="left:30.8%;top:80.6%"></i><i style="left:18.1%;top:66.1%"></i><i style="left:63.9%;top:53.1%"></i><i style="left:54.8%;top:33.9%"></i><i style="left:6.0%;top:42.8%"></i><i style="left:68.0%;top:56.5%"></i><i style="left:31.4%;top:66.3%"></i><i style="left:45.3%;top:48.6%"></i><i style="left:79.4%;top:73.3%"></i><i style="left:24.4%;top:65.6%"></i><i style="left:52.5%;top:84.3%"></i><i style="left:72.9%;top:47.9%"></i><i style="left:98.0%;top:37.3%"></i></div><div class="ground2"></div><div class="phone"><video class="phone-still loop" muted loop playsinline autoplay disablepictureinpicture disableremoteplayback preload="metadata" poster="video/loops/hero-home-health.jpg" width="600" height="1194" aria-label="BitRep's Home screen: today's planned session, the week's plan, the companion, and steps from Apple Health"><source src="video/loops/hero-home-health.mp4" type="video/mp4"></video></div><span class="mate far" style="left:2%;--w:var(--mw-big);--d:0.3s" role="img" aria-label="Bear companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/bear/5.png" width="292" height="292" alt=""></span></span></span><span class="mate far" style="left:17%;--w:var(--mw-small);--d:1.2s" role="img" aria-label="Rabbit companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/rabbit/3.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="right:calc(50% + var(--pw) / 2 + var(--gap));--w:var(--mw);--d:0.0s" role="img" aria-label="Panda companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/panda/4.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="left:calc(50% + var(--pw) / 2 + var(--gap));--w:var(--mw);--d:0.6s" role="img" aria-label="Fox companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/fox/5.png" width="292" height="292" alt=""></span></span></span><span class="mate far" style="right:17%;--w:var(--mw-small);--d:1.5s" role="img" aria-label="Panther companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/panther/3.png" width="292" height="292" alt=""></span></span></span><span class="mate far" style="right:2%;--w:var(--mw-big);--d:0.9s" role="img" aria-label="Wolf companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/wolf/4.png" width="292" height="292" alt=""></span></span></span><span class="stk" style="right:calc(50% + var(--pw) / 2 - 18px);top:4%;--w:clamp(78px,7.5vw,110px);--r:-12deg;--d:0s" aria-hidden="true"><img src="img/stickers/dumbbell.png" alt=""></span><span class="stk" style="left:calc(50% + var(--pw) / 2 + 14px);top:8%;--w:clamp(30px,2.8vw,40px);--r:10deg;--d:1.6s" aria-hidden="true"><img src="img/stickers/bottle.png" alt=""></span><span class="stk far" style="left:8%;top:10%;--w:clamp(56px,5.5vw,76px);--r:-8deg;--d:2s" aria-hidden="true"><img src="img/stickers/trophy.png" alt=""></span><span class="stk far" style="right:7%;top:16%;--w:clamp(76px,7vw,100px);--r:8deg;--d:.6s" aria-hidden="true"><img src="img/stickers/shoe.png" alt=""></span><span class="chip" style="left:calc(50% + var(--pw) / 2 - 30px);top:34%;--r:6deg;--d:.8s" aria-hidden="true">+XP</span><span class="chip amber" style="right:calc(50% + var(--pw) / 2 - 36px);top:46%;--r:-7deg;--d:2.4s" aria-hidden="true">LEVEL UP!</span></div>
   </div>
+  <div class="promise-line" aria-label="What we promise"><span>Free to log, always</span><span>No ads</span><span>We never sell your data</span><span>No guilt on rest days</span></div>
 
-  <div class="strip" aria-label="What we promise"><ul><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free to log, always</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export everything anytime</li><li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No guilt on rest days</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free to log, always</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No ads</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>We never sell your data</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Works without an account</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export everything anytime</li><li aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No guilt on rest days</li></ul></div>
+  <section class="grow" aria-labelledby="grow-title">
+    <div class="grow-stick">
+      <h2 class="h2" id="grow-title">Every workout grows your companion.</h2>
+      <div class="picker" role="group" aria-label="Pick a companion"><button type="button" data-pet="fox" aria-pressed="true" aria-label="Fox"><img src="bitrun/sprites/fox/1.png" width="44" height="44" alt=""></button><button type="button" data-pet="bear" aria-pressed="false" aria-label="Bear"><img src="bitrun/sprites/bear/1.png" width="44" height="44" alt=""></button><button type="button" data-pet="panther" aria-pressed="false" aria-label="Panther"><img src="bitrun/sprites/panther/1.png" width="44" height="44" alt=""></button><button type="button" data-pet="wolf" aria-pressed="false" aria-label="Wolf"><img src="bitrun/sprites/wolf/1.png" width="44" height="44" alt=""></button><button type="button" data-pet="rabbit" aria-pressed="false" aria-label="Rabbit"><img src="bitrun/sprites/rabbit/1.png" width="44" height="44" alt=""></button><button type="button" data-pet="panda" aria-pressed="false" aria-label="Panda"><img src="bitrun/sprites/panda/1.png" width="44" height="44" alt=""></button></div>
+      <div class="stage-wrap">
+        <div class="pad"></div>
+        <img class="pet" id="pet" src="bitrun/sprites/fox/1.png" width="292" height="292" alt="The fox companion at stage 1, Rookie">
+        <div class="burst" aria-hidden="true"><i style="--x:-90px;--y:-70px"></i><i style="--x:90px;--y:-80px"></i><i style="--x:-120px;--y:10px"></i><i style="--x:120px;--y:0px"></i><i style="--x:-60px;--y:-130px"></i><i style="--x:60px;--y:-130px"></i></div>
+      </div>
+      <p class="lvl" aria-live="polite"><span id="lvl-name">ROOKIE</span><small id="lvl-line">Everyone starts small.</small></p>
+      <div class="xp" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      <p class="hint">Keep scrolling</p>
+    </div>
+  </section>
 
   <section class="section wrap" id="inside" aria-labelledby="inside-title">
     <div class="section-head">
       <h2 class="h2" id="inside-title">Everything you train, in one app.</h2>
     </div>
-    <ol class="steps">
-      <li class="step">
-        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/lift.jpg" width="600" height="1194" aria-label="The workout logger: sets being logged, with a rest timer starting after each one"><source src="video/loops/lift.mp4" type="video/mp4"></video></div>
-        <div class="step-copy">
-          <span class="step-num">01<b>LIFT</b></span>
-          <h3>It remembers what you lifted last time.</h3>
-          <p>Last session's weights and reps are filled in before you start. One tap logs the set and starts your rest timer.</p>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/run.jpg" width="600" height="1194" aria-label="A finished run: the map pulls back to show the whole route as pixel art, then the time, distance and pace"><source src="video/loops/run.mp4" type="video/mp4"></video></div>
-        <div class="step-copy">
-          <span class="step-num">02<b>RUN</b></span>
-          <h3>Take it on your runs.</h3>
-          <p>Track a run and the route turns into pixel art. Rides, swims and other cardio go in the same log as your lifting.</p>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/fuel.jpg" width="600" height="1194" aria-label="The Fuel screen: calories left today, protein, carbs and fat, and the day's meals"><source src="video/loops/fuel.mp4" type="video/mp4"></video></div>
-        <div class="step-copy">
-          <span class="step-num">03<b>FUEL</b></span>
-          <h3>Track what you eat. See what's left today.</h3>
-          <p>Log meals against a calorie target. Protein, carbs and fat are on one screen, and your steps come in from Apple Health.</p>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-shot"><video class="phone-still loop" muted loop playsinline preload="none" poster="video/loops/grow.jpg" width="600" height="1194" aria-label="A finished workout earns XP, then the fox companion grows into its next stage"><source src="video/loops/grow.mp4" type="video/mp4"></video></div>
-        <div class="step-copy">
-          <span class="step-num">04<b>GROW</b></span>
-          <h3>Finish a workout, earn XP.</h3>
-          <p>XP grows your companion through five stages. Only real workouts count, and there are no daily streaks to keep alive.</p>
-        </div>
-      </li>
-    </ol>
-    <div class="callout">
-      <div>
-        <h3>Not sure where to start?</h3>
-        <p>Answer five questions and get a plan that fits.</p>
-      </div>
-      <div class="step-shot"><img class="phone-still" src="img/screens/screen-split-600.jpg" srcset="img/screens/screen-split-300.jpg 300w, img/screens/screen-split-600.jpg 600w, img/screens/screen-split.jpg 900w" sizes="200px" width="900" height="1790" alt="Find my plan: questions about experience, days a week, equipment and goals" loading="lazy" decoding="async"></div>
-    </div>
-  </section>
-
-  <div class="band">
-  <section class="section wrap" aria-labelledby="stages-title">
-    <div class="section-head">
-      <h2 class="h2" id="stages-title">Five stages. Only real workouts count.</h2>
-    </div>
-    <div class="stages">
-      <ol aria-label="Ember the fox at its five stages"><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-1-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-2-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-3-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-4-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li><li><span class="fox"><span class="fox-hop"><span class="fox-tap"><img src="img/fox/stage-5-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span></li></ol>
-      <div class="ground"></div>
-      <div class="names" aria-hidden="true"><span>ROOKIE</span><span>TRAINEE</span><span>LIFTER</span><span>ATHLETE</span><span>ELITE</span></div>
-    </div>
-  </section>
-  </div>
-
-  <section class="section wrap" id="film" aria-labelledby="film-title">
-    <div class="section-head">
-      <h2 class="h2" id="film-title">The whole app in 42 seconds.</h2>
-    </div>
-    <div class="film-stage">
-      <div class="film-frame">
-        <video controls playsinline muted preload="none" poster="video/bitrep-film-poster.jpg" width="1080" height="1920" aria-label="BitRep walkthrough film, 42 seconds. It starts muted and has music.">
-          <source src="video/bitrep-film.mp4" type="video/mp4">
-          <p>Your browser can't play this film here. <a href="video/bitrep-film.mp4">Open the film (MP4, 10 MB)</a>.</p>
-        </video>
-      </div>
-    </div>
+    <div class="feats"><article class="feat lift"><span class="icon" aria-hidden="true"><img src="img/stickers/dumbbell.png" alt=""></span><span class="tag">LIFT</span><h3>It remembers last time.</h3><p>Last session's weights and reps are already filled in. One tap logs the set and starts your rest timer.</p><div class="shot"><video class="phone-still loop" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" poster="video/loops/lift.jpg" width="600" height="1194" aria-label="The workout logger: sets being logged, with a rest timer after each one"><source src="video/loops/lift.mp4" type="video/mp4"></video></div></article><article class="feat run"><span class="icon" aria-hidden="true"><img src="img/stickers/shoe.png" alt=""></span><span class="tag">RUN</span><h3>Your route, in pixels.</h3><p>Track a run and the route turns into pixel art. Cardio goes in the same log as your lifting.</p><div class="shot"><video class="phone-still loop" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" poster="video/loops/run.jpg" width="600" height="1194" aria-label="A finished run: the route as pixel art, then the time, distance and pace"><source src="video/loops/run.mp4" type="video/mp4"></video></div></article><article class="feat fuel"><span class="icon" aria-hidden="true"><img src="img/stickers/bottle.png" alt=""></span><span class="tag">FUEL</span><h3>See what's left today.</h3><p>Calories, protein, carbs and fat on one screen. Steps come in from Apple Health.</p><div class="shot"><video class="phone-still loop" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" poster="video/loops/fuel.jpg" width="600" height="1194" aria-label="The Fuel screen: calories left today, protein, carbs and fat"><source src="video/loops/fuel.mp4" type="video/mp4"></video></div></article></div>
   </section>
 
   <section class="section wrap" id="game" aria-labelledby="game-title">
@@ -168,75 +174,11 @@
     <div class="game-card">
       <iframe id="bitrun-frame" src="bitrun/" title="BitRun, a small game where your companion jumps gym gear and grows" loading="lazy" width="860" height="900"></iframe>
     </div>
-    <div class="callout spin-card">
-      <div>
-        <h3>Can't decide what to train?</h3>
-        <p>Spin the wheel and let your companion pick today's workout, or how you finish it.</p>
-      </div>
-      <a class="btn" href="spin/">Spin the wheel</a>
-    </div>
   </section>
 
-  <div class="band">
-  <section class="section wrap" aria-labelledby="promise-title">
-    <div class="section-head">
-      <h2 class="h2" id="promise-title">What we promise</h2>
-    </div>
-    <ul class="promises">
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Logging your workouts is free, and it always will be.</span></li>
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>There are no ads in BitRep.</span></li>
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We never sell your data.</span></li>
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>It works without an account.</span></li>
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You can export everything whenever you like.</span></li>
-      <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No daily streaks, and no guilt on rest days.</span></li>
-    </ul>
-  </section>
-  </div>
-
-  <section class="section wrap" id="faq" aria-labelledby="faq-title">
-    <div class="section-head">
-      <h2 class="h2" id="faq-title">Questions</h2>
-    </div>
-    <div class="faq">
-    <details>
-      <summary>What is BitRep?</summary>
-      <p>A workout tracker for iPhone. It keeps your lifting, cardio, food and steps in one place, and a pixel companion grows as you train.</p>
-    </details>
-    <details>
-      <summary>Is it free?</summary>
-      <p>Yes. Logging your workouts is free forever, and there are no ads.</p>
-    </details>
-    <details>
-      <summary>Can I bring my history from Hevy?</summary>
-      <p>Yes. You can import your Hevy history when you set up BitRep.</p>
-    </details>
-    <details>
-      <summary>When does it launch?</summary>
-      <p>We're finishing it now. Sign up and you'll hear about early access before anyone else.</p>
-    </details>
-    <details>
-      <summary>Is there an Android version?</summary>
-      <p>iPhone comes first. Android is planned.</p>
-    </details>
-    <details>
-      <summary>I'm new to the gym. Is it for me?</summary>
-      <p>Yes. Answer five questions and BitRep suggests a plan, and nothing in the app makes you feel bad for a rest day.</p>
-    </details>
-    <details>
-      <summary>What do I get for joining the waitlist?</summary>
-      <p>First word on early access, and one email on launch day. That's all we'll send.</p>
-    </details>
-    <details>
-      <summary>What happens to my data?</summary>
-      <p>Your workouts live on your phone. We never sell your data.</p>
-    </details>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <section class="closing" id="join" aria-labelledby="join-title">
-      <span class="fox"><span class="fox-hop"><span class="fox-tap"><img class="pet" src="img/fox/stage-4-292.png" width="292" height="292" alt="" loading="lazy"></span></span></span>
-      <span class="ground"></span>
+  <div class="world end" id="join">
+    <div class="stars" aria-hidden="true"><i class="" style="left:74.6%;top:41.5%;animation-delay:1.2s"></i><i class="b" style="left:33.0%;top:61.1%;animation-delay:1.9s"></i><i class="" style="left:5.3%;top:52.1%;animation-delay:2.2s"></i><i class="" style="left:80.6%;top:10.4%;animation-delay:2.5s"></i><i class="" style="left:79.9%;top:51.6%;animation-delay:2.0s"></i><i class="b t" style="left:68.9%;top:15.8%;animation-delay:1.1s"></i><i class="" style="left:11.3%;top:52.1%;animation-delay:1.9s"></i><i class="b" style="left:67.7%;top:31.4%;animation-delay:2.2s"></i><i class="t" style="left:50.3%;top:34.1%;animation-delay:2.2s"></i><i class="" style="left:25.7%;top:6.5%;animation-delay:0.6s"></i><i class="" style="left:73.5%;top:60.5%;animation-delay:1.4s"></i><i class="" style="left:68.0%;top:48.0%;animation-delay:0.2s"></i><i class="" style="left:15.4%;top:17.2%;animation-delay:1.7s"></i><i class="" style="left:2.2%;top:5.6%;animation-delay:2.1s"></i><i class="" style="left:67.2%;top:19.5%;animation-delay:1.4s"></i><i class="" style="left:12.6%;top:55.6%;animation-delay:2.8s"></i><i class="" style="left:2.7%;top:29.5%;animation-delay:1.3s"></i><i class="t" style="left:27.3%;top:14.6%;animation-delay:1.7s"></i><i class="t" style="left:14.9%;top:33.4%;animation-delay:2.5s"></i><i class="t" style="left:50.9%;top:55.2%;animation-delay:2.7s"></i><i class="b" style="left:48.6%;top:3.5%;animation-delay:1.4s"></i><i class="" style="left:30.6%;top:10.4%;animation-delay:2.5s"></i><i class="t" style="left:1.2%;top:47.0%;animation-delay:2.8s"></i><i class="" style="left:70.9%;top:56.1%;animation-delay:1.2s"></i><i class="" style="left:98.9%;top:37.4%;animation-delay:0.8s"></i><i class="t" style="left:5.7%;top:8.1%;animation-delay:2.8s"></i><i class="t" style="left:25.4%;top:17.9%;animation-delay:1.1s"></i><i class="" style="left:94.7%;top:55.1%;animation-delay:2.7s"></i><i class="t" style="left:93.2%;top:35.0%;animation-delay:2.2s"></i><i class="t" style="left:45.2%;top:47.2%;animation-delay:0.1s"></i><i class="" style="left:91.8%;top:9.6%;animation-delay:0.9s"></i><i class="" style="left:73.4%;top:60.6%;animation-delay:0.9s"></i><i class="b t" style="left:55.6%;top:25.7%;animation-delay:0.6s"></i><i class="" style="left:89.8%;top:31.8%;animation-delay:3.0s"></i><i class="t" style="left:45.1%;top:10.4%;animation-delay:1.0s"></i><i class="" style="left:9.9%;top:16.3%;animation-delay:2.7s"></i><i class="" style="left:74.5%;top:26.8%;animation-delay:1.1s"></i><i class="" style="left:34.1%;top:5.7%;animation-delay:0.4s"></i><i class="t" style="left:50.3%;top:39.8%;animation-delay:0.8s"></i><i class="" style="left:25.3%;top:26.0%;animation-delay:2.5s"></i></div>
+    <section class="inner" aria-labelledby="join-title">
       <h2 class="h2" id="join-title">Get early access</h2>
       <p class="lede">We'll email you when BitRep is ready to try.</p>
       <form class="signup" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
@@ -248,11 +190,14 @@
         <p class="fine">Coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
       </form>
     </section>
+    <div class="scene lineup"><div class="sky-far"></div><div class="sky-near"></div><div class="windows"><i style="left:41.8%;top:76.9%"></i><i style="left:15.2%;top:60.3%"></i><i style="left:3.9%;top:71.4%"></i><i style="left:76.5%;top:65.5%"></i><i style="left:87.5%;top:49.5%"></i><i style="left:69.5%;top:66.9%"></i><i style="left:58.0%;top:58.3%"></i><i style="left:84.0%;top:88.6%"></i><i style="left:47.4%;top:71.2%"></i><i style="left:6.1%;top:73.5%"></i><i style="left:64.7%;top:91.6%"></i><i style="left:82.2%;top:47.6%"></i><i style="left:38.6%;top:71.5%"></i><i style="left:2.3%;top:58.6%"></i><i style="left:16.8%;top:37.3%"></i><i style="left:5.9%;top:77.6%"></i><i style="left:12.9%;top:45.4%"></i><i style="left:39.1%;top:84.0%"></i></div><div class="ground2"></div><div class="crew"><span class="mate far" style="--d:0.2s" role="img" aria-label="Bear companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/bear/5.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="--d:0.5s" role="img" aria-label="Panda companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/panda/5.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="--d:0.8s" role="img" aria-label="Fox companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/fox/5.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="--d:0.1s" role="img" aria-label="Wolf companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/wolf/5.png" width="292" height="292" alt=""></span></span></span><span class="mate far" style="--d:0.4s" role="img" aria-label="Panther companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/panther/5.png" width="292" height="292" alt=""></span></span></span><span class="mate" style="--d:0.7s" role="img" aria-label="Rabbit companion"><span class="hop"><span class="bob"><img src="bitrun/sprites/rabbit/5.png" width="292" height="292" alt=""></span></span></span></div></div>
   </div>
 </main>
 
 <footer class="foot">
   <ul>
+    <li><a href="faq.html">Questions</a></li>
+    <li><a href="spin/">Spin the wheel</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="mailto:hello@bitrep.app">hello@bitrep.app</a></li>
@@ -261,137 +206,92 @@
     <li>© 2026 BitRep</li>
   </ul>
   <p>BitRep is a training log, not medical advice. It's still in development, so features shown may change before launch.</p>
-  <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. Hevy is a trademark of its owner. BitRep is not affiliated with or endorsed by either.</p>
+  <p>iPhone, Apple Health and App Store are trademarks of Apple Inc. BitRep is not affiliated with or endorsed by Apple.</p>
 </footer>
+</div>
 
 <script>
-/* The four phone clips play only while they are on screen, muted and
-   looping. With reduced motion, or if the browser refuses to autoplay
-   (Low Power Mode on iPhone does), each one stays on its first frame. */
+var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Phone clips play only while on screen. */
 (function () {
   var clips = document.querySelectorAll('video.loop');
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!clips.length || still || !('IntersectionObserver' in window)) return;
+  if (still || !('IntersectionObserver' in window)) { clips.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); }); return; }
   var io = new IntersectionObserver(function (items) {
     items.forEach(function (it) {
       var v = it.target;
-      if (it.isIntersecting) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-      else v.pause();
+      if (it.isIntersecting) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.3 });
   clips.forEach(function (v) { io.observe(v); });
+  function kick() { clips.forEach(function (v) { var r = v.getBoundingClientRect(); if (v.paused && r.bottom > 0 && r.top < innerHeight) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }); }
+  ['touchstart', 'pointerdown', 'scroll'].forEach(function (t) { addEventListener(t, kick, { passive: true, once: true }); });
 })();
-
-/* Tapping a fox makes it hop once. */
-document.querySelectorAll('.fox').forEach(function (fox) {
-  var tap = fox.querySelector('.fox-tap');
-  fox.addEventListener('pointerdown', function () { tap.classList.remove('tap'); void tap.offsetWidth; tap.classList.add('tap'); });
-  tap.addEventListener('animationend', function (e) { if (e.target === tap) tap.classList.remove('tap'); });
+/* Tap a companion and it hops. */
+document.querySelectorAll('.mate').forEach(function (m) {
+  var hop = m.querySelector('.hop');
+  m.addEventListener('pointerdown', function () { hop.classList.remove('go'); void hop.offsetWidth; hop.classList.add('go'); });
+  hop.addEventListener('animationend', function () { hop.classList.remove('go'); });
 });
-
-/* The film starts by itself (muted) once a quarter of it is on screen and
-   pauses when it leaves. It only starts loading when its frame reaches the
-   screen. If the browser refuses to start it, or it is not loaded yet, it
-   tries once more when it can play. A visitor's own pause is respected for
-   the rest of the visit, it stays on the last frame at the end, and nothing
-   starts by itself with Reduce Motion or Save Data on. A play button sits on
-   the bright poster until the film has started, then the browser's own
-   controls return. Without this script the film plays from its own
-   controls. */
+/* The skyline slides a little as you scroll. */
 (function () {
-  var frame = document.querySelector('.film-frame');
-  var video = frame && frame.querySelector('video');
-  if (!video) return;
-
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var saveData = !!(navigator.connection && navigator.connection.saveData === true);
-  var autoplay = !reduceMotion && !saveData && 'IntersectionObserver' in window;
-  var started = false;          // the film has actually moved forward
-  var pausedByVisitor = false;
-  var pausingForScroll = false;
-  var retried = false;
-  var inView = false;
-
-  var button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'film-play';
-  button.setAttribute('aria-label', 'Play the walkthrough film');
-  button.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M11 7.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 11 7.5z" fill="currentColor"/></svg>';
-  frame.appendChild(button);
-  // Until the film starts, the play button is the only control: the
-  // browser's own controls shade the poster, so they come back on start.
-  video.removeAttribute('controls');
-  // WebKit keeps drawing the controls' shading until the video repaints
-  video.style.display = 'none'; void video.offsetWidth; video.style.display = '';
-  button.addEventListener('click', function () {
-    pausedByVisitor = false;
-    video.muted = true;
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
-  });
-
-  // The button follows the video's real state: it goes as soon as playback
-  // starts, however it started (autoplay, the button, the native controls),
-  // and the native controls come back in its place.
-  function hideButton() {
-    frame.classList.add('is-started');
-    if (!video.hasAttribute('controls')) video.setAttribute('controls', '');
-  }
-  video.addEventListener('play', hideButton);
-  video.addEventListener('playing', hideButton);
-  video.addEventListener('timeupdate', function () {
-    if (!started && video.currentTime > 0.05) started = true;
-  });
-  video.addEventListener('pause', function () {
-    if (!started) {
-      // A refused autoplay fires "playing" then "pause" without ever moving:
-      // put the poster and the play button back, without the controls' shading.
-      frame.classList.remove('is-started');
-      video.removeAttribute('controls');
-      video.style.display = 'none'; void video.offsetWidth; video.style.display = '';
-      return;
-    }
-    if (pausingForScroll) { pausingForScroll = false; return; }
-    // A refused autoplay also fires "pause"; only count it once the film has really played.
-    if (started && !video.ended) pausedByVisitor = true;
-  });
-
-  function retryOnce() {
-    if (retried) return;
-    retried = true;
-    video.addEventListener('canplay', tryPlay, { once: true });
-  }
-  function tryPlay() {
-    if (!autoplay || !inView || pausedByVisitor || video.ended || !video.paused) return;
-    video.muted = true;
-    var p = video.play();
-    if (p && p.catch) p.catch(retryOnce);
-    if (video.readyState < 2) retryOnce();
-  }
-
-  if (!autoplay) return;
-
-  var near = new IntersectionObserver(function (entries) {
-    if (!entries[0].isIntersecting) return;
-    near.disconnect();
-    if (video.readyState === 0 && video.paused) video.preload = 'auto';
-  });
-  near.observe(frame);
-
-  var seen = new IntersectionObserver(function (entries) {
-    var entry = entries[entries.length - 1];
-    inView = entry.intersectionRatio >= 0.24;
-    if (inView) {
-      tryPlay();
-    } else if (!entry.isIntersecting && !video.paused) {
-      pausingForScroll = true;
-      video.pause();
-    }
-  }, { threshold: [0, 0.25] });
-  seen.observe(frame);
+  if (still) return;
+  var layers = document.querySelectorAll('[data-par]');
+  var tick = false;
+  addEventListener('scroll', function () {
+    if (tick) return; tick = true;
+    requestAnimationFrame(function () {
+      var y = scrollY;
+      layers.forEach(function (l) { l.style.transform = 'translateX(' + (-y * l.dataset.par) + 'px)'; });
+      tick = false;
+    });
+  }, { passive: true });
 })();
-
-
+/* Grow on scroll: the further you scroll through the section, the
+   bigger the companion. Picking another companion swaps it in. */
+(function () {
+  var sec = document.querySelector('.grow');
+  var pet = document.getElementById('pet');
+  var nameEl = document.getElementById('lvl-name');
+  var lineEl = document.getElementById('lvl-line');
+  var bars = document.querySelectorAll('.xp i');
+  var burst = document.querySelector('.burst');
+  var names = ['ROOKIE', 'TRAINEE', 'LIFTER', 'ATHLETE', 'ELITE'];
+  var lines = ['Everyone starts small.', 'Finish a workout, earn XP.', 'It grows when you show up.', 'No streaks. Rest days are fine.', 'Five stages. All earned.'];
+  var who = 'fox', stage = 0;
+  // Load every stage up front so the swap is instant
+  ['fox','bear','panther','wolf','rabbit','panda'].forEach(function (n) { for (var s = 1; s <= 5; s++) { var i = new Image(); i.src = 'bitrun/sprites/' + n + '/' + s + '.png'; } });
+  function show(s, pop) {
+    stage = s;
+    pet.src = 'bitrun/sprites/' + who + '/' + (s + 1) + '.png';
+    pet.alt = 'The ' + who + ' companion at stage ' + (s + 1) + ', ' + names[s].charAt(0) + names[s].slice(1).toLowerCase();
+    nameEl.textContent = names[s];
+    lineEl.textContent = lines[s];
+    bars.forEach(function (b, i) { b.classList.toggle('on', i <= s); });
+    if (pop && !still) {
+      pet.classList.remove('pop'); burst.classList.remove('go'); void pet.offsetWidth;
+      pet.classList.add('pop'); burst.classList.add('go');
+    }
+  }
+  pet.addEventListener('animationend', function () { pet.classList.remove('pop'); burst.classList.remove('go'); });
+  document.querySelectorAll('.picker button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.picker button').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true');
+      who = b.dataset.pet; show(stage, true);
+    });
+  });
+  if (still) { show(4, false); return; }
+  var ticking = false;
+  function onScroll() {
+    var r = sec.getBoundingClientRect();
+    var total = sec.offsetHeight - innerHeight;
+    var p = Math.min(1, Math.max(0, -r.top / total));
+    var s = Math.min(4, Math.floor(p * 5.2));
+    if (s !== stage) show(s, true);
+    ticking = false;
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+})();
 /* BitRun is the page in /bitrun/, shown here in a frame so it can be played
    in place. This trims the game page's own header, title and intro (the
    home page already has them), sizes the frame to the game so there is no
@@ -425,6 +325,7 @@ document.querySelectorAll('.fox').forEach(function (fox) {
   f.addEventListener('load', setup);
   if (f.contentDocument && f.contentDocument.readyState === 'complete') setup();
 })();
+
 
 </script>
 </body>

@@ -29,8 +29,8 @@ img.px, .px img { image-rendering: pixelated; }
 .scene { --pw: clamp(200px, 16vw, 232px); --gap: 2vw; --mw: clamp(130px, 13vw, 184px); --mw-big: clamp(130px, 13vw, 190px); --mw-small: clamp(80px, 8vw, 116px);
   position: relative; width: 100%; height: calc(var(--pw) * 1.99 + 96px); margin-top: clamp(4px, 1.5vw, 16px); }
 .sky-far, .sky-near { position: absolute; left: -2%; right: -2%; background-repeat: repeat-x; image-rendering: pixelated; will-change: transform; }
-.sky-far { bottom: 64px; height: 200px; background-image: url("../img/skyline.svg"); background-size: auto 200px; opacity: .55; }
-.sky-near { bottom: 56px; height: 130px; background-image: url("../img/skyline.svg"); background-size: auto 130px; background-position: 380px 0; filter: brightness(.7); }
+.sky-far { bottom: 64px; height: 200px; background-image: url("img/skyline.svg"); background-size: auto 200px; opacity: .55; }
+.sky-near { bottom: 56px; height: 130px; background-image: url("img/skyline.svg"); background-size: auto 130px; background-position: 380px 0; filter: brightness(.7); }
 .windows { position: absolute; left: 0; right: 0; bottom: 64px; height: 190px; pointer-events: none; }
 .windows i { position: absolute; width: 6px; height: 6px; background: #FFC24B; opacity: .5; }
 .ground2 { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background:

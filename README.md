@@ -175,3 +175,10 @@ is enforced in Settings, Pages. Check the apex with
 - Have the privacy policy and terms reviewed by a lawyer, and name the
   legal entity on them.
 - Point Kit's form success redirect at `https://bitrep.app/thanks.html`.
+
+## Homepage (8 Oct 2026 redesign)
+- `index.html` + `home.css` (base) + `world.css` (night pixel world: opening animation, hero scene, grow-on-scroll, feature cards, closing lineup).
+- `img/stickers/` — gear stickers drawn in the companions' style.
+- `video/loops/hero-home-health.mp4` — hero phone, Home with Apple Health connected.
+- `faq.html` — the questions that used to sit on the homepage.
+- The opening animation plays on every load; Reduce Motion skips it, and a tap or key skips it too.
