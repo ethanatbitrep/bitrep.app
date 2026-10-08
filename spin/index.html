@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spin the wheel | BitRep</title>
+<meta name="description" content="Can't decide what to train, or how to finish? Spin the wheel.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E1020">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../home.css?v=1">
+<style>
+/* Spin the wheel. Uses the home page's colours, type and buttons. */
+.spin { max-width: 560px; margin: 0 auto; padding-top: clamp(28px, 5vw, 64px); padding-bottom: 72px; text-align: center; }
+.spin h1 { font-size: clamp(34px, 7vw, 56px); }
+.spin .lede { margin: 14px auto 0; }
+.modes { display: inline-flex; gap: 8px; margin-top: 24px; padding: 6px; background: var(--card); border-radius: 16px; }
+.modes button { min-height: 44px; padding: 0 18px; border: 0; border-radius: var(--r-control); background: transparent; color: var(--muted); font: 700 16px/1 var(--body); cursor: pointer; }
+.modes button[aria-pressed="true"] { background: var(--raised); color: var(--text); }
+.wheelbox { position: relative; width: min(100%, 440px); margin: 28px auto 0; aspect-ratio: 1; }
+.wheelbox canvas { display: block; width: 100%; height: 100%; }
+.pointer { position: absolute; left: 50%; top: -6px; width: 0; height: 0; margin-left: -16px; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 30px solid var(--mint); z-index: 2; }
+.go { margin-top: 26px; min-height: 56px; padding: 0 36px; font-size: 19px; }
+.go[disabled] { opacity: 0.5; cursor: default; }
+.out { min-height: 150px; margin-top: 26px; }
+.out .kicker { font-family: var(--pixel); color: var(--accent); letter-spacing: 0.12em; font-size: 15px; }
+.out h2 { font-size: clamp(30px, 6.4vw, 44px); letter-spacing: -0.03em; line-height: 1.08; margin-top: 8px; text-wrap: balance; }
+.out p { color: var(--muted); margin-top: 10px; font-size: 18px; }
+.spin .fine { margin-top: 8px; }
+.cta { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.cta p { color: var(--muted); max-width: 44ch; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in wrap">
+    <a href="../" aria-label="BitRep home"><img class="wordmark" src="../img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28"></a>
+    <a class="btn" href="../#join">Get early access</a>
+  </div>
+</header>
+
+<main class="wrap spin">
+  <h1>Spin the wheel</h1>
+  <p class="lede" id="lede"></p>
+  <div class="modes" role="group" aria-label="What the wheel decides">
+    <button type="button" id="m-finish" aria-pressed="true">Finisher</button>
+    <button type="button" id="m-today" aria-pressed="false">Today's workout</button>
+  </div>
+
+  <div class="wheelbox">
+    <span class="pointer" aria-hidden="true"></span>
+    <canvas id="wheel" width="880" height="880" role="img" aria-label="A wheel divided into slices, one for each option"></canvas>
+  </div>
+  <button class="btn go" id="go" type="button">Spin</button>
+
+  <div class="out" aria-live="polite">
+    <span class="kicker" id="kicker"></span>
+    <h2 id="what"></h2>
+    <p id="line"></p>
+  </div>
+  <p class="fine">If a spin doesn't suit you today, spin again. BitRep is a training log, not medical advice.</p>
+
+  <div class="cta">
+    <p>BitRep is a workout tracker coming to iPhone, with a pixel companion that grows when you train.</p>
+    <a class="btn" href="../#join">Get early access</a>
+  </div>
+</main>
+
+<script>
+(function () {
+  // [label on the wheel, what it says when it lands, a line underneath]
+  var WHEELS = {
+    finish: { lede: "Finished your workout and still have something left? Let the wheel pick how you end it.", kicker: 'YOUR FINISHER', items: [
+      ['PUSH-UPS', '50 push-ups', "Break them up however you like. They all count."],
+      ['PLANK', 'A 2-minute plank', "The second minute is longer than the first. Sorry."],
+      ['400M', '400 metres, all out', "One lap. Leave nothing for the walk to the car."],
+      ['SQUATS', '100 bodyweight squats', "Sets of ten. Don't think about the stairs later."],
+      ['BURPEES', '30 burpees', "Nobody likes them. That's sort of the point."],
+      ['CARRY', "A farmer's carry until you drop it", "Heaviest dumbbells you can hold. Walk until your grip goes."],
+      ['DEAD HANG', 'A dead hang for as long as you can', "Time it. Next week, beat it by a second."],
+      ['CURLS', 'Three sets of 21s', "Bottom half, top half, then the whole curl. Seven of each."],
+      ['STRETCH', '10 minutes of stretching', "The thing you always skip. Not today."],
+      ['GO HOME', "Go home. You've done enough.", "The wheel has spoken. Eat something."] ] },
+    today: { lede: "Can't decide what to train? Spin, and do what it says.", kicker: "TODAY IT'S", items: [
+      ['PUSH', 'Push day', "Chest, shoulders and triceps."],
+      ['PULL', 'Pull day', "Back and biceps. Bring your straps."],
+      ['LEGS', 'Leg day', "You knew it was on there."],
+      ['RUN', 'A run', "Any distance. Out the door is the hard part."],
+      ['UPPER', 'Upper body', "A bit of everything above the belt."],
+      ['FULL BODY', 'Full body', "One big lift for legs, one push, one pull."],
+      ['EASY CARDIO', 'Easy cardio', "Thirty minutes where you could still hold a conversation."],
+      ['REST', 'A rest day', "Take it. Resting is part of training."] ] }
+  };
+  var COLORS = [['#8F8DFF', '#0E1020'], ['#22263F', '#F3F3FA'], ['#5EE0B0', '#0E1020'], ['#171A2E', '#F3F3FA'], ['#FFC93C', '#0E1020'], ['#2B3052', '#F3F3FA']];
+  var $ = function (id) { return document.getElementById(id); };
+  var cv = $('wheel'), cx = cv.getContext('2d'), mode = 'finish', angle = 0, spinning = false, last = -1;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function paint() {
+    var items = WHEELS[mode].items, n = items.length, R = cv.width / 2, slice = Math.PI * 2 / n;
+    cx.clearRect(0, 0, cv.width, cv.height);
+    cx.save(); cx.translate(R, R); cx.rotate(angle);
+    for (var i = 0; i < n; i++) {
+      // with an odd number of colours left over, the last slice never matches the first
+      var col = COLORS[(i === n - 1 && (n - 1) % COLORS.length === 0) ? 2 : i % COLORS.length];
+      cx.beginPath(); cx.moveTo(0, 0); cx.arc(0, 0, R - 14, i * slice - Math.PI / 2 - slice / 2, (i + 1) * slice - Math.PI / 2 - slice / 2); cx.closePath();
+      cx.fillStyle = col[0]; cx.fill();
+      cx.save(); cx.rotate(i * slice); cx.fillStyle = col[1]; cx.textAlign = 'center'; cx.textBaseline = 'middle';
+      cx.font = '700 ' + (items[i][0].length > 9 ? 30 : 36) + 'px "Pixelify Sans", Archivo, sans-serif';
+      cx.translate(0, -(R * 0.62)); cx.rotate(-Math.PI / 2); cx.fillText(items[i][0], 0, 0); cx.restore();
+    }
+    cx.restore();
+    cx.beginPath(); cx.arc(R, R, R - 7, 0, Math.PI * 2); cx.lineWidth = 14; cx.strokeStyle = '#22263F'; cx.stroke();
+    cx.beginPath(); cx.arc(R, R, 46, 0, Math.PI * 2); cx.fillStyle = '#0E1020'; cx.fill(); cx.lineWidth = 8; cx.strokeStyle = '#5EE0B0'; cx.stroke();
+  }
+
+  function setMode(m) {
+    if (spinning) return;
+    mode = m; angle = 0; last = -1;
+    $('m-finish').setAttribute('aria-pressed', m === 'finish'); $('m-today').setAttribute('aria-pressed', m === 'today');
+    $('lede').textContent = WHEELS[m].lede; $('kicker').textContent = ''; $('what').textContent = ''; $('line').textContent = '';
+    paint();
+  }
+
+  function spin() {
+    if (spinning) return;
+    var items = WHEELS[mode].items, n = items.length, slice = Math.PI * 2 / n, pick;
+    do { pick = Math.floor(Math.random() * n); } while (n > 1 && pick === last);   // never the same thing twice in a row
+    last = pick;
+    // land somewhere inside the chosen slice, not always dead centre
+    var offset = (Math.random() - 0.5) * slice * 0.7;
+    var target = -pick * slice + offset, turns = still ? 1 : 5;
+    var from = angle % (Math.PI * 2), to = target - Math.PI * 2 * turns;
+    while (to > from - Math.PI * 2 * turns) to -= Math.PI * 2;
+    var t0 = performance.now(), dur = still ? 500 : 4200;
+    spinning = true; $('go').disabled = true; $('kicker').textContent = ''; $('what').textContent = ''; $('line').textContent = '';
+    (function frame(now) {
+      var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 4);
+      angle = from + (to - from) * e; paint();
+      if (k < 1) { requestAnimationFrame(frame); return; }
+      spinning = false; $('go').disabled = false; $('go').textContent = 'Spin again';
+      $('kicker').textContent = WHEELS[mode].kicker; $('what').textContent = items[pick][1]; $('line').textContent = items[pick][2];
+    })(t0);
+  }
+
+  $('m-finish').addEventListener('click', function () { setMode('finish'); });
+  $('m-today').addEventListener('click', function () { setMode('today'); });
+  $('go').addEventListener('click', spin);
+  setMode('finish');
+  if (document.fonts && document.fonts.load) document.fonts.load('700 36px "Pixelify Sans"').then(paint, paint);
+})();
+</script>
+</body>
+</html>

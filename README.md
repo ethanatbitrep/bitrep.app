@@ -40,10 +40,9 @@ served by GitHub Pages from the root of `main`.
   companions, a Rookie and an Elite version each, with small previews and
   a download page. `noindex` and unlinked until Ethan announces it.
 
-- `plates/`: a plate calculator (7 Oct 2026). One file using `home.css`.
-  Type a total, pick pounds or kilos, the bar and the plates you have; it
-  shows the fewest plates per side and draws the bar. Nothing is stored.
-  `noindex` and unlinked until Ethan announces it.
+- `spin/`: a spin wheel with two modes, Finisher and Today's workout
+  (7 Oct 2026). One file using `home.css`; nothing is stored and there are
+  no prizes. `noindex` and unlinked until Ethan announces it.
 
 ## Files
 
