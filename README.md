@@ -36,6 +36,10 @@ served by GitHub Pages from the root of `main`.
   uploaded. "Play BitRun as ..." sets BitRun's saved companion. It is
   `noindex` and unlinked until Ethan announces it.
 
+- `wallpapers/`: phone wallpapers (1290 x 2796) of the six launch
+  companions, a Rookie and an Elite version each, with small previews and
+  a download page. `noindex` and unlinked until Ethan announces it.
+
 ## Files
 
 - `home.css`: the home page's own stylesheet (redesigned 7 Oct 2026: flat
