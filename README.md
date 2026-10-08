@@ -49,7 +49,7 @@ served by GitHub Pages from the root of `main`.
   squares at 146, 292, 438 and (fox) 620 px. Art shown at exactly its file
   size keeps pixelated rendering; anything scaled down is drawn smoothly.
   Nothing is ever enlarged.
-- `img/share.png`: the 1200 x 630 link-preview image (`og:image`).
+- `img/share-2.png`: the 1200 x 630 link-preview image (`og:image`).
 - `video/`: the walkthrough film (`bitrep-film.mp4`, 42 s, H.264 with AAC music,
   faststart) and its poster.
 - `favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`:
