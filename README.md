@@ -43,7 +43,8 @@ served by GitHub Pages from the root of `main`.
 - `spin/`: a spin wheel with two modes, Finisher and Today's workout
   (7 Oct 2026). One file using `home.css`, the BitRun tiles and sprites
   and `img/skyline.svg`. Picking a companion saves it under BitRun's own
-  browser key; there are no prizes. `noindex` and unlinked until Ethan announces it.
+  browser key; there are no prizes. Public since 7 Oct 2026: linked from the
+  home page (the card under BitRun) and listed in `sitemap.xml`.
 
 ## Files
 

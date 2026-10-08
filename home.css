@@ -181,3 +181,8 @@ h1 .soft { color: var(--dim); }
 @keyframes bob { 50% { transform: translateY(-3px); } }
 @keyframes hop { 50% { transform: translateY(-14px); } }
 @media (prefers-reduced-motion: reduce) { .strip ul { animation: none; flex-wrap: wrap; justify-content: center; width: auto; padding: 0 20px; } html { scroll-behavior: auto; } }
+
+/* The spin wheel card under the game: text left, button right; stacked and centred on phones */
+.spin-card { max-width: 900px; margin-left: auto; margin-right: auto; margin-top: 28px; }
+.spin-card .btn { justify-self: start; }
+@media (max-width: 759px) { .spin-card { text-align: center; } .spin-card p { margin-left: auto; margin-right: auto; } .spin-card .btn { justify-self: center; } }
