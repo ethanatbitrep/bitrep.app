@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Which BitRep companion are you?</title>
+<meta name="description" content="Six quick questions. Find out which BitRep companion trains like you.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E1020">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../home.css?v=1">
+<style>
+/* Quiz page. Uses the home page's colours, type and buttons. */
+.quiz { max-width: 640px; margin: 0 auto; padding-top: clamp(32px, 6vw, 72px); padding-bottom: 64px; }
+.quiz h1 { font-size: clamp(34px, 7vw, 56px); text-align: center; }
+.quiz .lede { text-align: center; margin: 16px auto 0; }
+.start { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.lineup { display: flex; align-items: flex-end; justify-content: center; margin-top: 12px; width: 100%; max-width: 520px; }
+.lineup img { width: 16.66%; height: auto; display: block; }
+.lineup + .ground { width: 100%; max-width: 520px; margin-top: -24px; }
+.btn.big { min-height: 54px; padding: 0 28px; font-size: 18px; }
+.progress { display: flex; gap: 6px; margin-bottom: 28px; }
+.progress i { flex: 1; height: 5px; background: var(--raised); }
+.progress i.on { background: var(--mint); }
+.qnum { font-family: var(--pixel); color: var(--accent); letter-spacing: 0.1em; font-size: 18px; }
+.q h2 { font-size: clamp(26px, 5vw, 36px); letter-spacing: -0.03em; line-height: 1.1; margin: 10px 0 22px; text-wrap: balance; }
+.answers { display: grid; gap: 10px; }
+.answers button { text-align: left; min-height: 56px; padding: 14px 18px; border: 0; border-radius: var(--r-control); background: var(--card); color: var(--text); font: 400 17px/1.35 var(--body); box-shadow: inset 0 0 0 1px var(--line); cursor: pointer; }
+.answers button:hover, .answers button:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+.answers button:active { transform: scale(0.99); }
+.back { margin-top: 18px; background: none; border: 0; color: var(--muted); font: 400 15px var(--body); cursor: pointer; padding: 8px 0; }
+.result { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.result .kicker { font-family: var(--pixel); color: var(--accent); letter-spacing: 0.12em; font-size: 16px; }
+.result h2 { font-size: clamp(40px, 9vw, 68px); letter-spacing: -0.035em; line-height: 1; }
+.result .type { font-family: var(--pixel); font-size: 20px; letter-spacing: 0.1em; color: var(--mint); }
+.result .why { color: var(--muted); max-width: 46ch; font-size: 18px; }
+.evo { display: flex; align-items: flex-end; width: 100%; max-width: 520px; margin-top: 8px; }
+.evo img { width: 20%; height: auto; display: block; }
+.evo + .ground { width: 100%; max-width: 520px; margin-top: -10px; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+.btn.quiet { background: var(--raised); color: var(--text); }
+.btn.quiet:hover { background: #2B3050; }
+.result .signup { margin-top: 26px; }
+.result .fine { text-align: center; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in wrap">
+    <a href="../" aria-label="BitRep home"><img class="wordmark" src="../img/bitrep-wordmark-white.svg" alt="BitRep" width="130" height="28"></a>
+    <a class="btn" href="../#join">Get early access</a>
+  </div>
+</header>
+
+<main class="wrap quiz">
+  <section class="start" id="start">
+    <div>
+      <h1>Which companion are you?</h1>
+      <p class="lede">Six quick questions about how you train. We'll tell you who should be training with you.</p>
+    </div>
+    <button class="btn big" id="go" type="button">Start</button>
+    <div class="lineup" aria-hidden="true" id="lineup"></div>
+    <div class="ground"></div>
+  </section>
+
+  <section class="q" id="q" hidden aria-live="polite">
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <span class="qnum" id="qnum"></span>
+    <h2 id="qtext" tabindex="-1"></h2>
+    <div class="answers" id="answers"></div>
+    <button class="back" id="back" type="button">Back</button>
+  </section>
+
+  <section class="result" id="result" hidden>
+    <span class="kicker">YOU GOT</span>
+    <h2 id="rname" tabindex="-1"></h2>
+    <span class="type" id="rtype"></span>
+    <div class="evo" id="evo"></div>
+    <div class="ground"></div>
+    <p class="why" id="rwhy"></p>
+    <div class="actions">
+      <button class="btn" id="save" type="button">Save your card</button>
+      <a class="btn quiet" id="play" href="../bitrun/">Play BitRun as&nbsp;<span id="pname"></span></a>
+      <button class="btn quiet" id="again" type="button">Take it again</button>
+    </div>
+    <form class="signup" action="https://app.kit.com/forms/9990510/subscriptions" method="post">
+      <label class="visually-hidden" for="email-quiz">Email address</label>
+      <div class="row">
+        <input id="email-quiz" type="email" name="email_address" required autocomplete="email" placeholder="Email address">
+        <button class="btn" type="submit">Get early access</button>
+      </div>
+      <p class="fine">BitRep is a workout tracker coming to iPhone. Ages 13 and up. We only email about early access and launch.</p>
+    </form>
+  </section>
+</main>
+
+<script>
+(function () {
+  // The six companions and how each one trains.
+  var PETS = {
+    fox:     { name: 'Ember',   kind: 'Fox',     type: 'THE EVERYDAY',  why: "You're not chasing records. You turn up, do the work and go home, and that is exactly why it works." },
+    bear:    { name: 'Boulder', kind: 'Bear',    type: 'THE LIFTER',    why: "Heavy bar, long rests, big dinner. You'd rather add five pounds than run five minutes." },
+    panther: { name: 'Onyx',    kind: 'Panther', type: 'THE HYBRID',    why: "You lift and you run, sometimes on the same day. People keep telling you to pick one. You won't." },
+    wolf:    { name: 'Slate',   kind: 'Wolf',    type: 'THE DISTANCE',  why: "Long, steady and usually before sunrise. You're happiest a few miles in, when everything goes quiet." },
+    rabbit:  { name: 'Dash',    kind: 'Rabbit',  type: 'THE SPRINTER',  why: "Short, fast and slightly unhinged. If a session doesn't leave you on the floor, did it even count?" },
+    panda:   { name: 'Domino',  kind: 'Panda',   type: 'THE BALANCED',  why: "You train, you eat well and you actually rest. Annoyingly, you're the one who never gets injured." }
+  };
+  var ORDER = ['fox', 'bear', 'panther', 'wolf', 'rabbit', 'panda'];
+  // Each answer gives points to one or two companions.
+  var QS = [
+    { q: "It's 6am and your alarm goes off.", a: [
+      ["Already up. Shoes are on.", { wolf: 2, rabbit: 1 }],
+      ["One snooze, then I go.", { fox: 2, panther: 1 }],
+      ["I train at night. Next question.", { bear: 2, panther: 1 }],
+      ["What alarm?", { panda: 2 }] ] },
+    { q: "Pick your perfect session.", a: [
+      ["Heavy barbell, long rests.", { bear: 3 }],
+      ["A long run with nothing in my ears.", { wolf: 3 }],
+      ["Intervals until I see stars.", { rabbit: 3 }],
+      ["Lift first, then run. Same day.", { panther: 3 }],
+      ["Whatever is on the plan.", { fox: 3 }],
+      ["Something easy, then a proper meal.", { panda: 3 }] ] },
+    { q: "It's a rest day. How are you coping?", a: [
+      ["Eating. Sleeping. Growing.", { bear: 2, panda: 1 }],
+      ["Badly. I'm already twitchy.", { rabbit: 2, wolf: 1 }],
+      ["A walk and a stretch, then I'm fine.", { fox: 2, panda: 1 }],
+      ["I'll probably do something anyway.", { panther: 2, rabbit: 1 }] ] },
+    { q: "What's your main goal right now?", a: [
+      ["Get stronger.", { bear: 3 }],
+      ["Get faster.", { rabbit: 3 }],
+      ["Go further.", { wolf: 3 }],
+      ["Both. Strong and fit.", { panther: 3 }],
+      ["Just keep showing up.", { fox: 3 }],
+      ["Feel good and stay healthy.", { panda: 3 }] ] },
+    { q: "How do you keep track of your training today?", a: [
+      ["A notes app, or an actual notebook.", { bear: 2, fox: 1 }],
+      ["My watch does it for me.", { wolf: 2, rabbit: 1 }],
+      ["Three different apps, sadly.", { panther: 3 }],
+      ["In my head. It's fine.", { panda: 2, fox: 1 }] ] },
+    { q: "Someone asks to train with you tomorrow.", a: [
+      ["Great. The more the better.", { wolf: 2, fox: 1 }],
+      ["Sure, if they can keep up.", { rabbit: 2, panther: 1 }],
+      ["Only if they'll spot me.", { bear: 2 }],
+      ["Can we get food after?", { panda: 2, fox: 1 }] ] }
+  ];
+
+  var el = function (id) { return document.getElementById(id); };
+  var picks = [], step = 0, winner = null;
+
+  ORDER.forEach(function (id) {
+    var im = new Image(); im.src = '../bitrun/tiles/' + id + '.png'; im.alt = ''; im.width = 152; im.height = 152; el('lineup').appendChild(im);
+  });
+  QS.forEach(function () { el('progress').appendChild(document.createElement('i')); });
+
+  function show(id) { ['start', 'q', 'result'].forEach(function (s) { el(s).hidden = s !== id; }); window.scrollTo(0, 0); }
+
+  function ask() {
+    var item = QS[step];
+    el('qnum').textContent = ('0' + (step + 1)) + ' / 0' + QS.length;
+    el('qtext').textContent = item.q;
+    [].forEach.call(el('progress').children, function (b, i) { b.className = i <= step ? 'on' : ''; });
+    var box = el('answers'); box.textContent = '';
+    item.a.forEach(function (ans, i) {
+      var b = document.createElement('button'); b.type = 'button'; b.textContent = ans[0];
+      b.addEventListener('click', function () { picks[step] = i; step++; if (step < QS.length) ask(); else finish(); });
+      box.appendChild(b);
+    });
+    el('back').hidden = step === 0;
+    show('q'); el('qtext').focus({ preventScroll: true });
+  }
+
+  function finish() {
+    var score = {}; ORDER.forEach(function (id) { score[id] = 0; });
+    picks.forEach(function (p, qi) { var pts = QS[qi].a[p][1]; for (var k in pts) score[k] += pts[k]; });
+    // highest score wins; a tie goes to whoever the "perfect session" answer pointed at, then list order
+    var best = Math.max.apply(null, ORDER.map(function (id) { return score[id]; }));
+    var tied = ORDER.filter(function (id) { return score[id] === best; });
+    var fav = Object.keys(QS[1].a[picks[1]][1])[0];
+    winner = tied.indexOf(fav) >= 0 ? fav : tied[0];
+    var p = PETS[winner];
+    el('rname').textContent = p.name; el('rtype').textContent = p.type; el('rwhy').textContent = p.why; el('pname').textContent = p.name;
+    var evo = el('evo'); evo.textContent = '';
+    for (var s = 1; s <= 5; s++) { var im = new Image(); im.src = '../bitrun/sprites/' + winner + '/' + s + '.png'; im.width = 292; im.height = 292; im.alt = s === 5 ? p.name + ' the ' + p.kind.toLowerCase() + ', fully grown' : ''; evo.appendChild(im); }
+    show('result'); el('rname').focus({ preventScroll: true });
+  }
+
+  el('go').addEventListener('click', function () { picks = []; step = 0; ask(); });
+  el('back').addEventListener('click', function () { if (step > 0) { step--; ask(); } });
+  el('again').addEventListener('click', function () { picks = []; step = 0; ask(); });
+  // BitRun remembers the chosen companion in the browser; set it so the game opens as this one.
+  el('play').addEventListener('click', function () { try { localStorage.setItem('emberRunPet', winner); } catch (e) {} });
+
+  // The share card: a 1080 x 1350 picture drawn here in the browser and saved to the device. Nothing is uploaded.
+  function card(done) {
+    var p = PETS[winner], W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+    var x = c.getContext('2d'); x.fillStyle = '#0E1020'; x.fillRect(0, 0, W, H);
+    for (var yy = 0; yy < H; yy += 44) for (var xx = 0; xx < W; xx += 44) { x.fillStyle = 'rgba(255,255,255,0.13)'; x.fillRect(xx + 8, yy + 8, 3, 3); x.fillStyle = 'rgba(143,141,255,0.22)'; x.fillRect(xx + 30, yy + 34, 3, 3); }
+    var logo = new Image(), pet = new Image(), sky = new Image(), left = 3;
+    function draw() {
+      if (--left) return;
+      x.imageSmoothingEnabled = false;
+      var sh = 300, sw = sky.width * sh / sky.height; for (var sx = 0; sx < W; sx += sw) x.drawImage(sky, sx, H - sh, sw, sh);
+      x.imageSmoothingEnabled = true;
+      var lw = 300; x.drawImage(logo, (W - lw) / 2, 84, lw, lw * 28 / 130);
+      x.textAlign = 'center'; x.fillStyle = '#8F8DFF'; x.font = '700 40px "Pixelify Sans", sans-serif'; x.fillText('MY COMPANION IS', W / 2, 270);
+      x.fillStyle = '#F3F3FA'; x.font = '700 170px Archivo, sans-serif'; x.fillText(p.name, W / 2, 440);
+      x.fillStyle = '#5EE0B0'; x.font = '700 52px "Pixelify Sans", sans-serif'; x.fillText(p.type, W / 2, 520);
+      var s = 620; x.drawImage(pet, (W - s) / 2, 560, s, s);
+      x.fillStyle = '#5EE0B0'; x.fillRect((W - 460) / 2, 560 + s - 12, 460, 10);
+      x.fillStyle = '#F3F3FA'; x.font = '700 44px Archivo, sans-serif'; x.fillText('Which one are you?  bitrep.app/quiz', W / 2, H - 70);
+      done(c);
+    }
+    logo.onload = pet.onload = sky.onload = draw;
+    logo.src = '../img/bitrep-wordmark-white.svg'; pet.src = '../bitrun/sprites/' + winner + '/5.png'; sky.src = '../img/skyline.svg';
+  }
+  el('save').addEventListener('click', function () {
+    var go = function () { card(function (c) {
+      c.toBlob(function (blob) {
+        var name = 'bitrep-' + PETS[winner].name.toLowerCase() + '.png', file = new File([blob], name, { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file] }).catch(function () {}); return; }
+        var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      }, 'image/png');
+    }); };
+    if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('700 40px "Pixelify Sans"'), document.fonts.load('700 170px Archivo')]).then(go, go); else go();
+  });
+})();
+</script>
+</body>
+</html>

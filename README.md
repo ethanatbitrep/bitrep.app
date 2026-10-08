@@ -30,6 +30,12 @@ served by GitHub Pages from the root of `main`.
   update that script. Do not resize, recompress or rename the sprite files: the game
   reads their outlines from numbers measured on these exact files.
 
+- `quiz/`: "Which companion are you?", a six-question quiz (7 Oct 2026).
+  One file; it uses `home.css`, the BitRun tiles and sprites, and the Kit
+  form. The share card is drawn in the visitor's browser and nothing is
+  uploaded. "Play BitRun as ..." sets BitRun's saved companion. It is
+  `noindex` and unlinked until Ethan announces it.
+
 ## Files
 
 - `home.css`: the home page's own stylesheet (redesigned 7 Oct 2026: flat
