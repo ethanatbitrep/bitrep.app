@@ -41,8 +41,9 @@ served by GitHub Pages from the root of `main`.
   a download page. `noindex` and unlinked until Ethan announces it.
 
 - `spin/`: a spin wheel with two modes, Finisher and Today's workout
-  (7 Oct 2026). One file using `home.css`; nothing is stored and there are
-  no prizes. `noindex` and unlinked until Ethan announces it.
+  (7 Oct 2026). One file using `home.css`, the BitRun tiles and sprites
+  and `img/skyline.svg`. Picking a companion saves it under BitRun's own
+  browser key; there are no prizes. `noindex` and unlinked until Ethan announces it.
 
 ## Files
 

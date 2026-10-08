@@ -20,15 +20,37 @@
 .modes { display: inline-flex; gap: 8px; margin-top: 24px; padding: 6px; background: var(--card); border-radius: 16px; }
 .modes button { min-height: 44px; padding: 0 18px; border: 0; border-radius: var(--r-control); background: transparent; color: var(--muted); font: 700 16px/1 var(--body); cursor: pointer; }
 .modes button[aria-pressed="true"] { background: var(--raised); color: var(--text); }
-.wheelbox { position: relative; width: min(100%, 440px); margin: 28px auto 0; aspect-ratio: 1; }
-.wheelbox canvas { display: block; width: 100%; height: 100%; }
-.pointer { position: absolute; left: 50%; top: -6px; width: 0; height: 0; margin-left: -16px; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 30px solid var(--mint); z-index: 2; }
-.go { margin-top: 26px; min-height: 56px; padding: 0 36px; font-size: 19px; }
+.stage { position: relative; margin: 26px auto 0; max-width: 520px; border-radius: var(--r-card); overflow: hidden; background:
+    url("../img/skyline.svg") bottom center / auto 120px repeat-x,
+    radial-gradient(rgba(255,255,255,0.16) 0.8px, transparent 1.3px) 0 0 / 26px 26px,
+    radial-gradient(rgba(143,141,255,0.24) 0.8px, transparent 1.3px) 13px 19px / 40px 40px, #0B0D1A;
+  box-shadow: inset 0 0 0 1px var(--line); padding: 26px 18px 0; }
+.moon { position: absolute; right: 22px; top: 18px; width: 28px; height: 28px; background: #C9CCE0; }
+.moon::after { content: ""; position: absolute; left: -8px; top: -4px; width: 24px; height: 24px; background: #0B0D1A; }
+.wheelbox { position: relative; width: min(100%, 400px); margin: 0 auto; aspect-ratio: 1; }
+.wheelbox canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+#fx { position: absolute; inset: 0; pointer-events: none; }
+/* a stepped pixel arrow */
+.pointer { position: absolute; left: 50%; top: -10px; width: 40px; height: 40px; margin-left: -20px; z-index: 2; background: var(--mint);
+  clip-path: polygon(0 0, 100% 0, 100% 25%, 75% 25%, 75% 50%, 62% 50%, 62% 100%, 38% 100%, 38% 50%, 25% 50%, 25% 25%, 0 25%); }
+.floor { display: flex; align-items: flex-end; justify-content: space-between; margin-top: -34px; position: relative; z-index: 1; }
+.pet { width: 132px; height: 132px; display: block; }
+.pet.hop { animation: pethop .45s steps(4) 3; }
+@keyframes pethop { 50% { transform: translateY(-18px); } }
+.stage .ground { height: 6px; margin: -6px -18px 0; }
+.go { min-height: 54px; padding: 0 30px; font-size: 18px; margin-bottom: 26px; }
 .go[disabled] { opacity: 0.5; cursor: default; }
-.out { min-height: 150px; margin-top: 26px; }
-.out .kicker { font-family: var(--pixel); color: var(--accent); letter-spacing: 0.12em; font-size: 15px; }
-.out h2 { font-size: clamp(30px, 6.4vw, 44px); letter-spacing: -0.03em; line-height: 1.08; margin-top: 8px; text-wrap: balance; }
-.out p { color: var(--muted); margin-top: 10px; font-size: 18px; }
+.who { margin-top: 18px; }
+.who span { display: block; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 8px; }
+.who div { display: flex; justify-content: center; gap: 8px; }
+.who button { width: 48px; height: 48px; padding: 4px; border: 0; border-radius: var(--r-control); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); cursor: pointer; }
+.who button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); background: var(--raised); }
+.who img { width: 100%; height: 100%; display: block; }
+.out { min-height: 168px; margin-top: 22px; background: var(--card); border-radius: var(--r-card); padding: 22px 18px; }
+.out .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #FFC93C; }
+.out h2 { font-family: var(--pixel); font-size: clamp(26px, 6vw, 38px); letter-spacing: 0.01em; line-height: 1.15; margin-top: 8px; text-wrap: balance; }
+.out p { color: var(--muted); margin-top: 10px; font-size: 17px; }
+.out .wait { color: var(--dim); }
 .spin .fine { margin-top: 8px; }
 .cta { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .cta p { color: var(--muted); max-width: 44ch; }
@@ -50,11 +72,21 @@
     <button type="button" id="m-today" aria-pressed="false">Today's workout</button>
   </div>
 
-  <div class="wheelbox">
-    <span class="pointer" aria-hidden="true"></span>
-    <canvas id="wheel" width="880" height="880" role="img" aria-label="A wheel divided into slices, one for each option"></canvas>
+  <div class="stage">
+    <span class="moon" aria-hidden="true"></span>
+    <div class="wheelbox">
+      <span class="pointer" aria-hidden="true"></span>
+      <canvas id="wheel" width="880" height="880" role="img" aria-label="A wheel divided into slices, one for each option"></canvas>
+      <canvas id="fx" width="880" height="880" aria-hidden="true"></canvas>
+    </div>
+    <div class="floor">
+      <img class="pet" id="pet" src="../bitrun/sprites/fox/4.png" width="292" height="292" alt="">
+      <button class="btn go" id="go" type="button">Spin</button>
+    </div>
+    <div class="ground"></div>
   </div>
-  <button class="btn go" id="go" type="button">Spin</button>
+
+  <div class="who"><span>WHO'S SPINNING?</span><div id="who"></div></div>
 
   <div class="out" aria-live="polite">
     <span class="kicker" id="kicker"></span>
@@ -95,35 +127,76 @@
       ['REST', 'A rest day', "Take it. Resting is part of training."] ] }
   };
   var COLORS = [['#8F8DFF', '#0E1020'], ['#22263F', '#F3F3FA'], ['#5EE0B0', '#0E1020'], ['#171A2E', '#F3F3FA'], ['#FFC93C', '#0E1020'], ['#2B3052', '#F3F3FA']];
+  var PETS = [['fox', 'Ember'], ['bear', 'Boulder'], ['panther', 'Onyx'], ['wolf', 'Slate'], ['rabbit', 'Dash'], ['panda', 'Domino']];
   var $ = function (id) { return document.getElementById(id); };
   var cv = $('wheel'), cx = cv.getContext('2d'), mode = 'finish', angle = 0, spinning = false, last = -1;
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The wheel's colours are drawn small (110 px) and blown up without smoothing, so its edges step like pixel art.
+  var low = document.createElement('canvas'); low.width = low.height = 110; var lx = low.getContext('2d');
+  var hub = new Image(), pet = 'fox';
+  // BitRun and the quiz remember a chosen companion in the browser; start with that one if it is one of the six.
+  try { var saved = localStorage.getItem('emberRunPet'); if (PETS.some(function (p) { return p[0] === saved; })) pet = saved; } catch (e) {}
+  function petName() { return PETS.filter(function (p) { return p[0] === pet; })[0][1]; }
 
   function paint() {
-    var items = WHEELS[mode].items, n = items.length, R = cv.width / 2, slice = Math.PI * 2 / n;
-    cx.clearRect(0, 0, cv.width, cv.height);
-    cx.save(); cx.translate(R, R); cx.rotate(angle);
-    for (var i = 0; i < n; i++) {
+    var items = WHEELS[mode].items, n = items.length, R = cv.width / 2, slice = Math.PI * 2 / n, r = low.width / 2, i;
+    lx.clearRect(0, 0, low.width, low.height); lx.save(); lx.translate(r, r); lx.rotate(angle);
+    for (i = 0; i < n; i++) {
       // with an odd number of colours left over, the last slice never matches the first
+      lx.beginPath(); lx.moveTo(0, 0); lx.arc(0, 0, r - 3, i * slice - Math.PI / 2 - slice / 2, (i + 1) * slice - Math.PI / 2 - slice / 2); lx.closePath();
+      lx.fillStyle = COLORS[(i === n - 1 && (n - 1) % COLORS.length === 0) ? 2 : i % COLORS.length][0]; lx.fill();
+    }
+    lx.restore();
+    lx.beginPath(); lx.arc(r, r, r - 2, 0, Math.PI * 2); lx.lineWidth = 3; lx.strokeStyle = '#3A4070'; lx.stroke();
+    cx.clearRect(0, 0, cv.width, cv.height); cx.imageSmoothingEnabled = false; cx.drawImage(low, 0, 0, cv.width, cv.height);
+    cx.save(); cx.translate(R, R); cx.rotate(angle);
+    for (i = 0; i < n; i++) {
       var col = COLORS[(i === n - 1 && (n - 1) % COLORS.length === 0) ? 2 : i % COLORS.length];
-      cx.beginPath(); cx.moveTo(0, 0); cx.arc(0, 0, R - 14, i * slice - Math.PI / 2 - slice / 2, (i + 1) * slice - Math.PI / 2 - slice / 2); cx.closePath();
-      cx.fillStyle = col[0]; cx.fill();
       cx.save(); cx.rotate(i * slice); cx.fillStyle = col[1]; cx.textAlign = 'center'; cx.textBaseline = 'middle';
       cx.font = '700 ' + (items[i][0].length > 9 ? 30 : 36) + 'px "Pixelify Sans", Archivo, sans-serif';
-      cx.translate(0, -(R * 0.62)); cx.rotate(-Math.PI / 2); cx.fillText(items[i][0], 0, 0); cx.restore();
+      cx.translate(0, -(R * 0.64)); cx.rotate(-Math.PI / 2); cx.fillText(items[i][0], 0, 0); cx.restore();
     }
     cx.restore();
-    cx.beginPath(); cx.arc(R, R, R - 7, 0, Math.PI * 2); cx.lineWidth = 14; cx.strokeStyle = '#22263F'; cx.stroke();
-    cx.beginPath(); cx.arc(R, R, 46, 0, Math.PI * 2); cx.fillStyle = '#0E1020'; cx.fill(); cx.lineWidth = 8; cx.strokeStyle = '#5EE0B0'; cx.stroke();
+    // the hub: the companion's face in a square frame, which stays upright while the wheel turns
+    var h = 168; cx.fillStyle = '#5EE0B0'; cx.fillRect(R - h / 2 - 8, R - h / 2 - 8, h + 16, h + 16);
+    cx.fillStyle = '#0E1020'; cx.fillRect(R - h / 2, R - h / 2, h, h);
+    if (hub.complete && hub.naturalWidth) { cx.imageSmoothingEnabled = true; cx.drawImage(hub, R - h / 2 + 8, R - h / 2 + 8, h - 16, h - 16); }
+  }
+
+  function choose(id) {
+    pet = id; hub.src = '../bitrun/tiles/' + id + '.png'; $('pet').src = '../bitrun/sprites/' + id + '/4.png'; $('pet').alt = petName() + ', your companion';
+    [].forEach.call($('who').children, function (b) { b.setAttribute('aria-pressed', b.dataset.id === id ? 'true' : 'false'); });
+    try { localStorage.setItem('emberRunPet', id); } catch (e) {}
+    if (!spinning && $('what').textContent) $('kicker').textContent = petName().toUpperCase() + ' PICKED';
+  }
+  hub.onload = function () { if (!spinning) paint(); };
+  PETS.forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.dataset.id = p[0]; b.setAttribute('aria-label', p[1]);
+    var im = new Image(); im.src = '../bitrun/tiles/' + p[0] + '.png'; im.alt = ''; b.appendChild(im);
+    b.addEventListener('click', function () { choose(p[0]); }); $('who').appendChild(b);
+  });
+
+  // a short burst of pixel confetti when the wheel stops, like the app's finish screen
+  function confetti() {
+    if (still) return;
+    var fx = $('fx'), c = fx.getContext('2d'), bits = [], t0 = performance.now(), cols = ['#8F8DFF', '#5EE0B0', '#FFC93C', '#F3F3FA', '#FF7A7A'];
+    for (var i = 0; i < 70; i++) bits.push({ x: 440 + (Math.random() - 0.5) * 120, y: 380, vx: (Math.random() - 0.5) * 14, vy: -6 - Math.random() * 12, c: cols[i % cols.length], s: Math.random() < 0.5 ? 12 : 16 });
+    (function f(now) {
+      var k = (now - t0) / 1400; c.clearRect(0, 0, 880, 880); if (k >= 1) return;
+      bits.forEach(function (b) { b.x += b.vx; b.y += b.vy; b.vy += 0.55; c.globalAlpha = 1 - k * k; c.fillStyle = b.c; c.fillRect(Math.round(b.x / 4) * 4, Math.round(b.y / 4) * 4, b.s, b.s); });
+      requestAnimationFrame(f);
+    })(t0);
   }
 
   function setMode(m) {
     if (spinning) return;
     mode = m; angle = 0; last = -1;
     $('m-finish').setAttribute('aria-pressed', m === 'finish'); $('m-today').setAttribute('aria-pressed', m === 'today');
-    $('lede').textContent = WHEELS[m].lede; $('kicker').textContent = ''; $('what').textContent = ''; $('line').textContent = '';
+    $('lede').textContent = WHEELS[m].lede; idle();
     paint();
   }
+
+  function idle() { $('kicker').textContent = ''; $('what').textContent = ''; $('line').innerHTML = '<span class="wait">Give it a spin.</span>'; }
 
   function spin() {
     if (spinning) return;
@@ -136,20 +209,21 @@
     var from = angle % (Math.PI * 2), to = target - Math.PI * 2 * turns;
     while (to > from - Math.PI * 2 * turns) to -= Math.PI * 2;
     var t0 = performance.now(), dur = still ? 500 : 4200;
-    spinning = true; $('go').disabled = true; $('kicker').textContent = ''; $('what').textContent = ''; $('line').textContent = '';
+    spinning = true; $('go').disabled = true; $('kicker').textContent = ''; $('what').textContent = ''; $('line').innerHTML = '<span class="wait">' + petName() + ' is choosing.</span>';
     (function frame(now) {
       var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 4);
       angle = from + (to - from) * e; paint();
       if (k < 1) { requestAnimationFrame(frame); return; }
       spinning = false; $('go').disabled = false; $('go').textContent = 'Spin again';
-      $('kicker').textContent = WHEELS[mode].kicker; $('what').textContent = items[pick][1]; $('line').textContent = items[pick][2];
+      $('kicker').textContent = petName().toUpperCase() + ' PICKED'; $('what').textContent = items[pick][1]; $('line').textContent = items[pick][2];
+      confetti(); var pe = $('pet'); pe.classList.remove('hop'); void pe.offsetWidth; pe.classList.add('hop');
     })(t0);
   }
 
   $('m-finish').addEventListener('click', function () { setMode('finish'); });
   $('m-today').addEventListener('click', function () { setMode('today'); });
   $('go').addEventListener('click', spin);
-  setMode('finish');
+  choose(pet); setMode('finish');
   if (document.fonts && document.fonts.load) document.fonts.load('700 36px "Pixelify Sans"').then(paint, paint);
 })();
 </script>
