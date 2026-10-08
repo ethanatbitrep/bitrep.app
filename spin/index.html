@@ -35,7 +35,7 @@
 .moon { position: absolute; right: 22px; top: 18px; width: 28px; height: 28px; background: #C9CCE0; }
 .moon::after { content: ""; position: absolute; left: -8px; top: -4px; width: 24px; height: 24px; background: #0B0D1A; }
 .wheelbox { position: relative; width: min(100%, 400px); margin: 0 auto; aspect-ratio: 1; }
-.wheelbox canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.wheelbox canvas { display: block; width: 100%; height: 100%; }
 #fx { position: absolute; inset: 0; pointer-events: none; }
 /* a stepped pixel arrow */
 .pointer { position: absolute; left: 50%; top: -10px; width: 40px; height: 40px; margin-left: -20px; z-index: 2; background: var(--mint);
@@ -83,7 +83,7 @@
     <span class="moon" aria-hidden="true"></span>
     <div class="wheelbox">
       <span class="pointer" aria-hidden="true"></span>
-      <canvas id="wheel" width="880" height="880" role="img" aria-label="A wheel divided into slices, one for each option"></canvas>
+      <canvas id="wheel" width="1200" height="1200" role="img" aria-label="A wheel divided into slices, one for each option"></canvas>
       <canvas id="fx" width="880" height="880" aria-hidden="true"></canvas>
     </div>
     <div class="floor">
@@ -138,36 +138,33 @@
   var $ = function (id) { return document.getElementById(id); };
   var cv = $('wheel'), cx = cv.getContext('2d'), mode = 'finish', angle = 0, spinning = false, last = -1;
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // The wheel's colours are drawn small (110 px) and blown up without smoothing, so its edges step like pixel art.
-  var low = document.createElement('canvas'); low.width = low.height = 110; var lx = low.getContext('2d');
   var hub = new Image(), pet = 'fox';
   // BitRun and the quiz remember a chosen companion in the browser; start with that one if it is one of the six.
   try { var saved = localStorage.getItem('emberRunPet'); if (PETS.some(function (p) { return p[0] === saved; })) pet = saved; } catch (e) {}
   function petName() { return PETS.filter(function (p) { return p[0] === pet; })[0][1]; }
 
   function paint() {
-    var items = WHEELS[mode].items, n = items.length, R = cv.width / 2, slice = Math.PI * 2 / n, r = low.width / 2, i;
-    lx.clearRect(0, 0, low.width, low.height); lx.save(); lx.translate(r, r); lx.rotate(angle);
-    for (i = 0; i < n; i++) {
-      // with an odd number of colours left over, the last slice never matches the first
-      lx.beginPath(); lx.moveTo(0, 0); lx.arc(0, 0, r - 3, i * slice - Math.PI / 2 - slice / 2, (i + 1) * slice - Math.PI / 2 - slice / 2); lx.closePath();
-      lx.fillStyle = COLORS[(i === n - 1 && (n - 1) % COLORS.length === 0) ? 2 : i % COLORS.length][0]; lx.fill();
-    }
-    lx.restore();
-    lx.beginPath(); lx.arc(r, r, r - 2, 0, Math.PI * 2); lx.lineWidth = 3; lx.strokeStyle = '#3A4070'; lx.stroke();
-    cx.clearRect(0, 0, cv.width, cv.height); cx.imageSmoothingEnabled = false; cx.drawImage(low, 0, 0, cv.width, cv.height);
+    var items = WHEELS[mode].items, n = items.length, R = cv.width / 2, slice = Math.PI * 2 / n, i, u = R / 440;
+    cx.clearRect(0, 0, cv.width, cv.height); cx.imageSmoothingEnabled = true;
     cx.save(); cx.translate(R, R); cx.rotate(angle);
     for (i = 0; i < n; i++) {
+      // with an odd number of colours left over, the last slice never matches the first
       var col = COLORS[(i === n - 1 && (n - 1) % COLORS.length === 0) ? 2 : i % COLORS.length];
+      cx.beginPath(); cx.moveTo(0, 0); cx.arc(0, 0, R - 16 * u, i * slice - Math.PI / 2 - slice / 2, (i + 1) * slice - Math.PI / 2 - slice / 2); cx.closePath();
+      cx.fillStyle = col[0]; cx.fill();
       cx.save(); cx.rotate(i * slice); cx.fillStyle = col[1]; cx.textAlign = 'center'; cx.textBaseline = 'middle';
-      cx.font = '700 ' + (items[i][0].length > 9 ? 30 : 36) + 'px "Pixelify Sans", Archivo, sans-serif';
+      cx.font = '700 ' + Math.round((items[i][0].length > 9 ? 30 : 36) * u) + 'px "Pixelify Sans", Archivo, sans-serif';
       cx.translate(0, -(R * 0.64)); cx.rotate(-Math.PI / 2); cx.fillText(items[i][0], 0, 0); cx.restore();
     }
+    // a clean dark line between every pair of slices
+    cx.strokeStyle = '#0E1020'; cx.lineWidth = 6 * u; cx.lineCap = 'butt';
+    for (i = 0; i < n; i++) { var a = i * slice - Math.PI / 2 - slice / 2; cx.beginPath(); cx.moveTo(0, 0); cx.lineTo(Math.cos(a) * (R - 16 * u), Math.sin(a) * (R - 16 * u)); cx.stroke(); }
     cx.restore();
+    cx.beginPath(); cx.arc(R, R, R - 9 * u, 0, Math.PI * 2); cx.lineWidth = 14 * u; cx.strokeStyle = '#3A4070'; cx.stroke();
     // the hub: the companion's face in a square frame, which stays upright while the wheel turns
-    var h = 168; cx.fillStyle = '#5EE0B0'; cx.fillRect(R - h / 2 - 8, R - h / 2 - 8, h + 16, h + 16);
+    var h = 168 * u; cx.fillStyle = '#5EE0B0'; cx.fillRect(R - h / 2 - 8 * u, R - h / 2 - 8 * u, h + 16 * u, h + 16 * u);
     cx.fillStyle = '#0E1020'; cx.fillRect(R - h / 2, R - h / 2, h, h);
-    if (hub.complete && hub.naturalWidth) { cx.imageSmoothingEnabled = true; cx.drawImage(hub, R - h / 2 + 8, R - h / 2 + 8, h - 16, h - 16); }
+    if (hub.complete && hub.naturalWidth) cx.drawImage(hub, R - h / 2 + 8 * u, R - h / 2 + 8 * u, h - 16 * u, h - 16 * u);
   }
 
   function choose(id) {
