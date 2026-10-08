@@ -145,20 +145,20 @@ img.px, .px img { image-rendering: pixelated; }
    part way up, a tap lands on BitRep and the site opens out of the icon
    like an iPhone app. Then the hero pieces drop into place. */
 html.intro-on, html.intro-on body { overflow: hidden; }
-.intro { position: fixed; inset: 0; z-index: 100; overflow: hidden; background: #4653F2; }
+.intro { position: fixed; inset: 0; z-index: 100; overflow: hidden; background: var(--sky1); }
 .i-phone { --iw: min(66vw, 500px); position: absolute; left: 50%; top: max(12vh, 64px); width: var(--iw); margin-left: calc(var(--iw) / -2);
   translate: 0 110vh; animation: i-rise .75s cubic-bezier(.22,1.25,.4,1) .12s forwards; }
 @keyframes i-rise { to { translate: 0 0; } }
-.i-tilt { transform: perspective(1600px) rotateX(10deg) rotateZ(-5deg); transform-origin: 50% 30%; }
+.i-tilt { transform: none; }
 .i-screen { position: relative; aspect-ratio: 9 / 19.5; border-radius: calc(var(--iw) * .15); overflow: hidden; padding: 0;
   background: linear-gradient(170deg, #2A2370 0%, #4B3A9A 45%, #E28AA8 100%);
-  box-shadow: 0 0 0 calc(var(--iw) * .03) #0B0C12, 0 0 0 calc(var(--iw) * .034) #3A3D4D, 0 50px 90px rgba(10,12,60,.45); }
+  box-shadow: 0 0 0 calc(var(--iw) * .03) #0B0C12, 0 0 0 calc(var(--iw) * .034) #3A3D4D, 0 50px 90px rgba(0,0,0,.55); }
 .i-island { position: absolute; top: 2.4%; left: 50%; width: 30%; height: 4%; translate: -50% 0; background: #000; border-radius: 99px; }
 .i-time { position: absolute; top: 3%; left: 9%; font: 700 calc(var(--iw) * .05)/1 -apple-system, "SF Pro Text", var(--body); color: #fff; }
 .i-bars { position: absolute; top: 3.3%; right: 10%; display: flex; gap: 2px; align-items: flex-end; }
 .i-bars i { width: calc(var(--iw) * .009); background: #fff; border-radius: 1px; }
 .i-bars i:nth-child(1) { height: calc(var(--iw) * .012); } .i-bars i:nth-child(2) { height: calc(var(--iw) * .018); } .i-bars i:nth-child(3) { height: calc(var(--iw) * .024); } .i-bars i:nth-child(4) { height: calc(var(--iw) * .03); }
-.i-grid { position: absolute; left: 6.5%; right: 6.5%; top: 11%; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .06) calc(var(--iw) * .055); }
+.i-grid { position: absolute; left: 6.5%; right: 6.5%; top: 16.5%; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--iw) * .06) calc(var(--iw) * .055); }
 .i-app { display: flex; flex-direction: column; align-items: center; gap: calc(var(--iw) * .014); font: 500 calc(var(--iw) * .03)/1.1 -apple-system, "SF Pro Text", var(--body); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); white-space: nowrap; }
 .i-app svg, .i-app img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 22.5%; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
 .i-app.br img { transition: transform .14s ease, filter .14s; }
