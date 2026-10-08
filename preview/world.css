@@ -19,7 +19,7 @@ img.px, .px img { image-rendering: pixelated; }
 .moon { position: absolute; top: 104px; right: 9%; width: 56px; height: 56px; image-rendering: pixelated; }
 
 .hero2 { position: relative; z-index: 2; padding-top: calc(100px + env(safe-area-inset-top)); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
-.hero2 h1 { font-size: clamp(44px, 6.2vw, 88px); letter-spacing: -0.04em; }
+.hero2 h1 { font-size: clamp(36px, 10.4vw, 88px); letter-spacing: -0.04em; }
 .hero2 h1 em { font-style: normal; color: var(--accent); }
 .hero2 .lede { max-width: 60ch; }
 .hero2 br.m { display: none; }
@@ -27,7 +27,8 @@ img.px, .px img { image-rendering: pixelated; }
 
 /* The scene: skyline layers, ground, the phone in the middle,
    companions standing on the ground, stickers floating around. */
-.scene { --s: min(1, calc(100vw / 1100px)); position: relative; width: 100%; height: clamp(470px, 44vw, 600px); margin-top: clamp(8px, 2vw, 20px); }
+.scene { --pw: clamp(200px, 16vw, 232px); --gap: 2vw; --mw: clamp(130px, 13vw, 184px); --mw-big: clamp(130px, 13vw, 190px); --mw-small: clamp(80px, 8vw, 116px);
+  position: relative; width: 100%; height: calc(var(--pw) * 1.99 + 96px); margin-top: clamp(4px, 1.5vw, 16px); }
 .sky-far, .sky-near { position: absolute; left: -2%; right: -2%; background-repeat: repeat-x; image-rendering: pixelated; will-change: transform; }
 .sky-far { bottom: 64px; height: 200px; background-image: url("../img/skyline.svg"); background-size: auto 200px; opacity: .55; }
 .sky-near { bottom: 56px; height: 130px; background-image: url("../img/skyline.svg"); background-size: auto 130px; background-position: 380px 0; filter: brightness(.7); }
@@ -37,10 +38,10 @@ img.px, .px img { image-rendering: pixelated; }
     linear-gradient(to bottom, #3A3577 0 8px, #2A2758 8px 16px, #1D1B40 16px 100%); }
 .ground2::before { content: ""; position: absolute; left: 0; right: 0; top: 24px; height: 4px; background: repeating-linear-gradient(to right, #3A3577 0 24px, transparent 24px 56px); opacity: .7; }
 
-.scene .phone { position: absolute; left: 50%; bottom: 40px; width: clamp(200px, 25vw, 290px); transform: translateX(-50%); z-index: 3; }
+.scene .phone { position: absolute; left: 50%; bottom: 34px; width: var(--pw); transform: translateX(-50%); z-index: 3; }
 .scene .phone video { filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
 
-.mate { position: absolute; bottom: 52px; z-index: 4; width: var(--w, 150px); }
+.mate { position: absolute; bottom: 46px; z-index: 4; width: var(--w, 150px); }
 .mate img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 .mate .bob { display: block; animation: bob 2.4s steps(4) infinite; animation-delay: var(--d, 0s); }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
@@ -52,7 +53,7 @@ img.px, .px img { image-rendering: pixelated; }
 
 /* Stickers: pixel icons with a white sticker edge */
 .stk { position: absolute; z-index: 5; width: var(--w, 64px); pointer-events: none;
-  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 8px 10px rgba(0,0,0,.35));
+  filter: drop-shadow(0 10px 12px rgba(0,0,0,.45));
   transform: rotate(var(--r, 0deg)); animation: drift 6s ease-in-out infinite; animation-delay: var(--d, 0s); }
 .stk img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 @keyframes drift { 50% { translate: 0 -10px; } }
@@ -62,11 +63,20 @@ img.px, .px img { image-rendering: pixelated; }
 
 /* Phone-width scene: fewer companions and stickers */
 @media (max-width: 700px) {
-  .scene { height: 440px; }
-  .hero2 .fine { display: none; }
+  .scene { --pw: 158px; --gap: 0px; --mw: min(124px, calc((100vw - var(--pw)) / 2 - 2px)); }
   .mate.far, .stk.far, .chip.far { display: none; }
-  .scene .phone { width: 180px; }
+  .hero2 .fine { display: none; }
+  .chip { font-size: 13px; padding: 7px 9px 6px; }
 }
+/* Larger screens: one-line headline so the whole scene, phone included,
+   fits in the first screen of a laptop. */
+@media (min-width: 701px) {
+  .hero2 { padding-top: calc(88px + env(safe-area-inset-top)); gap: 14px; }
+  .hero2 h1 { font-size: clamp(44px, 4.6vw, 70px); }
+  .hero2 br.m { display: none; }
+  .hero2 .lede { max-width: 64ch; }
+}
+.hero2 .lede { text-wrap: balance; }
 
 /* Promise line under the hero */
 .promise-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; padding: 22px 20px; background: #1D1B40; color: var(--muted); font-size: 15px; font-weight: 700; }
@@ -75,7 +85,7 @@ img.px, .px img { image-rendering: pixelated; }
 
 /* Grow on scroll. The section is tall and the stage sticks while you
    scroll through it, so scrolling grows the companion one stage at a time. */
-.grow { position: relative; height: 360vh; }
+.grow { position: relative; height: 230vh; }
 .grow-stick { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 72px 20px 24px; overflow: hidden; }
 .grow h2 { max-width: 16ch; }
 .picker { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
@@ -106,18 +116,21 @@ img.px, .px img { image-rendering: pixelated; }
 .feat.run { background: var(--mint); }
 .feat.fuel { background: var(--amber); }
 .feat .tag { font: 700 16px/1 var(--pixel); letter-spacing: .08em; opacity: .7; }
-.feat h3 { padding-right: 48px; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.1; letter-spacing: -0.02em; }
+.feat h3 { padding-right: 76px; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.1; letter-spacing: -0.02em; }
 .feat p { font-size: 16px; line-height: 1.45; max-width: 34ch; }
 .feat .shot { width: min(240px, 70%); margin: 18px auto -40px; }
 .feat .shot video { filter: drop-shadow(0 20px 26px rgba(0,0,0,.3)); }
-.feat .icon { position: absolute; top: 24px; right: 24px; width: 40px; filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff); transform: rotate(8deg); }
+.feat .icon { position: absolute; top: 22px; right: 22px; width: 64px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); transform: rotate(8deg); }
+.feat.fuel .icon { width: 30px; } .feat.run .icon { width: 70px; }
 .feat .icon img { display: block; width: 100%; image-rendering: pixelated; }
 
 /* Closing scene */
 .end { margin-top: clamp(96px, 12vw, 160px); }
 .end .inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: clamp(72px, 10vw, 120px) 20px 0; }
-.end .lineup { position: relative; height: clamp(240px, 28vw, 320px); margin-top: 24px; }
-.end .lineup .mate { bottom: 50px; }
+.end .lineup { height: clamp(220px, 22vw, 290px); margin-top: 24px; }
+.end .crew { position: absolute; left: 0; right: 0; bottom: 46px; display: flex; justify-content: center; align-items: flex-end; gap: clamp(0px, 2vw, 32px); padding: 0 8px; z-index: 4; }
+.end .crew .mate { position: relative; bottom: 0; flex: 0 1 auto; width: clamp(80px, 13vw, 180px); }
+@media (max-width: 700px) { .end .crew { justify-content: space-evenly; gap: 0; } .end .crew .mate { width: calc((100vw - 16px) / 4); max-width: 120px; } .end .crew .mate.far { display: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .stk, .chip, .mate .bob, .stars i.t { animation: none !important; }
@@ -125,15 +138,3 @@ img.px, .px img { image-rendering: pixelated; }
   .grow-stick { position: static; height: auto; padding: 96px 20px; }
 }
 
-/* Larger screens: keep the whole scene, companions included, in the
-   first screen. The phone rises from the bottom edge, in front of the
-   ground, and is cut off there. */
-@media (min-width: 701px) {
-  .hero2 { padding-top: calc(92px + env(safe-area-inset-top)); gap: 16px; }
-  .hero2 h1 { font-size: clamp(44px, 5.6vw, 80px); }
-  .hero2 .lede { max-width: 64ch; }
-  .scene { height: clamp(380px, 32vw, 450px); }
-  .scene .phone { width: clamp(230px, 20vw, 280px); bottom: auto; top: 6%; }
-  .scene .phone video { filter: drop-shadow(0 30px 40px rgba(0,0,0,.5)); }
-}
-.hero2 .lede { text-wrap: balance; }
