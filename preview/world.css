@@ -22,8 +22,7 @@ img.px, .px img { image-rendering: pixelated; }
 .hero2 h1 { font-size: clamp(36px, 10.4vw, 88px); letter-spacing: -0.04em; }
 .hero2 h1 em { font-style: normal; color: var(--accent); }
 .hero2 .lede { max-width: 60ch; }
-.hero2 br.m { display: none; }
-@media (max-width: 700px) { .hero2 br.m { display: inline; } }
+
 
 /* The scene: skyline layers, ground, the phone in the middle,
    companions standing on the ground, stickers floating around. */
@@ -72,8 +71,11 @@ img.px, .px img { image-rendering: pixelated; }
    fits in the first screen of a laptop. */
 @media (min-width: 701px) {
   .hero2 { padding-top: calc(88px + env(safe-area-inset-top)); gap: 14px; }
-  .hero2 h1 { font-size: clamp(44px, 4.6vw, 70px); }
-  .hero2 br.m { display: none; }
+  .hero2 { padding-top: calc(80px + env(safe-area-inset-top)); }
+  .hero2 h1 { font-size: clamp(60px, 6.8vw, 104px); line-height: .98; }
+  .hero2 .fine { display: none; }
+  /* Phone height follows the window height so the whole phone shows */
+  .scene { --pw: clamp(170px, calc((100svh - 590px) / 1.99), 232px); --mw: clamp(120px, calc(var(--pw) * .78), 184px); --mw-big: var(--mw); }
   .hero2 .lede { max-width: 64ch; }
 }
 .hero2 .lede { text-wrap: balance; }
@@ -111,14 +113,14 @@ img.px, .px img { image-rendering: pixelated; }
 /* Three feature cards, each with its own colour */
 .feats { display: grid; gap: 16px; }
 @media (min-width: 900px) { .feats { grid-template-columns: repeat(3, 1fr); } }
-.feat { border-radius: 24px; padding: 28px 24px 0; overflow: hidden; display: flex; flex-direction: column; gap: 10px; color: #0E1020; position: relative; }
+.feat { border-radius: 24px; padding: 28px 24px 32px; overflow: hidden; display: flex; flex-direction: column; gap: 10px; color: #0E1020; position: relative; }
 .feat.lift { background: var(--accent); }
 .feat.run { background: var(--mint); }
 .feat.fuel { background: var(--amber); }
 .feat .tag { font: 700 16px/1 var(--pixel); letter-spacing: .08em; opacity: .7; }
 .feat h3 { padding-right: 76px; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.1; letter-spacing: -0.02em; }
 .feat p { font-size: 16px; line-height: 1.45; max-width: 34ch; }
-.feat .shot { width: min(240px, 70%); margin: 18px auto -40px; }
+.feat .shot { width: min(210px, 64%); margin: auto auto 0; padding-top: 22px; }
 .feat .shot video { filter: drop-shadow(0 20px 26px rgba(0,0,0,.3)); }
 .feat .icon { position: absolute; top: 22px; right: 22px; width: 64px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); transform: rotate(8deg); }
 .feat.fuel .icon { width: 30px; } .feat.run .icon { width: 70px; }
@@ -178,3 +180,10 @@ video.loop::-webkit-media-controls-start-playback-button,
 video.loop::-webkit-media-controls-overlay-play-button,
 video.loop::-webkit-media-controls-panel { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
 video.loop { pointer-events: none; }
+/* Short laptop windows: smaller headline and phone so it all still fits */
+@media (min-width: 701px) and (max-height: 800px) {
+  .hero2 { padding-top: 76px; gap: 10px; }
+  .hero2 h1 { font-size: clamp(44px, 7.4svh, 64px); }
+  .hero2 .lede { font-size: 17px; }
+  .scene { --pw: clamp(148px, calc((100svh - 470px) / 1.99), 200px); margin-top: 0; }
+}
