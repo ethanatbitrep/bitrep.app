@@ -162,7 +162,7 @@ button, input { font: inherit; }
   <p class="lede">It’s Sam’s birthday run. Jump the gym gear, grab the water, and level the birthday boy up through five heads.</p>
 
   <div class="hud">
-    <span class="pill gold" id="hudStage">Stage 1 · Rookie</span>
+    <span class="pill gold" id="hudStage">Stage 1 · Birthday Boy</span>
     <div class="bar" role="progressbar" aria-label="XP to the next stage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="hudBar"><i id="hudFill"></i></div>
     <span class="xp" id="hudXp">0 XP</span>
     <span class="best" id="hudBest" hidden></span>
@@ -183,7 +183,7 @@ button, input { font: inherit; }
     <div class="view" id="pickView">
       <h2>The birthday boy</h2>
       <div class="picker" id="picker"></div>
-      <p class="small">Sam starts as a Rookie. Running earns XP slowly and water bottles earn it fast.</p>
+      <p class="small">Sam starts as the Birthday Boy. Running earns XP slowly and water bottles earn it fast.</p>
     </div>
 
     <div class="view" id="playView" hidden>
@@ -195,7 +195,7 @@ button, input { font: inherit; }
     <div class="view" id="restView" hidden>
       <div class="head">
         <span class="eyebrow gold">Rest day</span>
-        <h2 class="hero" id="restHead">Sam made it to Rookie</h2>
+        <h2 class="hero" id="restHead">Sam made it to Birthday Boy</h2>
       </div>
       <div class="pills" id="restPills"></div>
       <p id="restLine"></p>
@@ -218,7 +218,7 @@ button, input { font: inherit; }
   ];
   // Outline of each sprite inside its square (left, top, right, bottom as fractions), per stage.
   var BB = {"sam": [[0.318, 0.527, 0.678, 0.976], [0.281, 0.428, 0.719, 0.976], [0.233, 0.322, 0.764, 0.973], [0.134, 0.199, 0.863, 0.969], [0.14, 0.072, 0.86, 0.966]]};
-  var STAGE_NAMES = ['Rookie', 'Trainee', 'Lifter', 'Athlete', 'Elite'];
+  var STAGE_NAMES = ['Birthday Boy', 'Party Starter', 'Visor Legend', 'Couch King', 'Grown Man'];
   var THRESH = [0, 50, 130, 260, 450];
   var SQ = 104;               // every stage is drawn in the same square, as the art was made
 
@@ -458,7 +458,7 @@ button, input { font: inherit; }
     var pills = document.getElementById('restPills'); pills.textContent = '';
     var items = [['Stage ' + st.stage + ' of 5', true], [xp + ' XP', false], [st.stage < 5 ? 'Next: ' + STAGE_NAMES[st.stage] + ' at ' + THRESH[st.stage] + ' XP' : 'Fully grown', false]];
     for (var pi = 0; pi < items.length; pi++) { var sp = document.createElement('span'); sp.className = 'pill' + (items[pi][1] ? ' gold' : ''); sp.textContent = items[pi][0]; pills.appendChild(sp); }
-    document.getElementById('restLine').textContent = 'Happy birthday, ' + pet.name + '! Run it back and get him to Elite.';
+    document.getElementById('restLine').textContent = 'Happy birthday, ' + pet.name + '! Run it back and get him to Grown Man.';
     moment.hidden = true;
   }
 
