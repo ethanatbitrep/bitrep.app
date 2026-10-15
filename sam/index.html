@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SamRun</title>
+<title>Happy Birthday Sam</title>
 <meta name="description" content="SamRun.">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0E1020">
+<meta name="theme-color" content="#2B0F3F">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -27,13 +27,13 @@ img { max-width: 100%; }
    Colors, corner sizes and type are BitRep's own, taken from bitrep.app. */
 :root {
   color-scheme: dark;
-  --ground: #0E1020;
-  --card: #171A2E;
-  --raised: #22263F;
+  --ground: #2B0F3F;
+  --card: #3B1754;
+  --raised: #4C2169;
   --text: #F3F3FA;
   --muted: #A3A8C4;
-  --accent: #8F8DFF;
-  --on-accent: #0E1020;
+  --accent: #FF6FB5;
+  --on-accent: #2B0F3F;
   --link: #B8B6FF;
   --mint: #5EE0B0;
   --gold: #F5C451;
@@ -162,8 +162,8 @@ button, input { font: inherit; }
     <a class="btn header-cta" href="../">Get BitRep</a>
   </div>
 
-  <h1>SamRun</h1>
-  <p class="lede">Jump the gym gear, grab the water, and watch Sam level up through five heads.</p>
+  <h1>Happy Birthday Sam!</h1>
+  <p class="lede">It’s Sam’s birthday run. Jump the gym gear, grab the water, and level the birthday boy up through five heads.</p>
 
   <div class="hud">
     <span class="pill gold" id="hudStage">Stage 1 · Rookie</span>
@@ -185,7 +185,7 @@ button, input { font: inherit; }
 
   <section class="panel" id="panel">
     <div class="view" id="pickView">
-      <h2>Meet Sam</h2>
+      <h2>The birthday boy</h2>
       <div class="picker" id="picker"></div>
       <p class="small">Sam starts as a Rookie. Running earns XP slowly and water bottles earn it fast.</p>
     </div>
@@ -218,7 +218,7 @@ button, input { font: inherit; }
 
   // ---------- companions ----------
   var PETS = [
-    { id: 'sam', name: 'Sam', kind: 'The legend' }
+    { id: 'sam', name: 'Sam', kind: 'Birthday legend' }
   ];
   // Outline of each sprite inside its square (left, top, right, bottom as fractions), per stage.
   var BB = {"sam": [[0.318, 0.527, 0.678, 0.976], [0.281, 0.428, 0.719, 0.976], [0.233, 0.322, 0.764, 0.973], [0.134, 0.199, 0.863, 0.969], [0.14, 0.072, 0.86, 0.966]]};
@@ -371,6 +371,15 @@ button, input { font: inherit; }
       buildings.push({ x: x, w: w, h: h, wins: wins });
       x += w + 4;
     }
+  })();
+  var PARTY = (function () {
+    var seed = 11; function r() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    var cols = ['#FF5DA2', '#FFB23F', '#5EC8FF', '#9B6BFF', '#FF6B6B', '#3CD39B', '#FFD23F'];
+    var o = { msg: 'HAPPY BIRTHDAY SAM   ', flag: ['#FF5DA2', '#FFB23F', '#5EC8FF', '#9B6BFF', '#3CD39B', '#FF6B6B'], balloons: [], confetti: [], clouds: [] };
+    for (var i = 0; i < 9; i++) o.balloons.push({ x: i * 112 + r() * 40, y: 0.32 + r() * 0.36, s: 0.8 + r() * 0.5, ph: r() * 6, c: cols[i % cols.length] });
+    for (i = 0; i < 70; i++) o.confetti.push({ x: r(), y: r() * 300, v: 18 + r() * 30, ph: r() * 6, r: (r() - 0.5) * 6, c: cols[Math.floor(r() * cols.length)] });
+    for (i = 0; i < 5; i++) o.clouds.push({ x: i * 230 + r() * 80, y: 40 + r() * 50, s: 0.8 + r() * 0.5 });
+    return o;
   })();
   var SKY = [
     ['#0E1020', '#1D1B45'], ['#121433', '#2B2262'], ['#1A1A4A', '#4C2C7C'],
@@ -561,50 +570,61 @@ button, input { font: inherit; }
   var CLOUD = [[-0.3, -0.25, 0.42], [0.28, -0.3, 0.4], [0, -0.55, 0.46], [-0.42, -0.6, 0.34], [0.4, -0.65, 0.36], [0, -0.9, 0.4], [-0.15, -0.1, 0.36], [0.2, -0.12, 0.34]];
   function draw() {
     ctx.setTransform(K, 0, 0, K, 0, 0);
-    var sk = clamp(st.skyStage, 1, 5), i0 = Math.min(3, Math.floor(sk - 1)), f = sk - 1 - i0;
-    var top = rgbMix(hex(SKY[i0][0]), hex(SKY[i0 + 1][0]), f), bot = rgbMix(hex(SKY[i0][1]), hex(SKY[i0 + 1][1]), f);
-    var bands = 10, bh = GROUND / bands, i;
-    for (i = 0; i < bands; i++) { ctx.fillStyle = css(rgbMix(top, bot, i / (bands - 1))); ctx.fillRect(0, i * bh, W + 1, bh + 1); }
-    var sa = clamp((4.3 - sk) / 2, 0, 1);
-    if (sa > 0) {
-      ctx.fillStyle = '#EDEBFF';
-      for (i = 0; i < stars.length; i++) { var s0 = stars[i]; ctx.globalAlpha = sa * (0.55 + 0.45 * Math.sin(st.t * 2 + s0.tw)); ctx.fillRect(s0.x * W, s0.y * (GROUND - 94) / 150, 2, 2); }
-      ctx.globalAlpha = 1;
+    // ---- birthday party backdrop ----
+    var i;
+    var sky = ctx.createLinearGradient(0, 0, 0, GROUND);
+    sky.addColorStop(0, '#7FD3FF'); sky.addColorStop(0.65, '#BFE8FF'); sky.addColorStop(1, '#FFE3F1');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W + 1, GROUND);
+    // sun
+    disc(W * 0.86, GROUND * 0.2, 26, '#FFE27A'); disc(W * 0.86, GROUND * 0.2, 19, '#FFD23F');
+    // puffy clouds drifting slowly
+    for (i = 0; i < PARTY.clouds.length; i++) {
+      var cl = PARTY.clouds[i], cx0 = ((cl.x - st.scroll * 0.05 - st.t * 6) % 1100 + 1100) % 1100 - 120;
+      if (cx0 > W + 80) continue;
+      ctx.fillStyle = 'rgba(255,255,255,0.92)';
+      disc(cx0, cl.y, 18 * cl.s, '#FFFFFF'); disc(cx0 + 20 * cl.s, cl.y - 8 * cl.s, 22 * cl.s, '#FFFFFF'); disc(cx0 + 44 * cl.s, cl.y, 17 * cl.s, '#FFFFFF');
+      ctx.fillRect(cx0, cl.y, 44 * cl.s, 16 * cl.s);
     }
-    var ma = clamp(4 - sk, 0, 1);
-    if (ma > 0) { ctx.globalAlpha = ma; disc(W * 0.8, GROUND * 0.24, 20, '#EDEBFF'); disc(W * 0.8 + 10, GROUND * 0.24 - 6, 17, css(rgbMix(top, bot, 0.2))); ctx.globalAlpha = 1; }
-    var rise = clamp((sk - 3.2) / 1.8, 0, 1);
-    if (rise > 0) disc(W * 0.72, GROUND + 8 - rise * 70, 34, '#FFD166');
-
-    // a taller, hazier row of buildings far behind, so a tall phone screen is not empty sky
-    var farS = GROUND * 0.6 / 116, farP = SKY_P * farS, farOff = (st.scroll * 0.09 + 300) % farP;
-    ctx.fillStyle = css(rgbMix(bot, hex('#2A2356'), 0.62));
-    for (var fr = 0; fr * farP - farOff < W; fr++) {
-      for (i = 0; i < buildings.length; i += 2) {
-        var fb = buildings[i], fx = fb.x * farS - farOff + fr * farP;
-        if (fx > W || fx + fb.w * farS < 0) continue;
-        ctx.fillRect(fx, GROUND - fb.h * farS, fb.w * farS, fb.h * farS + 1);
+    // balloons floating behind the course
+    for (i = 0; i < PARTY.balloons.length; i++) {
+      var bl = PARTY.balloons[i], bx = ((bl.x - st.scroll * 0.18) % 1000 + 1000) % 1000 - 60;
+      if (bx > W + 40) continue;
+      var by = GROUND * bl.y + Math.sin(st.t * 1.4 + bl.ph) * 6, rr0 = 13 * bl.s;
+      ctx.strokeStyle = 'rgba(80,60,90,0.45)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(bx, by + rr0 * 1.2); ctx.quadraticCurveTo(bx + 6, by + rr0 * 2.4, bx - 2, by + rr0 * 3.6); ctx.stroke();
+      ctx.fillStyle = bl.c; ctx.beginPath(); ctx.ellipse(bx, by, rr0, rr0 * 1.2, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(bx - 3, by + rr0 * 1.25); ctx.lineTo(bx + 3, by + rr0 * 1.25); ctx.lineTo(bx, by + rr0 * 1.12); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.beginPath(); ctx.ellipse(bx - rr0 * 0.35, by - rr0 * 0.45, rr0 * 0.22, rr0 * 0.34, -0.5, 0, Math.PI * 2); ctx.fill();
+    }
+    // bunting: one flag per letter of the birthday message
+    var fw = 26, msg = PARTY.msg, per = msg.length * fw, bOff = ((st.scroll * 0.3) % per + per) % per, sag = 10, by0 = 14;
+    ctx.strokeStyle = '#6B4C7A'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (var sx = -bOff - fw; sx < W + fw; sx += 4) { var ph2 = (((sx + bOff) % per) + per) % per / per; var yy = by0 + Math.sin(ph2 * Math.PI * 2 * 3) * 0 + sag * Math.sin(((sx + bOff) % (per / 3)) / (per / 3) * Math.PI); if (sx === -bOff - fw) ctx.moveTo(sx, yy); else ctx.lineTo(sx, yy); }
+    ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '700 11px "Pixelify Sans", Archivo, sans-serif';
+    for (var rep2 = -1; rep2 * per - bOff < W; rep2++) {
+      for (i = 0; i < msg.length; i++) {
+        var fx0 = rep2 * per - bOff + i * fw; if (fx0 < -fw || fx0 > W) continue;
+        var ch = msg[i]; if (ch === ' ') continue;
+        var mid = fx0 + fw / 2, top0 = by0 + sag * Math.sin(((mid + bOff) % (per / 3)) / (per / 3) * Math.PI);
+        ctx.fillStyle = PARTY.flag[i % PARTY.flag.length];
+        ctx.beginPath(); ctx.moveTo(fx0 + 2, top0); ctx.lineTo(fx0 + fw - 2, top0); ctx.lineTo(mid, top0 + 26); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#FFFFFF'; ctx.fillText(ch, mid, top0 + 9);
       }
     }
-    var off = (st.scroll * 0.22) % SKY_P;
-    var bcol = css(rgbMix(hex('#171A3A'), hex('#3A2358'), clamp((sk - 1) / 4, 0, 1)));
-    for (var rep = 0; rep < 2; rep++) {
-      for (i = 0; i < buildings.length; i++) {
-        var bd = buildings[i], x = bd.x - off + rep * SKY_P;
-        if (x > W || x + bd.w < 0) continue;
-        ctx.fillStyle = bcol; ctx.fillRect(x, GROUND - bd.h, bd.w, bd.h + 1);
-        ctx.fillStyle = 'rgba(255,209,102,0.55)';
-        for (var k = 0; k < bd.wins.length; k++) { var wn = bd.wins[k]; if (wn.on) ctx.fillRect(x + wn.x, GROUND - bd.h + wn.y, 3, 4); }
-      }
+    ctx.textAlign = 'start'; ctx.textBaseline = 'alphabetic';
+    // confetti drifting down
+    for (i = 0; i < PARTY.confetti.length; i++) {
+      var cf = PARTY.confetti[i], cy = ((cf.y + st.t * cf.v) % (GROUND + 20)) - 10, cxx = ((cf.x * W - st.scroll * 0.25 + Math.sin(st.t * 2 + cf.ph) * 8) % W + W) % W;
+      ctx.fillStyle = cf.c; ctx.save(); ctx.translate(cxx, cy); ctx.rotate(st.t * cf.r); ctx.fillRect(-2.5, -1.2, 5, 2.4); ctx.restore();
     }
-
-    // track
-    ctx.fillStyle = '#5A2F45'; ctx.fillRect(0, GROUND, W + 1, H - GROUND);
-    ctx.fillStyle = '#7A4258'; ctx.fillRect(0, GROUND, W + 1, 4);
-    ctx.fillStyle = '#3F2136'; ctx.fillRect(0, H - 12, W + 1, 12);
-    ctx.fillStyle = 'rgba(255,241,220,0.55)';
-    var dOff = st.scroll % 72;
-    for (var dx = -dOff; dx < W; dx += 72) ctx.fillRect(dx, GROUND + 24, 30, 3);
+    // grass track
+    ctx.fillStyle = '#5BC46A'; ctx.fillRect(0, GROUND, W + 1, H - GROUND);
+    ctx.fillStyle = '#7EDB86'; ctx.fillRect(0, GROUND, W + 1, 4);
+    ctx.fillStyle = '#3E9A4E'; ctx.fillRect(0, H - 12, W + 1, 12);
+    var dOff = st.scroll % 54;
+    for (var dx = -dOff; dx < W; dx += 54) { ctx.fillStyle = PARTY.flag[(Math.floor((dx + st.scroll) / 54) % PARTY.flag.length + PARTY.flag.length) % PARTY.flag.length]; ctx.fillRect(dx, GROUND + 22, 4, 4); ctx.fillRect(dx + 27, GROUND + 30, 3, 3); }
 
     ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
     for (i = 0; i < st.pickups.length; i++) {
